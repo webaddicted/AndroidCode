@@ -7,8 +7,9 @@ import android.os.Bundle;
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.ActivityHomeBinding;
 
-public class HomeActivity extends AppCompatActivity {
-private ActivityHomeBinding mBinding;
+public class HomeActivity extends BaseActivity {
+    private ActivityHomeBinding mBinding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

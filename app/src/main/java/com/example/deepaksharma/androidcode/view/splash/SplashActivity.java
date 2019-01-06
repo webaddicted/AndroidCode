@@ -9,9 +9,11 @@ import android.os.Bundle;
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.ActivitySplashBinding;
 import com.example.deepaksharma.androidcode.global.constant.AppConstant;
+import com.example.deepaksharma.androidcode.utils.GlobalUtilities;
+import com.example.deepaksharma.androidcode.view.home.BaseActivity;
 import com.example.deepaksharma.androidcode.view.home.HomeActivity;
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends BaseActivity {
     private ActivitySplashBinding mBinding;
 
     @Override
@@ -26,6 +28,8 @@ public class SplashActivity extends AppCompatActivity {
      * navigate to welcome activity after Splash timer Delay
      */
     private void navigateToNext() {
-        new Handler().postDelayed(() -> startActivity(new Intent(SplashActivity.this, HomeActivity.class)), AppConstant.SPLASH_DELAY);
+        new Handler().postDelayed(() -> {
+            startActivity(new Intent(SplashActivity.this, HomeActivity.class));
+        }, AppConstant.SPLASH_DELAY);
     }
 }

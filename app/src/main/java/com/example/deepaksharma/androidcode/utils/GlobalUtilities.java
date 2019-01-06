@@ -1,6 +1,7 @@
 package com.example.deepaksharma.androidcode.utils;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -160,52 +161,10 @@ public class GlobalUtilities {
         Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
     }
 
-    //    {START ACTIVITY ANIMATION}
-    public static void startActivityWithLeftToRightAnimation(Activity activity, Intent in) {
-        activity.startActivity(in);
-        activity.overridePendingTransition(R.anim.slide_in_right, R.anim.scale_down);
-    }
-
-    public static void startActivityForResultWithLeftToRightAnimation(Fragment activity, Intent in, int req) {
-        activity.startActivityForResult(in, req);
-        activity.getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.scale_down);
-    }
-
-    public static void startActivityForResultWithLeftToRightAnimationA(Activity activity, Intent in, int req) {
-        activity.startActivityForResult(in, req);
-        activity.overridePendingTransition(R.anim.slide_in_right, R.anim.scale_down);
-    }
-
-    public static void startActivityWithZoomOut(Activity activity, Intent in) {
-        activity.startActivity(in);
-        activity.overridePendingTransition(R.anim.zoom_out, R.anim.slide_out_left);
-    }
-
-    public static void startActivityWithRightToLeftAnimation(Activity activity, Intent in) {
-        activity.startActivity(in);
-        activity.overridePendingTransition(R.anim.scale_up, R.anim.slide_out_right);
-    }
-
-    public static void startActivityForResultWithDownToUpAnimation(Activity activity, Fragment frag, Intent in, int requestCode) {
-        frag.startActivityForResult(in, requestCode);
-        activity.overridePendingTransition(R.anim.abc_slide_in_bottom, R.anim.stay);
-    }
-
-    public static void startActivityForResultWithDownToUpAnimation(Activity activity, Intent in, int requestCode) {
-        activity.startActivityForResult(in, requestCode);
-        activity.overridePendingTransition(R.anim.abc_slide_in_bottom, R.anim.abc_slide_out_bottom);
-    }
-
-    public static void startActivityWithDownToUpAnimation(Activity activity, Intent in) {
-        activity.startActivity(in);
-        activity.overridePendingTransition(R.anim.abc_slide_in_bottom, R.anim.abc_slide_out_bottom);
-    }
-
-    //    {END ACTIVITY ANIMATION}
-//    {START SHOW DIALOG}
+    //    {START SHOW DIALOG}
     public static void showOkDialog(final String message, final DialogCallBack callBack) {
         try {
-            new android.app.AlertDialog.Builder(AppApplication.getInstance()).setTitle(mContext.getResources().getString(R.string.app_name))
+            AlertDialog.Builder builder = new android.app.AlertDialog.Builder(AppApplication.getInstance()).setTitle(mContext.getResources().getString(R.string.app_name))
                     .setMessage(message).setCancelable(true)
                     .setPositiveButton(mContext.getResources().getString(android.R.string.ok),
                             new DialogInterface.OnClickListener() {
@@ -216,8 +175,10 @@ public class GlobalUtilities {
                                         callBack.okClick();
                                     }
                                 }
-                            })
-                    .create().show();
+                            });
+            AlertDialog dialog = builder.create();
+            dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+            dialog.show();
         } catch (Exception e) {
             Log.e(TAG, "Showing Push Dialog Failed - " + e.getMessage());
         }
@@ -225,8 +186,8 @@ public class GlobalUtilities {
 
     public static void showSimpleDialog(final String message, final DialogCallBack callBack) {
         try {
-            new android.app.AlertDialog.Builder(mContext).setTitle(mContext.getResources().getString(R.string.app_name))
-                    .setMessage(message).setCancelable(true)
+            AlertDialog.Builder builder = new android.app.AlertDialog.Builder(mContext).setTitle(mContext.getResources().getString(R.string.app_name));
+            builder.setMessage(message).setCancelable(true)
                     .setPositiveButton(mContext.getResources().getString(android.R.string.ok),
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int okButton) {
@@ -242,7 +203,10 @@ public class GlobalUtilities {
                         public void onClick(DialogInterface dialogInterface, int cancelButton) {
                             callBack.cancelClick();
                         }
-                    }).create().show();
+                    });
+            AlertDialog dialog = builder.create();
+            dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+            dialog.show();
         } catch (Exception e) {
             Log.e(TAG, "Showing Push Dialog Failed - " + e.getMessage());
         }
@@ -293,10 +257,10 @@ public class GlobalUtilities {
                 address = addresses.get(0).getAddressLine(0);
         } catch (IOException e) {
             e.printStackTrace();
-            Log.d(TAG, "getAddress: "+e);
+            Log.d(TAG, "getAddress: " + e);
         } catch (IllegalArgumentException exception) {
             exception.printStackTrace();
-            Log.d(TAG, "getAddress: "+exception);
+            Log.d(TAG, "getAddress: " + exception);
         }
         return address;
     }

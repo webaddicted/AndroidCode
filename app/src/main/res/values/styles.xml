@@ -11,4 +11,8 @@
     <style name="Font.FreshcaRegular" parent="@android:style/TextAppearance">
         <item name="android:fontFamily" tools:targetApi="jelly_bean">@fonts/Freshca-Regular.ttf</item>
     </style>
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/dialog_slide_up</item>
+        <item name="android:windowExitAnimation">@anim/dialog_slide_down</item>
+    </style>
 </resources>
