@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -8,4 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Font.FreshcaRegular" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">@fonts/Freshca-Regular.ttf</item>
+    </style>
 </resources>

@@ -10,6 +10,21 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+//    signingConfigs {
+//        debug {
+//            storeFile file("../app/applic.keystore")
+//            storePassword "deepak1234"
+//            keyAlias "androidalias"
+//            keyPassword "deepak1234"
+//        }
+//        release {
+//            storeFile file("../app/applic.keystore")
+//            storePassword "deepak1234"
+//            keyAlias "androidalias"
+//            keyPassword "deepak1234"
+//        }
+//    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -60,6 +75,9 @@ dependencies {
     implementation 'com.facebook.stetho:stetho-urlconnection:1.5.0'
 //    jetpack pagination
     implementation 'android.arch.paging:runtime:1.0.0'
-
+//    fonts
+    implementation 'uk.co.chrisjenx:calligraphy:2.2.0'
+//    Event bus
+    implementation 'org.greenrobot:eventbus:3.1.1'
 
 }
