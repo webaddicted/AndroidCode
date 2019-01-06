@@ -5,7 +5,10 @@
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/app_color"
     android:orientation="vertical">
-
+<ImageView
+    android:layout_width="50dp"
+    android:layout_height="50dp" />
 </LinearLayout>
 </layout>
