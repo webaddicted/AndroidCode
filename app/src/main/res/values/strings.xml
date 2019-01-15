@@ -3,4 +3,7 @@
     <string name="no_network_msg">Please check your internet connection &amp; try again</string>
     <string name="lbl_please_wait">Please Wait...</string>
     <string name="internet_connected">network connected</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.deepaksharma.androidcode.view.home;
+package com.example.deepaksharma.androidcode.view;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

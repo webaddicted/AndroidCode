@@ -3,14 +3,12 @@ package com.example.deepaksharma.androidcode.view.splash;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.ActivitySplashBinding;
 import com.example.deepaksharma.androidcode.global.constant.AppConstant;
-import com.example.deepaksharma.androidcode.utils.GlobalUtilities;
-import com.example.deepaksharma.androidcode.view.home.BaseActivity;
+import com.example.deepaksharma.androidcode.view.BaseActivity;
 import com.example.deepaksharma.androidcode.view.home.HomeActivity;
 
 public class SplashActivity extends BaseActivity {
