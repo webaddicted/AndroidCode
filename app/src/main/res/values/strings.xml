@@ -6,4 +6,31 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dismiss">dismiss</string>
+    <string name="please_wait">please wait</string>
+    <string name="retry">retry</string>
+    <string name="server_error">server error</string>
+    <string name="yes">yes</string>
+    <string name="no">no</string>
+    <string name="ok">ok</string>
+    <string name="cancel">cancel</string>
+    <string name="forcefully_enable_permission">You have forcefully denied some of the required permissions for this action.\nPlease go to permissions and allow them.</string>
+    <string name="error_uppercase_pattern">password must have atleast one uppercase character !!</string>
+    <string name="error_lowercase_pattern">password must have atleast one lowercase character !!</string>
+    <string name="error_digit_pattern">password must have atleast one digit character !!</string>
+    <string name="enter_first_name">enter first name</string>
+    <string name="enter_last_name">enter last name</string>
+    <string name="enter_your_email">enter email id</string>
+    <string name="error_enter_valid_email">enter valid email id</string>
+    <string name="error_email_must_be_different">email id must be different</string>
+    <string name="enter_dob">enter dob</string>
+    <string name="enter_country">enter country</string>
+    <string name="enter_passowrd">enter password</string>
+    <string name="error_passowrd_not_match">password not match</string>
+    <string name="error_password_different">password must be different</string>
+    <string name="error_referral_code">enter referral code</string>
+    <string name="error_valid_code">enter valid code</string>
+    <string name="error_six_digit_code">enter six digit code</string>
+    <string name="confirm_pwd_length">check confirm password length</string>
+    <string name="password_length">check password length</string>
 </resources>

@@ -2,20 +2,28 @@ package com.example.deepaksharma.androidcode.utils;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.util.Log;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -330,7 +338,44 @@ public class GlobalUtilities {
                 .placeholder(R.drawable.logo)
                 .into(targetIv);
     }
-//    {END SHOW IMAGE}
 
+    //    {END SHOW IMAGE}
+    public static Snackbar showSnackbar(View parentLayout, String message, final View.OnClickListener retryListener) {
+        final Snackbar snackBar = Snackbar.make(parentLayout, message, Snackbar.LENGTH_LONG);
+        snackBar.setActionTextColor(Color.WHITE);
 
+        snackBar.setAction(parentLayout.getContext().getResources().getString(R.string.dismiss), new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                snackBar.dismiss();
+                retryListener.onClick(view);
+            }
+        });
+        snackBar.show();
+        return snackBar;
+    }
+
+    //block up when loder show on screen
+    public static void handleUI(Activity activity, View view, boolean b) {
+        if (b) {
+            activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+            view.setVisibility(View.VISIBLE);
+        } else {
+            activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+            view.setVisibility(View.GONE);
+        }
+    }
+    public static void modifyDialogBounds(Activity activity, Dialog dialog) {
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(activity, android.R.color.transparent)));
+        dialog.getWindow().getDecorView().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        Window window = dialog.getWindow();
+        lp.copyFrom(window.getAttributes());
+        //This makes the dialog take up the full width
+        //lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.width = (int) (dialog.getContext().getResources().getDisplayMetrics().widthPixels * 0.83);
+        //  lp.height = (int) (dialog.getContext().getResources().getDisplayMetrics().heightPixels * 0.55);
+        window.setAttributes(lp);
+    }
 }
