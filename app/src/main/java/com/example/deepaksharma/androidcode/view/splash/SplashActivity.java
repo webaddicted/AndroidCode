@@ -2,6 +2,7 @@ package com.example.deepaksharma.androidcode.view.splash;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
 import android.os.Handler;
 import android.os.Bundle;
 
@@ -15,11 +16,23 @@ public class SplashActivity extends BaseActivity {
     private ActivitySplashBinding mBinding;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_splash);
-        getSupportActionBar().hide();
+    public int getLayout() {
+        return R.layout.activity_home;
+    }
+
+    @Override
+    public void initUI(ViewDataBinding binding) {
+        mBinding = (ActivitySplashBinding) binding;
         navigateToNext();
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_splash);
+//        getSupportActionBar().hide();
+//        navigateToNext();
+//    }
+
+
     }
 
     /**

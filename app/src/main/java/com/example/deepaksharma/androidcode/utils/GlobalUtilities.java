@@ -34,6 +34,9 @@ import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.global.AppApplication;
 import com.example.deepaksharma.androidcode.global.constant.AppConstant;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.decode.BaseImageDecoder;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -356,8 +359,8 @@ public class GlobalUtilities {
     }
 
     //block up when loder show on screen
-    public static void handleUI(Activity activity, View view, boolean b) {
-        if (b) {
+    public static void handleUI(Activity activity, View view, boolean isBlockUi) {
+        if (isBlockUi) {
             activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
                     WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
             view.setVisibility(View.VISIBLE);
@@ -377,5 +380,31 @@ public class GlobalUtilities {
         lp.width = (int) (dialog.getContext().getResources().getDisplayMetrics().widthPixels * 0.83);
         //  lp.height = (int) (dialog.getContext().getResources().getDisplayMetrics().heightPixels * 0.55);
         window.setAttributes(lp);
+    }
+    public static ImageLoaderConfiguration getImageConfig() {
+        ImageLoaderConfiguration config = null;
+        if (config == null) {
+            config = new ImageLoaderConfiguration.Builder(AppApplication.getInstance())
+//                    .memoryCacheSize(175 * 1024)
+//                    .diskCacheSize(175 * 1024)
+//                    .imageDecoder(new SvgDecoder().decode())
+                    .imageDecoder(new BaseImageDecoder(true))
+                    .defaultDisplayImageOptions(imageLoaders())
+                    .build();
+        }
+        return config;
+    }
+
+    public static DisplayImageOptions imageLoaders() {
+        DisplayImageOptions options = null;
+        if (options == null) {
+            options = new DisplayImageOptions.Builder()
+                    .showImageOnLoading(R.drawable.error_img)
+                    .showImageOnFail(R.drawable.error_img)
+                    .cacheInMemory(true)
+                    .cacheOnDisk(true)
+                    .build();
+        }
+        return options;
     }
 }

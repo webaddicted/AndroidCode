@@ -12,7 +12,7 @@ import java.io.FileOutputStream;
 import java.net.URL;
 
 public class FileUtils {
-    private static final String APP_FOLDER = "criio";
+    private static final String APP_FOLDER = "AndroidCode";
     private static final String SUB_PROFILE = "/profile";
     private static final String SEPARATOR = "/";
     private static final String JPEG = ".jpeg";
@@ -66,7 +66,6 @@ public class FileUtils {
     }
 
     public static File saveBitmapImg(Bitmap bitmap, String fileName) {
-
         String filename = String.valueOf(System.currentTimeMillis());
         if (fileName.endsWith(".png"))
             filename = filename + PNG;
