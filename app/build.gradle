@@ -79,5 +79,7 @@ dependencies {
     implementation 'uk.co.chrisjenx:calligraphy:2.2.0'
 //    Event bus
     implementation 'org.greenrobot:eventbus:3.1.1'
+    //    Image Loader
+    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 
 }
