@@ -17,22 +17,13 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     public int getLayout() {
-        return R.layout.activity_home;
+        return R.layout.activity_splash;
     }
 
     @Override
     public void initUI(ViewDataBinding binding) {
         mBinding = (ActivitySplashBinding) binding;
         navigateToNext();
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_splash);
-//        getSupportActionBar().hide();
-//        navigateToNext();
-//    }
-
-
     }
 
     /**

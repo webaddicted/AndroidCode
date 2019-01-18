@@ -1,4 +1,4 @@
-package com.example.deepaksharma.androidcode;
+package com.example.deepaksharma.androidcode.view;
 
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
@@ -10,7 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.deepaksharma.androidcode.model.eventBus.EventBusListener;
+
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 /**
  * Created by Deepak Sharma on 15/1/19.
@@ -44,5 +47,8 @@ public abstract class BaseFragment extends Fragment {
         super.onDestroy();
         if (EventBus.getDefault().isRegistered(this))
             EventBus.getDefault().unregister(this);
+    }
+    @Subscribe
+    public void EventBusListener(EventBusListener eventBusListener) {
     }
 }

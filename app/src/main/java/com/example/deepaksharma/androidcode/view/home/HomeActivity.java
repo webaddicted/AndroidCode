@@ -1,6 +1,7 @@
 package com.example.deepaksharma.androidcode.view.home;
 
 import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.Editable;
@@ -9,6 +10,7 @@ import android.view.View;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.ActivityHomeBinding;
+import com.example.deepaksharma.androidcode.databinding.ActivitySplashBinding;
 import com.example.deepaksharma.androidcode.view.BaseActivity;
 import com.example.deepaksharma.androidcode.view.adapter.HomeAdapter;
 
@@ -41,9 +43,13 @@ public class HomeActivity extends BaseActivity {
     private List<String> mFeature ;//= new ArrayList<>();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_home);
+    public int getLayout() {
+        return R.layout.activity_home;
+    }
+
+    @Override
+    public void initUI(ViewDataBinding binding) {
+        mBinding = (ActivityHomeBinding) binding;
         mFeature = new LinkedList<String>(Arrays.asList(action));
         mBinding.include.imgBack.setVisibility(View.GONE);
         setAdapter();

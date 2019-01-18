@@ -7,17 +7,19 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.deepaksharma.androidcode.R;
+import com.example.deepaksharma.androidcode.model.eventBus.EventBusListener;
 import com.example.deepaksharma.androidcode.view.interfaces.LayoutListener;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 public class BaseActivity extends AppCompatActivity implements LayoutListener {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        int layoutResId = getLayout();
         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
         getSupportActionBar().hide();
-        int layoutResId = getLayout();
         ViewDataBinding binding = null;
         if (!EventBus.getDefault().isRegistered(this))
             EventBus.getDefault().register(this);
@@ -27,16 +29,8 @@ public class BaseActivity extends AppCompatActivity implements LayoutListener {
                 initUI(binding);
             } catch (Exception e) {
                 e.printStackTrace();
-//                Lg.e("Error <> ", Lg.getStackTraceString(e));
             }
         }
-    }
-
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
     }
 
     @Override
@@ -49,9 +43,20 @@ public class BaseActivity extends AppCompatActivity implements LayoutListener {
 
     }
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
+    }
+
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
         if (EventBus.getDefault().isRegistered(this))
             EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe
+    public void EventBusListener(EventBusListener eventBusListener) {
     }
 }
