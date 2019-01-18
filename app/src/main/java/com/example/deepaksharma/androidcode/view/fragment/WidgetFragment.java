@@ -12,8 +12,9 @@ import android.view.ViewGroup;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.FragmentWidgetBinding;
+import com.example.deepaksharma.androidcode.view.BaseFragment;
 
-public class WidgetFragment extends Fragment {
+public class WidgetFragment extends BaseFragment {
     private FragmentWidgetBinding mBinding;
 
     public static WidgetFragment newInstance(Bundle bundle) {
@@ -23,11 +24,14 @@ public class WidgetFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-       mBinding =  DataBindingUtil.bind(inflater.inflate(R.layout.fragment_widget, container, false));
-       return mBinding.getRoot();
+    protected int getLayoutId() {
+        return R.layout.fragment_widget;
     }
+
+    @Override
+    protected void onViewsInitialized(ViewDataBinding binding, View view) {
+        mBinding = (FragmentWidgetBinding) binding;
+    }
+
 
 }
