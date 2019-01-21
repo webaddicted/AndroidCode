@@ -1,17 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <FrameLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.fragment.WidgetFragment">
+        android:fillViewport="true">
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            android:orientation="vertical">
 
-    </FrameLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/app_name"
+                android:textColor="@color/app_color"
+                android:textSize="@dimen/sp18"
+                android:textStyle="bold" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/wrpper_name"
+                style="@style/EditTextWrapper"
+                app:counterEnabled="true"
+                app:counterMaxLength="0"
+                app:errorEnabled="true">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edt_name"
+                    style="@style/Edittext"
+                    android:hint="@string/first_name"
+                    android:maxLength="30" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/wrapper_pwd"
+                style="@style/EditTextWrapper"
+                app:counterEnabled="true"
+                app:counterMaxLength="0"
+                app:errorEnabled="true"
+                app:passwordToggleDrawable="@drawable/password_selector"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@android:color/white">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edt_pwd"
+                    style="@style/Edittext"
+                    android:nextFocusDown="@+id/wrapper_confirm_pwd"
+                    android:hint="@string/password"
+                    android:inputType="textPassword" />
+
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+    </ScrollView>
 </layout>

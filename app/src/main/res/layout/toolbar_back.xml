@@ -24,6 +24,7 @@
                 android:layout_height="@dimen/dp30"
                 android:layout_gravity="center_vertical"
                 android:padding="@dimen/dp3"
+                android:visibility="gone"
                 android:scaleType="fitXY"
                 android:src="@drawable/ic_back"
                 android:tint="@color/white" />

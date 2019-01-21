@@ -1,38 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
-    <include android:id="@+id/include"
-        layout="@layout/toolbar_back"/>
-    <EditText
-        android:id="@+id/edt_search"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp40"
-        android:ems="10"
-        android:drawableLeft="@drawable/ic_search"
 
-        android:layout_marginTop="@dimen/dp5"
-        android:layout_marginLeft="@dimen/dp5"
-        android:layout_marginRight="@dimen/dp5"
-        android:paddingLeft="@dimen/dp15"
-        android:drawablePadding="@dimen/dp5"
-        android:drawableTint="@color/gray"
-        android:background="@drawable/edt_round_corner"
-        android:imeOptions="actionSend"
-        android:inputType="textPersonName"
-        android:textColorHint="@color/gray"
-        android:hint="search" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <RelativeLayout
         android:layout_width="match_parent"
-android:layout_marginTop="@dimen/dp3"
-        android:divider="@android:color/transparent"
-        android:layout_height="match_parent" />
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/toolbar_back" />
+
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/include"/>
+
+    </RelativeLayout>
 </layout>

@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,5 +52,19 @@ public abstract class BaseFragment extends Fragment {
     }
     @Subscribe
     public void EventBusListener(EventBusListener eventBusListener) {
+    }
+
+    protected void navigateFragment(int layoutContainer, Fragment fragment, boolean isEnableBackStack){
+        if (getActivity()!=null){
+            ((BaseActivity)getActivity()).navigateFragment(layoutContainer, fragment, isEnableBackStack);
+        }
+    }
+    protected void navigateChildFragment(int layoutContainer, Fragment fragment, boolean isEnableBackStack) {
+        FragmentManager fragmentManager = getChildFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(layoutContainer, fragment);
+        if (isEnableBackStack)
+            fragmentTransaction.addToBackStack(fragment.getClass().getSimpleName());
+        fragmentTransaction.commitAllowingStateLoss();
     }
 }

@@ -15,10 +15,7 @@
         <item name="android:windowEnterAnimation">@anim/dialog_slide_up</item>
         <item name="android:windowExitAnimation">@anim/dialog_slide_down</item>
     </style>
-    <style name="TextAppearance.Freshca_Regular" parent="android:TextAppearance">
-        <!-- Custom Attr-->
-        <item name="fontPath">fonts/Freshca-Regular.ttf</item>
-    </style>
+
     <style name="NewTextStyle_13_42_medium_2">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -26,4 +23,81 @@
         <item name="android:textSize">@dimen/sp19</item>
         <item name="android:textAppearance">@style/TextAppearance.Freshca_Regular</item>
     </style>
+    <style name="TextAppearance.Freshca_Regular" parent="android:TextAppearance">
+        <!-- Custom Attr-->
+        <item name="fontPath">fonts/Freshca-Regular.ttf</item>
+    </style>
+    <style name="NewTextStyle_13_42_angelina_2">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/sp19</item>
+        <item name="android:textAppearance">@style/TextAppearance.angelina_script</item>
+    </style>
+    <style name="TextAppearance.angelina_script" parent="android:TextAppearance">
+        <!-- Custom Attr-->
+        <item name="fontPath">fonts/angelina_script_regular.ttf</item>
+    </style>
+    <!--====================================================================-->
+<!--{START TextInputLayout}-->
+    <style name="EditTextWrapper">
+            <item name="android:layout_width">match_parent</item>
+            <item name="android:layout_height">wrap_content</item>
+            <item name="android:textColorHint">@color/brown</item>
+            <item name="counterOverflowTextAppearance">@style/CounterOverFlow</item>
+            <item name="counterTextAppearance">@style/CounterText</item>
+            <item name="errorTextAppearance">@style/ErrorText</item>
+            <item name="android:layout_marginTop">@dimen/dp7</item>
+            <item name="android:layout_marginLeft">@dimen/dp45</item>
+            <item name="android:layout_marginRight">@dimen/dp45</item>
+            <item name="hintTextAppearance">@style/CustomHint</item>
+    </style>
+    <style name="CounterOverFlow" parent="TextAppearance.Design.Counter.Overflow">
+        <item name="android:textSize">1sp</item>
+        <item name="android:textColor">@color/green</item>
+    </style>
+
+    <style name="CustomHint" parent="TextAppearance.Design.Hint">
+        <item name="android:textSize">@dimen/sp11</item>
+        <item name="android:textColor">@color/green</item>
+        <item name="colorAccent">@color/green</item>
+        <item name="colorControlNormal">@color/green</item>
+        <item name="colorControlActivated">@color/green</item>
+        <item name="android:textColorHint">@color/green</item>
+        <item name="android:textAppearance">@style/TextAppearance.angelina_script</item>
+    </style>
+
+    <style name="CounterText" parent="TextAppearance.Design.Counter">
+        <item name="android:textSize">1sp</item>
+        <item name="android:textColor">@color/green</item>
+    </style>
+    <style name="ErrorText" parent="TextAppearance.Design.Error">
+        <item name="android:textSize">@dimen/sp12</item>
+        <item name="android:textColor">@color/red</item>
+        <item name="android:textColorHint">@color/red</item>
+    </style>
+    <!--{ END TextInputLayout }-->
+    <!--{ START TextInputEditText }-->
+
+    <style name="Edittext">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textColorHint">@color/brown</item>
+        <item name="android:textColor">@color/brown</item>
+        <item name="android:textSize">@dimen/sp13</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:theme">@style/EditTextStyle</item>
+    </style>
+
+    <style name="EditTextStyle" parent="android:Widget.EditText">
+        <!--before entered text underline-->
+        <item name="colorControlNormal">@color/brown</item>
+        <!--after entered text underline-->
+        <item name="colorControlActivated">@color/green</item>
+        <item name="colorControlHighlight">@color/green</item>
+    </style>
+    <!--{ END TextInputEditText }-->
+    <!--==========================================================================-->
+
+
 </resources>

@@ -23,11 +23,16 @@ public class AppApplication extends Application {
         super.onCreate();
         mInstance = this;
         Stetho.initializeWithDefaults(this);
-        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder().setDefaultFontPath("fonts/Ciscopic-Regular.ttf").setFontAttrId(R.attr.fontPath).build());
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                .setDefaultFontPath("fonts/angelina_script_regular.ttf")
+                .setFontAttrId(R.attr.fontPath)
+                .build());
+//        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder().setDefaultFontPath("fonts/Ciscopic-Regular.ttf").setFontAttrId(R.attr.fontPath).build());
         mIsNetworkConnected = GlobalUtilities.getNetworkState();
         registerReceiver(mNetworkReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
         ImageLoader.getInstance().init(GlobalUtilities.getImageConfig());
     }
+
     /**
      * Gets instance.
      *
@@ -42,6 +47,7 @@ public class AppApplication extends Application {
             GlobalUtilities.showNoNetworkToast();
         return mIsNetworkConnected;
     }
+
     public void setIsNetworkConnected(boolean isNetworkConnected) {
         this.mIsNetworkConnected = isNetworkConnected;
     }

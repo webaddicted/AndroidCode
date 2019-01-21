@@ -4,6 +4,9 @@ import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.deepaksharma.androidcode.R;
@@ -42,6 +45,7 @@ public class BaseActivity extends AppCompatActivity implements LayoutListener {
     public void initUI(ViewDataBinding binding) {
 
     }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -58,5 +62,14 @@ public class BaseActivity extends AppCompatActivity implements LayoutListener {
 
     @Subscribe
     public void EventBusListener(EventBusListener eventBusListener) {
+    }
+
+    protected void navigateFragment(int layoutContainer, Fragment fragment, boolean isEnableBackStack) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(layoutContainer, fragment);
+        if (isEnableBackStack)
+            fragmentTransaction.addToBackStack(fragment.getClass().getSimpleName());
+        fragmentTransaction.commitAllowingStateLoss();
     }
 }

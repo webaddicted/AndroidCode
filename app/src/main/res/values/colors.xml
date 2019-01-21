@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FF0000</color>
-    <color name="colorPrimaryDark">#FF0000</color>
-    <color name="colorAccent">#FF0000</color>
-    <color name="app_color">#FF0000</color>
+    <!--<color name="colorPrimary">#FF0000</color>-->
+    <!--<color name="colorPrimaryDark">#FF0000</color>-->
+    <!--<color name="colorAccent">#FF0000</color>-->
+    <!--<color name="app_color">#FF0000</color>-->
+    <color name="colorPrimary">#000080</color>
+    <color name="colorPrimaryDark">#000080</color>
+    <color name="colorAccent">#000080</color>
+    <color name="app_color">#000080</color>
+
+
+
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="gray">#BEBEBE</color>
+    <color name="green">#00de4a</color>
+    <color name="brown">#bdbdbe</color>
+    <color name="red">#ff090b</color>
 </resources>

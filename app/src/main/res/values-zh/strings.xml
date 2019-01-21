@@ -1,20 +1,21 @@
+<!--Chinese
+
+    Code: zh. Folder name: values-zh-->
 <resources>
     <string name="app_name">AndroidCode</string>
-    <string name="no_network_msg">Please check your internet connection &amp; try again</string>
-    <string name="lbl_please_wait">Please Wait...</string>
-    <string name="internet_connected">network connected</string>
+    <string name="no_network_msg">कृपया अपने इंटरनेट कनेक्शन की जांच करें &amp; पुनः प्रयास करें</string>
+    <string name="lbl_please_wait">कृपया प्रतीक्षा करें...</string>
+    <string name="internet_connected">नेटवर्क से जुड़ा</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="dismiss">dismiss</string>
-    <string name="please_wait">please wait</string>
-    <string name="retry">retry</string>
-    <string name="server_error">server error</string>
-    <string name="yes">yes</string>
-    <string name="no">no</string>
-    <string name="ok">ok</string>
-    <string name="cancel">cancel</string>
-    <string name="forcefully_enable_permission">You have forcefully denied some of the required permissions for this action.\nPlease go to permissions and allow them.</string>
+    <string name="dismiss">खारिज</string>
+    <string name="please_wait">कृपया प्रतीक्षा करें</string>
+    <string name="retry">पुन: प्रयास</string>
+    <string name="server_error">सर्वर त्रुटि</string>
+    <string name="yes">हाँ</string>
+    <string name="no">नहीं</string>
+    <string name="ok">ठीक</string>
+    <string name="cancel">रद्द करना</string>
+    <string name="forcefully_enable_permission">आपने इस कार्रवाई के लिए कुछ आवश्यक अनुमतियों का बलपूर्वक खंडन किया है। \ n कृपया अनुमति पर जाएँ और उन्हें अनुमति दें।</string>
     <string name="error_uppercase_pattern">password must have atleast one uppercase character !!</string>
     <string name="error_lowercase_pattern">password must have atleast one lowercase character !!</string>
     <string name="error_digit_pattern">password must have atleast one digit character !!</string>
@@ -33,6 +34,4 @@
     <string name="error_six_digit_code">enter six digit code</string>
     <string name="confirm_pwd_length">check confirm password length</string>
     <string name="password_length">check password length</string>
-    <string name="first_name">user name</string>
-    <string name="password">password</string>
 </resources>
