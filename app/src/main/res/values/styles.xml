@@ -99,5 +99,27 @@
     <!--{ END TextInputEditText }-->
     <!--==========================================================================-->
 
+    <style name="checkBox">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:button">@drawable/selector_checkbox</item>
+        <item name="android:buttonTint">@color/app_color</item>
+        <item name="android:checked">false</item>
+        <item name="android:paddingLeft">@dimen/dp15</item>
+        <item name="android:paddingRight">@dimen/dp15</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/app_color</item>
+    </style>
+
+    <style name="Button">
+        <item name="android:layout_width">@dimen/dp180</item>
+        <item name="android:layout_height">@dimen/dp40</item>
+        <item name="android:background">@drawable/round_btn_corner</item>
+        <item name="android:elevation">@dimen/dp10</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
 
 </resources>

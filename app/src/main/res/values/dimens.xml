@@ -488,4 +488,6 @@
     <dimen name="dp170">170dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="negdp30">-30dp</dimen>
+    <dimen name="dp180">180dp</dimen>
+    <dimen name="widgetround_dp">30dp</dimen>
 </resources>

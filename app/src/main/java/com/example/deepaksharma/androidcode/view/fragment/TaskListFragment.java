@@ -40,7 +40,7 @@ public class TaskListFragment extends BaseFragment {
             "WIFI", "UI Design", "Payment Integration", "ButterKnife", "Image Crop and WhatsUp Type Image Selection",
             "Best Site And Ui Page Link Best Code", "Recycle View"};
 
-    String worktask[] = {"widgets", "login signup flow"};
+    String worktask[] = {"widgets", "login signup flow","select multiple image"};
 
 
     private TaskAdapter mHomeAdapter;
@@ -102,6 +102,8 @@ public class TaskListFragment extends BaseFragment {
             navigateScreen(WidgetFragment.TAG);
         } else if (click == mTaskList.get(1)) {
             navigateScreen(WidgetFragment.TAG);
+        } else if (click == mTaskList.get(2)) {
+            navigateScreen(SelectMultipleFileFragment.TAG);
         }
     }
 
@@ -114,6 +116,9 @@ public class TaskListFragment extends BaseFragment {
         Fragment frm;
         if (tag.equals(WidgetFragment.TAG)) {
             frm = WidgetFragment.getInstance(getArguments());
+            navigateFragment(R.id.container, frm, true);
+        }else if (tag.equals(SelectMultipleFileFragment.TAG)) {
+            frm = SelectMultipleFileFragment.getInstance(getArguments());
             navigateFragment(R.id.container, frm, true);
         }
     }

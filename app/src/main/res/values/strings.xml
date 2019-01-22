@@ -35,4 +35,15 @@
     <string name="password_length">check password length</string>
     <string name="first_name">user name</string>
     <string name="password">password</string>
+    <!--{START SCREEN TITLE NAME}-->
+    <string name="select_multiple_image_title">select multiple image</string>
+    <string name="widget_view_title">widget view</string>
+    <!--{END SCREEN TITLE NAME}-->
+    <string name="select_image">select image</string>
+    <string name="login">login</string>
+    <string name="remember_me">Remember me</string>
+    <string name="selected">selected</string>
+    <string name="unselected">unselected</string>
+    <string name="none">none</string>
+
 </resources>

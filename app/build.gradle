@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.deepaksharma.androidcode"
-        minSdkVersion 15
+        minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -24,7 +24,23 @@ android {
 //            keyPassword "deepak1234"
 //        }
 //    }
+    flavorDimensions "versionCode"
+    flavorDimensions "appId"
+    productFlavors {
+        QA {
+            dimension "versionCode"
+            dimension "appId"
+            buildConfigField "String", "BASE_URL", '"http://tutorials.jenkov.com/"'
+        }
 
+        Production {
+            dimension "versionCode"
+            dimension "appId"
+            buildConfigField "String", "BASE_URL", '"http://tutorials.jenkov.com/"'
+
+
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false

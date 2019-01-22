@@ -22,16 +22,26 @@
                 android:textSize="@dimen/sp18"
                 android:textStyle="bold" />
 
+            <ImageView
+                android:layout_width="@dimen/dp120"
+                android:layout_height="@dimen/dp120"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dp65"
+                android:src="@drawable/logo"
+                />
+
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/wrpper_name"
+                android:id="@+id/wrpper_email"
                 style="@style/EditTextWrapper"
+                android:layout_marginTop="10dp"
                 app:counterEnabled="true"
                 app:counterMaxLength="0"
                 app:errorEnabled="true">
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/edt_name"
+                    android:id="@+id/edt_email"
                     style="@style/Edittext"
+                    android:inputType="textEmailAddress"
                     android:hint="@string/first_name"
                     android:maxLength="30" />
 
@@ -45,16 +55,52 @@
                 app:errorEnabled="true"
                 app:passwordToggleDrawable="@drawable/password_selector"
                 app:passwordToggleEnabled="true"
-                app:passwordToggleTint="@android:color/white">
+                app:passwordToggleTint="@color/gray">
 
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/edt_pwd"
                     style="@style/Edittext"
-                    android:nextFocusDown="@+id/wrapper_confirm_pwd"
                     android:hint="@string/password"
-                    android:inputType="textPassword" />
-
+                    android:inputType="textPassword"
+                    android:nextFocusDown="@+id/wrapper_confirm_pwd" />
             </android.support.design.widget.TextInputLayout>
+
+            <CheckBox
+                android:id="@+id/checkbox"
+                style="@style/checkBox"
+                android:layout_marginTop="@dimen/dp8"
+                android:layout_marginBottom="@dimen/dp5"
+                android:text="@string/remember_me" />
+
+            <Button
+                android:id="@+id/btn_login"
+                style="@style/Button"
+                android:layout_marginTop="@dimen/dp10"
+                android:text="@string/login" />
+
+            <RadioGroup
+                android:id="@+id/rg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dp20"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/cb_selected"
+                    style="@style/checkBox"
+                    android:text="@string/selected" />
+
+                <RadioButton
+                    android:id="@+id/cb_unselected"
+                    style="@style/checkBox"
+                    android:text="@string/unselected" />
+
+                <RadioButton
+                    android:id="@+id/cb_none"
+                    style="@style/checkBox"
+                    android:text="@string/none" />
+            </RadioGroup>
         </LinearLayout>
     </ScrollView>
 </layout>
