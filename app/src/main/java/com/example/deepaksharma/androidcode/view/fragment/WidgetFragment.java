@@ -11,6 +11,7 @@ import android.widget.RadioButton;
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.FragmentWidgetBinding;
 import com.example.deepaksharma.androidcode.global.ValidationHelper;
+import com.example.deepaksharma.androidcode.global.constant.AppConstant;
 import com.example.deepaksharma.androidcode.view.BaseFragment;
 import com.example.deepaksharma.androidcode.view.home.HomeActivity;
 
@@ -68,6 +69,7 @@ public class WidgetFragment extends BaseFragment implements View.OnClickListener
         ((HomeActivity) getActivity()).showBackBtn();
         ((HomeActivity) getActivity()).setToolbarTitle(getResources().getString(R.string.widget_view_title));
     }
+
     private class EditTextListener implements TextWatcher {
         TextInputEditText textInput;
 
@@ -98,7 +100,9 @@ public class WidgetFragment extends BaseFragment implements View.OnClickListener
         }
     }
 
-    private void validate() {
-
+    private boolean validate() {
+        if (!ValidationHelper.validateEmail(mBinding.edtEmail, mBinding.wrpperEmail)) return false;
+        else if (!ValidationHelper.validatePwd(mBinding.edtPwd, mBinding.wrapperPwd)) return false;
+        return true;
     }
 }
