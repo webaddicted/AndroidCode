@@ -65,7 +65,6 @@ public class WidgetFragment extends BaseFragment implements View.OnClickListener
                 if (validate()) GlobalUtilities.showToast(getResources().getString(R.string.done));
                 else
                 break;
-
         }
     }
 
