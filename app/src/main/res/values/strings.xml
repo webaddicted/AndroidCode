@@ -45,5 +45,8 @@
     <string name="selected">selected</string>
     <string name="unselected">unselected</string>
     <string name="none">none</string>
+    <string name="select_date">select date</string>
+    <string name="select_time">select time</string>
+    <string name="done">done</string>
 
 </resources>

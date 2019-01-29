@@ -12,6 +12,7 @@ import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.FragmentWidgetBinding;
 import com.example.deepaksharma.androidcode.global.ValidationHelper;
 import com.example.deepaksharma.androidcode.global.constant.AppConstant;
+import com.example.deepaksharma.androidcode.utils.GlobalUtilities;
 import com.example.deepaksharma.androidcode.view.BaseFragment;
 import com.example.deepaksharma.androidcode.view.home.HomeActivity;
 
@@ -42,8 +43,10 @@ public class WidgetFragment extends BaseFragment implements View.OnClickListener
 
     private void clickListener() {
         mBinding.btnLogin.setOnClickListener(this);
+        mBinding.btnDataPicker.setOnClickListener(this);
+        mBinding.btnTimePicker.setOnClickListener(this);
         mBinding.edtEmail.addTextChangedListener(new EditTextListener(mBinding.edtEmail));
-
+        mBinding.edtPwd.addTextChangedListener(new EditTextListener(mBinding.edtPwd));
         mBinding.rg.setOnCheckedChangeListener((group, checkedId) -> {
             int selectedId = mBinding.rg.getCheckedRadioButtonId();
             RadioButton rb = (RadioButton) getView().findViewById(selectedId);
@@ -59,7 +62,10 @@ public class WidgetFragment extends BaseFragment implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_login:
+                if (validate()) GlobalUtilities.showToast(getResources().getString(R.string.done));
+                else
                 break;
+
         }
     }
 

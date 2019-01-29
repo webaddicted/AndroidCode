@@ -407,22 +407,6 @@ public class ValidationHelper {
         return false;
     }
 
-    /**
-     * check username validation
-     *
-     * @param edtLastName     last name widget
-     * @param wrapperLastname
-     * @return name validation status
-     */
-    public static boolean validateLastName(TextInputEditText edtLastName, TextInputLayout wrapperLastname) {
-        if (ValidationHelper.isBlank(edtLastName)) {
-            wrapperLastname.setError(edtLastName.getContext().getResources().getString(R.string.enter_last_name));
-        } else {
-            wrapperLastname.setError(null);
-            return true;
-        }
-        return false;
-    }
 
     /**
      * check email id validation
