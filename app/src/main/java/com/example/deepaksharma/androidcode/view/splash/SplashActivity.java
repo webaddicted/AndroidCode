@@ -32,6 +32,7 @@ public class SplashActivity extends BaseActivity {
     private void navigateToNext() {
         new Handler().postDelayed(() -> {
             startActivity(new Intent(SplashActivity.this, HomeActivity.class));
+            finish();
         }, AppConstant.SPLASH_DELAY);
     }
 }

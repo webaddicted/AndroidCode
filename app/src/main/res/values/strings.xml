@@ -48,5 +48,10 @@
     <string name="select_date">select date</string>
     <string name="select_time">select time</string>
     <string name="done">done</string>
+    <string name="start_progress">start progress</string>
+    <string name="marquee_txt">This website intents to provide free and high quality tutorials, examples, exercises and solutions, questions and answers of programming and scripting languages:</string>
+    <string name="delete">delete</string>
+    <string name="long_click_here">plong click</string>
+    <string name="web_view_title">web view</string>
 
 </resources>

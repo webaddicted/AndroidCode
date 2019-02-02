@@ -20,6 +20,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.BackgroundColorSpan;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -406,5 +410,14 @@ public class GlobalUtilities {
                     .build();
         }
         return options;
+    }
+
+    public static void setSpannable(TextView textView, String txtSpannable, int starText, int endText) {
+            SpannableString spannableString = new SpannableString(txtSpannable);
+            ForegroundColorSpan foregroundSpan = new ForegroundColorSpan(Color.GREEN);
+//            BackgroundColorSpan backgroundSpan = new BackgroundColorSpan(Color.GRAY);
+            spannableString.setSpan(foregroundSpan, starText, endText, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+//            spannableString.setSpan(backgroundSpan, starText, endText, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            textView.setText(spannableString);
     }
 }

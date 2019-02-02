@@ -9,8 +9,10 @@
     </style>
 
     <style name="Font.FreshcaRegular" parent="@android:style/TextAppearance">
-        <item name="android:fontFamily" tools:targetApi="jelly_bean">@fonts/Freshca-Regular.ttf</item>
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">@fonts/Freshca-Regular.ttf
+        </item>
     </style>
+
     <style name="DialogAnimation">
         <item name="android:windowEnterAnimation">@anim/dialog_slide_up</item>
         <item name="android:windowExitAnimation">@anim/dialog_slide_down</item>
@@ -23,10 +25,12 @@
         <item name="android:textSize">@dimen/sp19</item>
         <item name="android:textAppearance">@style/TextAppearance.Freshca_Regular</item>
     </style>
+
     <style name="TextAppearance.Freshca_Regular" parent="android:TextAppearance">
         <!-- Custom Attr-->
         <item name="fontPath">fonts/Freshca-Regular.ttf</item>
     </style>
+
     <style name="NewTextStyle_13_42_angelina_2">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -34,24 +38,26 @@
         <item name="android:textSize">@dimen/sp19</item>
         <item name="android:textAppearance">@style/TextAppearance.angelina_script</item>
     </style>
+
     <style name="TextAppearance.angelina_script" parent="android:TextAppearance">
         <!-- Custom Attr-->
         <item name="fontPath">fonts/angelina_script_regular.ttf</item>
     </style>
     <!--====================================================================-->
-<!--{START TextInputLayout}-->
+    <!--{START TextInputLayout}-->
     <style name="EditTextWrapper">
-            <item name="android:layout_width">match_parent</item>
-            <item name="android:layout_height">wrap_content</item>
-            <item name="android:textColorHint">@color/brown</item>
-            <item name="counterOverflowTextAppearance">@style/CounterOverFlow</item>
-            <item name="counterTextAppearance">@style/CounterText</item>
-            <item name="errorTextAppearance">@style/ErrorText</item>
-            <item name="android:layout_marginTop">@dimen/dp7</item>
-            <item name="android:layout_marginLeft">@dimen/dp45</item>
-            <item name="android:layout_marginRight">@dimen/dp45</item>
-            <item name="hintTextAppearance">@style/CustomHint</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColorHint">@color/brown</item>
+        <item name="counterOverflowTextAppearance">@style/CounterOverFlow</item>
+        <item name="counterTextAppearance">@style/CounterText</item>
+        <item name="errorTextAppearance">@style/ErrorText</item>
+        <item name="android:layout_marginTop">@dimen/dp7</item>
+        <item name="android:layout_marginLeft">@dimen/dp45</item>
+        <item name="android:layout_marginRight">@dimen/dp45</item>
+        <item name="hintTextAppearance">@style/CustomHint</item>
     </style>
+
     <style name="CounterOverFlow" parent="TextAppearance.Design.Counter.Overflow">
         <item name="android:textSize">1sp</item>
         <item name="android:textColor">@color/green</item>
@@ -71,6 +77,7 @@
         <item name="android:textSize">1sp</item>
         <item name="android:textColor">@color/green</item>
     </style>
+
     <style name="ErrorText" parent="TextAppearance.Design.Error">
         <item name="android:textSize">@dimen/sp12</item>
         <item name="android:textColor">@color/red</item>
@@ -122,6 +129,7 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:layout_marginTop">@dimen/dp10</item>
     </style>
+
     <style name="TextView_Regular">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -129,6 +137,7 @@
         <item name="android:textColor">@color/app_color</item>
         <item name="android:textSize">@dimen/sp16</item>
     </style>
+
     <style name="TextView_Headline">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -136,5 +145,41 @@
         <item name="android:textColor">@color/app_color</item>
         <item name="android:textSize">@dimen/sp18</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TimePicker" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/green</item>
+        <item name="colorControlNormal">@color/red</item>
+    </style>
+
+    <style name="ProgressBar" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="colorButtonNormal">#f50057</item>
+        <item name="colorControlActivated">#33691e</item>
+        <item name="colorControlHighlight">#ff6d00</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:progressDrawable">@drawable/custom_progressbar</item>
+        <item name="android:minWidth">200dp</item>
+        <item name="android:max">100</item>
+    </style>
+
+    <style name="SeekBar">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:minHeight">@dimen/dp15</item>
+        <item name="android:minWidth">@dimen/dp15</item>
+        <item name="android:maxHeight">@dimen/dp15</item>
+        <item name="android:maxWidth">@dimen/dp15</item>
+        <item name="android:progress">0</item>
+    </style>
+
+    <style name="switch_text_appearance" parent="@android:style/TextAppearance.Holo.Small">
+        <item name="android:textColor">#FFF</item>
+    </style>
+
+    <style name="CustomStarRatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/selector_ratingbar</item>
+        <item name="android:minHeight">@dimen/dp28</item>
+        <item name="android:maxHeight">@dimen/dp28</item>
     </style>
 </resources>

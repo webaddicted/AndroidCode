@@ -3,12 +3,14 @@ package com.example.deepaksharma.androidcode.view.adapter;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.RowTextListBinding;
+import com.example.deepaksharma.androidcode.utils.GlobalUtilities;
 import com.example.deepaksharma.androidcode.view.fragment.TaskListFragment;
 import com.example.deepaksharma.androidcode.view.home.HomeActivity;
 
@@ -17,6 +19,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
+    private static final String TAG = TaskAdapter.class.getSimpleName();
     private TaskListFragment mTaskListFragment;
     private List<String> mAction;
     private List<String> searchArray;
@@ -41,6 +44,15 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull TaskAdapter.ViewHolder holder, int position) {
+        if (searchText!=null && searchText.length()>1){
+           String completeText = mAction.get(position);
+            for (int i = -1; (i = completeText.indexOf(searchText, i + 1)) != -1; i++) {
+                int endText = searchText.length()+i;
+                GlobalUtilities.setSpannable(holder.binding.txtName,mAction.get(position),i,endText);
+            }
+        }else {
+            holder.binding.txtName.setText(mAction.get(position));
+        }
         holder.binding();
     }
 
@@ -58,13 +70,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         }
 
         public void binding() {
-            binding.txtName.setText(mAction.get(getAdapterPosition()));
-            binding.card.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    mTaskListFragment.onClicks(mAction.get(getAdapterPosition()));
-                }
-            });
+            binding.card.setOnClickListener(view -> mTaskListFragment.onClicks(mAction.get(getAdapterPosition())));
         }
     }
 

@@ -1,9 +1,12 @@
 package com.example.deepaksharma.androidcode.utils;
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
+import android.text.format.DateFormat;
 import android.widget.DatePicker;
 
+import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.global.constant.AppConstant;
 
 import java.text.SimpleDateFormat;
@@ -171,4 +174,17 @@ public class DatePickerCustomDialog extends DatePickerDialog {
         mDatePicker.getDatePicker().setMinDate(mcurrentDate.getTime().getTime() - 1000);
         minDate = mDatePicker.getDatePicker().getMinDate();
     }
+
+    public static TimePickerDialog getTime(Context context, TimePickerDialog.OnTimeSetListener timeListener) {
+        Calendar calendar = Calendar.getInstance();
+//        new TimePickerDialog(getActivity(), timeListener, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), false).show();
+        return new TimePickerDialog(context, R.style.TimePicker, timeListener, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE),
+                DateFormat.is24HourFormat(context));
+    }
+
+    public static DatePickerDialog getDate(Context context, OnDateSetListener dateListener) {
+        Calendar calendar = Calendar.getInstance();
+        return new DatePickerDialog(context, R.style.TimePicker, dateListener, calendar.YEAR, calendar.MONTH, calendar.DAY_OF_MONTH);
+    }
+
 }

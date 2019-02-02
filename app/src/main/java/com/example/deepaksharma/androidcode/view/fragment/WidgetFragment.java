@@ -1,24 +1,43 @@
 package com.example.deepaksharma.androidcode.view.fragment;
 
 import android.databinding.ViewDataBinding;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
+import android.support.v7.widget.PopupMenu;
 import android.text.Editable;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.text.TextWatcher;
+import android.text.style.BackgroundColorSpan;
+import android.text.style.ForegroundColorSpan;
+import android.util.Log;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.MultiAutoCompleteTextView;
 import android.widget.RadioButton;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.FragmentWidgetBinding;
 import com.example.deepaksharma.androidcode.global.ValidationHelper;
-import com.example.deepaksharma.androidcode.global.constant.AppConstant;
+import com.example.deepaksharma.androidcode.utils.DatePickerCustomDialog;
 import com.example.deepaksharma.androidcode.utils.GlobalUtilities;
 import com.example.deepaksharma.androidcode.view.BaseFragment;
+import com.example.deepaksharma.androidcode.view.adapter.OptionItemMenu;
 import com.example.deepaksharma.androidcode.view.home.HomeActivity;
 
 public class WidgetFragment extends BaseFragment implements View.OnClickListener {
     public static final String TAG = WidgetFragment.class.getSimpleName();
     private FragmentWidgetBinding mBinding;
+    private int mProgress;
+    String selectionArray[] = {"America", "Belgium", "Canada", "Denmark", "England", "France", "Germany", "Holland", "India", "Indonesia", "Italy", "Spain"};
+
 
     public static WidgetFragment getInstance(Bundle bundle) {
         WidgetFragment fragment = new WidgetFragment();
@@ -39,22 +58,55 @@ public class WidgetFragment extends BaseFragment implements View.OnClickListener
     }
 
     private void init() {
+        mBinding.txtMarquee.setSelected(true);
+        GlobalUtilities.setSpannable(mBinding.txtSpannable, getResources().getString(R.string.marquee_txt),5,50);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, selectionArray);
+        mBinding.autoCompleteTextVie.setAdapter(adapter);
+        mBinding.autoCompleteTextVie.setThreshold(1);
+        //multi.setAdapter(adapter);
+        //multi.setThreshold(1);
+        mBinding.multiAutoCompleteTextView.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
+        mBinding.multiAutoCompleteTextView.setAdapter(adapter);
+        mBinding.multiAutoCompleteTextView.setThreshold(1);
     }
 
+
+
     private void clickListener() {
-        mBinding.btnLogin.setOnClickListener(this);
-        mBinding.btnDataPicker.setOnClickListener(this);
-        mBinding.btnTimePicker.setOnClickListener(this);
         mBinding.edtEmail.addTextChangedListener(new EditTextListener(mBinding.edtEmail));
         mBinding.edtPwd.addTextChangedListener(new EditTextListener(mBinding.edtPwd));
         mBinding.rg.setOnCheckedChangeListener((group, checkedId) -> {
             int selectedId = mBinding.rg.getCheckedRadioButtonId();
-            RadioButton rb = (RadioButton) getView().findViewById(selectedId);
+            RadioButton rb = getView().findViewById(selectedId);
             mBinding.cbNone.setTextColor(getResources().getColor(R.color.app_color));
             mBinding.cbUnselected.setTextColor(getResources().getColor(R.color.app_color));
             mBinding.cbSelected.setTextColor(getResources().getColor(R.color.app_color));
             rb.setTextColor(getResources().getColor(R.color.green));
         });
+        mBinding.seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress,
+                                          boolean fromUser) {
+                mBinding.txtSeekbar.setText(progress + "/" + seekBar.getMax());
+            }
+        });
+        mBinding.autoCompleteTextVie.setOnItemClickListener((adapterView, view, position, l) -> {
+            String selection = (String) adapterView.getItemAtPosition(position);
+        });
+        mBinding.btnLogin.setOnClickListener(this);
+        mBinding.btnDataPicker.setOnClickListener(this);
+        mBinding.btnTimePicker.setOnClickListener(this);
+        mBinding.btnStartProgress.setOnClickListener(this);
+        mBinding.imgOptionMenu.setOnClickListener(this);
     }
 
 
@@ -63,7 +115,18 @@ public class WidgetFragment extends BaseFragment implements View.OnClickListener
         switch (v.getId()) {
             case R.id.btn_login:
                 if (validate()) GlobalUtilities.showToast(getResources().getString(R.string.done));
-                else
+                break;
+            case R.id.btn_data_picker:
+                DatePickerCustomDialog.getDate(getActivity(), (view, year, month, dayOfMonth) -> mBinding.txtDateValue.setText("Date is - " + dayOfMonth + "/" + month + "/" + year)).show();
+                break;
+            case R.id.btn_time_picker:
+                DatePickerCustomDialog.getTime(getActivity(), (view, hourOfDay, minute) -> mBinding.txtTimeValue.setText("Time is - " + hourOfDay + " : " + minute)).show();
+                break;
+            case R.id.btn_start_progress:
+                new Thread(progressBarThread).start();
+                break;
+            case R.id.img_option_menu:
+                showPopupMenu(mBinding.imgOptionMenu);
                 break;
         }
     }
@@ -110,4 +173,28 @@ public class WidgetFragment extends BaseFragment implements View.OnClickListener
         else if (!ValidationHelper.validatePwd(mBinding.edtPwd, mBinding.wrapperPwd)) return false;
         return true;
     }
+
+    private Runnable progressBarThread = new Runnable() {
+        @Override
+        public void run() {
+            while (mProgress < 100) {
+                try {
+                    Thread.sleep(1000);
+                    mBinding.progress.setProgress(mProgress);
+                    mProgress++;
+                } catch (Throwable t) {
+                    Log.d(TAG, "run: " + t.toString());
+                }
+            }
+        }
+    };
+
+    private void showPopupMenu(View view) {
+        PopupMenu popup = new PopupMenu(getActivity(), view);
+        MenuInflater inflater = popup.getMenuInflater();
+        inflater.inflate(R.menu.option_menu, popup.getMenu());
+        popup.setOnMenuItemClickListener(new OptionItemMenu(getActivity()));
+        popup.show();
+    }
+
 }

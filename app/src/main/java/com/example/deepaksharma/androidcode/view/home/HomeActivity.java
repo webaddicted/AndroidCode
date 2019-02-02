@@ -74,7 +74,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         Fragment frm;
         if (tag.equals(TaskListFragment.TAG)) {
             frm = TaskListFragment.getInstance(getIntent().getExtras());
-            navigateFragment(R.id.container, frm, true);
+            navigateFragment(R.id.container, frm, false);
         }
     }
 
