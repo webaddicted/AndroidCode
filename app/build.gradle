@@ -99,5 +99,7 @@ dependencies {
     implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 //    gif image
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.+'
+    //    location
+    implementation 'com.google.android.gms:play-services-location:15.0.1'
 
 }
