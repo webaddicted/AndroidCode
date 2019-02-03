@@ -28,6 +28,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -334,5 +336,9 @@ public class GlobalUtilities {
 
     public static ViewDataBinding bindView(Activity activity, int custom_dialog) {
         return DataBindingUtil.inflate(LayoutInflater.from(activity), custom_dialog, null, false);
+    }
+    public static void btnClickAnimation(View view){
+        Animation fadeAnimation = AnimationUtils.loadAnimation(view.getContext(), R.anim.fade_in);
+        view.startAnimation(fadeAnimation);
     }
 }

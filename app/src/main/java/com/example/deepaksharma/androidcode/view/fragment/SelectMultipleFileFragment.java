@@ -11,7 +11,7 @@ import com.example.deepaksharma.androidcode.global.constant.AppConstant;
 import com.example.deepaksharma.androidcode.view.base.BaseFragment;
 import com.example.deepaksharma.androidcode.view.home.HomeActivity;
 
-public class SelectMultipleFileFragment extends BaseFragment implements View.OnClickListener {
+public class SelectMultipleFileFragment extends BaseFragment {
     public static final String TAG = SelectMultipleFileFragment.class.getSimpleName();
 
     private FragmentSelectMultipleFileBinding mBinding;
@@ -46,6 +46,7 @@ public class SelectMultipleFileFragment extends BaseFragment implements View.OnC
 
     @Override
     public void onClick(View v) {
+        super.onClick(v);
         switch (v.getId()) {
             case R.id.btn_select_img:
                 selectMultipleImage();

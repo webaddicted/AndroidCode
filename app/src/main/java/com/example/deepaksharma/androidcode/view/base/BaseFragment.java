@@ -11,8 +11,10 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 
 import com.example.deepaksharma.androidcode.model.eventBus.EventBusListener;
+import com.example.deepaksharma.androidcode.utils.GlobalUtilities;
 import com.example.deepaksharma.androidcode.view.home.HomeActivity;
 
 import org.greenrobot.eventbus.EventBus;
@@ -72,7 +74,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-
+        GlobalUtilities.btnClickAnimation(v);
     }
 
     public void getLocation() {

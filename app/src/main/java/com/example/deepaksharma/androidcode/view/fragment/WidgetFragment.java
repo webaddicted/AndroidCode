@@ -23,7 +23,7 @@ import com.example.deepaksharma.androidcode.view.base.BaseFragment;
 import com.example.deepaksharma.androidcode.view.adapter.OptionItemMenu;
 import com.example.deepaksharma.androidcode.view.home.HomeActivity;
 
-public class WidgetFragment extends BaseFragment implements View.OnClickListener {
+public class WidgetFragment extends BaseFragment {
     public static final String TAG = WidgetFragment.class.getSimpleName();
     private FragmentWidgetBinding mBinding;
     private int mProgress;
@@ -103,6 +103,7 @@ public class WidgetFragment extends BaseFragment implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
+        super.onClick(v);
         switch (v.getId()) {
             case R.id.btn_login:
                 if (validate()) GlobalUtilities.showToast(getResources().getString(R.string.done));
@@ -172,6 +173,7 @@ public class WidgetFragment extends BaseFragment implements View.OnClickListener
                 try {
                     Thread.sleep(1000);
                     mBinding.progress.setProgress(mProgress);
+                    getActivity().runOnUiThread(() -> mBinding.txtProgress.setText(mProgress+"/"+mBinding.progress.getMax()));
                     mProgress++;
                 } catch (Throwable t) {
                     Log.d(TAG, "run: " + t.toString());
