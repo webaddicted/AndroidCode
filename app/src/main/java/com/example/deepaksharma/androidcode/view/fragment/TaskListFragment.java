@@ -40,7 +40,7 @@ public class TaskListFragment extends BaseFragment {
             "WIFI", "UI Design", "Payment Integration", "ButterKnife", "Image Crop and WhatsUp Type Image Selection",
             "Best Site And Ui Page Link Best Code", "Recycle View"};
 
-    String worktask[] = {"widgets", "webview", "login signup flow", "location","select multiple image"};
+    String worktask[] = {"widgets", "webview", "dialog","location", "login signup flow", "select multiple image"};
 
 
     private TaskAdapter mHomeAdapter;
@@ -108,6 +108,8 @@ public class TaskListFragment extends BaseFragment {
             navigateScreen(SelectMultipleFileFragment.TAG);
         } else if (click.equals("location")) {
             navigateScreen(GpsLocationFragment.TAG);
+        } else if (click.equals("dialog")) {
+            navigateScreen(DialogFragment.TAG);
         }
 
     }
@@ -130,6 +132,9 @@ public class TaskListFragment extends BaseFragment {
             navigateFragment(R.id.container, frm, true);
         } else if (tag.equals(GpsLocationFragment.TAG)) {
             frm = GpsLocationFragment.getInstance(getArguments());
+            navigateFragment(R.id.container, frm, true);
+        } else if (tag.equals(DialogFragment.TAG)) {
+            frm = DialogFragment.getInstance(getArguments());
             navigateFragment(R.id.container, frm, true);
         }
     }

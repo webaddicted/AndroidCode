@@ -6,7 +6,8 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
+import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -16,15 +17,14 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.text.Spannable;
 import android.text.SpannableString;
-import android.text.style.BackgroundColorSpan;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -162,7 +162,6 @@ public class GlobalUtilities {
      * show internet connection toast
      */
     public static void showNoNetworkToast() {
-        //Toast.makeText(context.getApplicationContext(), msg, Toast.LENGTH_LONG).show();
         String msg = mContext.getResources().getString(R.string.no_network_msg);
         showToast(msg);
     }
@@ -176,82 +175,6 @@ public class GlobalUtilities {
         Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
     }
 
-    //    {START SHOW DIALOG}
-    public static void showOkDialog(final String message, final DialogCallBack callBack) {
-        try {
-            AlertDialog.Builder builder = new android.app.AlertDialog.Builder(AppApplication.getInstance()).setTitle(mContext.getResources().getString(R.string.app_name))
-                    .setMessage(message).setCancelable(true)
-                    .setPositiveButton(mContext.getResources().getString(android.R.string.ok),
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int whichButton) {
-                                    dialog.dismiss();
-                                    dialog.dismiss();
-                                    if (callBack != null) {
-                                        callBack.okClick();
-                                    }
-                                }
-                            });
-            AlertDialog dialog = builder.create();
-            dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
-            dialog.show();
-        } catch (Exception e) {
-            Log.e(TAG, "Showing Push Dialog Failed - " + e.getMessage());
-        }
-    }
-
-    public static void showSimpleDialog(final String message, final DialogCallBack callBack) {
-        try {
-            AlertDialog.Builder builder = new android.app.AlertDialog.Builder(mContext).setTitle(mContext.getResources().getString(R.string.app_name));
-            builder.setMessage(message).setCancelable(true)
-                    .setPositiveButton(mContext.getResources().getString(android.R.string.ok),
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int okButton) {
-                                    dialog.dismiss();
-                                    dialog.dismiss();
-                                    if (callBack != null) {
-                                        callBack.okClick();
-                                    }
-                                }
-                            })
-                    .setNegativeButton(mContext.getResources().getString(android.R.string.cancel), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int cancelButton) {
-                            callBack.cancelClick();
-                        }
-                    });
-            AlertDialog dialog = builder.create();
-            dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
-            dialog.show();
-        } catch (Exception e) {
-            Log.e(TAG, "Showing Push Dialog Failed - " + e.getMessage());
-        }
-    }
-    //    {END SHOW DIALOG}
-
-    //    {START PROGRESS DIALOG}
-    public static ProgressDialog showProgressDialog() {
-        try {
-            if (mContext != null) {
-                ProgressDialog mProgressDialog = ProgressDialog.show(mContext, "", mContext.getResources().getString(R.string.lbl_please_wait));
-                return mProgressDialog;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            Log.d(TAG, "showProgressDialog: " + e);
-        }
-        return new ProgressDialog(mContext);
-    }
-
-    public static void hideProgressDialog(@NonNull ProgressDialog progressDialog) {
-        try {
-            if (progressDialog.isShowing())
-                progressDialog.dismiss();
-        } catch (Exception e) {
-            e.printStackTrace();
-            Log.d(TAG, "hideProgressDialog: " + e);
-        }
-    }
-//    {END PROGRESS DIALOG}
 
     /**
      * get lat long address using geocoder
@@ -347,20 +270,6 @@ public class GlobalUtilities {
     }
 
     //    {END SHOW IMAGE}
-    public static Snackbar showSnackbar(View parentLayout, String message, final View.OnClickListener retryListener) {
-        final Snackbar snackBar = Snackbar.make(parentLayout, message, Snackbar.LENGTH_LONG);
-        snackBar.setActionTextColor(Color.WHITE);
-
-        snackBar.setAction(parentLayout.getContext().getResources().getString(R.string.dismiss), new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                snackBar.dismiss();
-                retryListener.onClick(view);
-            }
-        });
-        snackBar.show();
-        return snackBar;
-    }
 
     //block up when loder show on screen
     public static void handleUI(Activity activity, View view, boolean isBlockUi) {
@@ -373,6 +282,7 @@ public class GlobalUtilities {
             view.setVisibility(View.GONE);
         }
     }
+
     public static void modifyDialogBounds(Activity activity, Dialog dialog) {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(activity, android.R.color.transparent)));
         dialog.getWindow().getDecorView().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -385,6 +295,7 @@ public class GlobalUtilities {
         //  lp.height = (int) (dialog.getContext().getResources().getDisplayMetrics().heightPixels * 0.55);
         window.setAttributes(lp);
     }
+
     public static ImageLoaderConfiguration getImageConfig() {
         ImageLoaderConfiguration config = null;
         if (config == null) {
@@ -413,11 +324,15 @@ public class GlobalUtilities {
     }
 
     public static void setSpannable(TextView textView, String txtSpannable, int starText, int endText) {
-            SpannableString spannableString = new SpannableString(txtSpannable);
-            ForegroundColorSpan foregroundSpan = new ForegroundColorSpan(Color.GREEN);
+        SpannableString spannableString = new SpannableString(txtSpannable);
+        ForegroundColorSpan foregroundSpan = new ForegroundColorSpan(Color.GREEN);
 //            BackgroundColorSpan backgroundSpan = new BackgroundColorSpan(Color.GRAY);
-            spannableString.setSpan(foregroundSpan, starText, endText, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableString.setSpan(foregroundSpan, starText, endText, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 //            spannableString.setSpan(backgroundSpan, starText, endText, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            textView.setText(spannableString);
+        textView.setText(spannableString);
+    }
+
+    public static ViewDataBinding bindView(Activity activity, int custom_dialog) {
+        return DataBindingUtil.inflate(LayoutInflater.from(activity), custom_dialog, null, false);
     }
 }

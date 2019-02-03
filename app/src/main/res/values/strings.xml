@@ -38,6 +38,9 @@
     <!--{START SCREEN TITLE NAME}-->
     <string name="select_multiple_image_title">select multiple image</string>
     <string name="widget_view_title">widget view</string>
+    <string name="web_view_title">web view</string>
+    <string name="current_location_title">current location</string>
+    <string name="dialog_title">dialog</string>
     <!--{END SCREEN TITLE NAME}-->
     <string name="select_image">select image</string>
     <string name="login">login</string>
@@ -52,11 +55,20 @@
     <string name="marquee_txt">This website intents to provide free and high quality tutorials, examples, exercises and solutions, questions and answers of programming and scripting languages:</string>
     <string name="delete">delete</string>
     <string name="long_click_here">plong click</string>
-    <string name="web_view_title">web view</string>
-    <string name="current_location_title">current location</string>
     <string name="get_continue_location">Get Location with parameter</string>
     <string name="get_location">Get Location</string>
     <string name="stop_location_update">stop location update</string>
     <string name="get_updated_location_address">get updated location with address</string>
+    <string name="single_event_dialog">single event dialog</string>
+    <string name="two_event_dialog">two event dialog</string>
+    <string name="three_event_dialog">three event dialog</string>
+    <string name="custom_dialog">custom dialog</string>
+    <string name="dialog_fragment">dialog fragment</string>
+    <string name="list_dialog">list dialog</string>
+    <string name="select_country">select country</string>
+    <string name="selection_list_dialog">selection list dialog</string>
+    <string name="select_multiple_image">select multiple image</string>
+    <string name="select_video">select video</string>
+
 
 </resources>

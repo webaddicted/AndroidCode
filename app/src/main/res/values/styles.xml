@@ -142,7 +142,7 @@
         <item name="android:textSize">@dimen/sp16</item>
     </style>
 
-    <style name="TextView_Headline">
+    <style name="TextView_Heading">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">center</item>
@@ -150,6 +150,7 @@
         <item name="android:textSize">@dimen/sp18</item>
         <item name="android:textStyle">bold</item>
     </style>
+
 
     <style name="TimePicker" parent="Theme.AppCompat.Light.Dialog">
         <item name="colorAccent">@color/green</item>
@@ -186,4 +187,29 @@
         <item name="android:minHeight">@dimen/dp28</item>
         <item name="android:maxHeight">@dimen/dp28</item>
     </style>
+    <!--{START DIALOG STYLE WITH ANIMATION}-->
+    <style name="AlertDialogStyle" parent="android:Theme.Material.Light.Dialog.Alert">
+        <item name="android:colorPrimary">@color/app_color</item>
+        <item name="android:colorAccent">@color/app_color</item>
+        <item name="android:textColorPrimary">@color/app_color</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <!--<item name="android:windowAnimationStyle">@style/DialogSlideUpAnimation</item>-->
+    </style>
+
+    <style name="DialogLeftRightAnimation">
+        <item name="android:windowEnterAnimation">@anim/dialog_slide_left</item>
+        <item name="android:windowExitAnimation">@anim/dialog_slide_right</item>
+    </style>
+
+    <style name="DialogFadeAnimation">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
+
+    <style name="DialogSlideUpAnimation">
+        <item name="android:windowEnterAnimation">@anim/dialog_slide_up</item>
+        <item name="android:windowExitAnimation">@anim/dialog_slide_down</item>
+    </style>
+    <!--{END DIALOG STYLE WITH ANIMATION}-->
 </resources>

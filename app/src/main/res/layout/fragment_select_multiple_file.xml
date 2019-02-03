@@ -2,14 +2,27 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <FrameLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/btn_select_img"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/select_image" />
-    </FrameLayout>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_select_img"
+                style="@style/Button"
+                android:text="@string/select_image" />
+            <Button
+                android:id="@+id/btn_select_multiple_img"
+                style="@style/Button"
+                android:text="@string/select_multiple_image" />
+            <Button
+                android:id="@+id/btn_select_video"
+                style="@style/Button"
+                android:text="@string/select_video" />
+        </LinearLayout>
+    </ScrollView>
 </layout>
