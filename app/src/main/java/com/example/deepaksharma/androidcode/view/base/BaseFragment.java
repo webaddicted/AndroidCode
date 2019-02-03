@@ -1,4 +1,4 @@
-package com.example.deepaksharma.androidcode.view;
+package com.example.deepaksharma.androidcode.view.base;
 
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.deepaksharma.androidcode.model.eventBus.EventBusListener;
+import com.example.deepaksharma.androidcode.view.home.HomeActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -20,9 +21,10 @@ import org.greenrobot.eventbus.Subscribe;
 /**
  * Created by Deepak Sharma on 15/1/19.
  */
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment implements View.OnClickListener {
 
     private ViewDataBinding mBinding;
+
     protected abstract int getLayoutId();
 
     protected abstract void onViewsInitialized(ViewDataBinding binding, View view);
@@ -48,15 +50,17 @@ public abstract class BaseFragment extends Fragment {
         if (EventBus.getDefault().isRegistered(this))
             EventBus.getDefault().unregister(this);
     }
+
     @Subscribe
     public void EventBusListener(EventBusListener eventBusListener) {
     }
 
-    protected void navigateFragment(int layoutContainer, Fragment fragment, boolean isEnableBackStack){
-        if (getActivity()!=null){
-            ((BaseActivity)getActivity()).navigateFragment(layoutContainer, fragment, isEnableBackStack);
+    protected void navigateFragment(int layoutContainer, Fragment fragment, boolean isEnableBackStack) {
+        if (getActivity() != null) {
+            ((BaseActivity) getActivity()).navigateFragment(layoutContainer, fragment, isEnableBackStack);
         }
     }
+
     protected void navigateChildFragment(int layoutContainer, Fragment fragment, boolean isEnableBackStack) {
         FragmentManager fragmentManager = getChildFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -64,5 +68,25 @@ public abstract class BaseFragment extends Fragment {
         if (isEnableBackStack)
             fragmentTransaction.addToBackStack(fragment.getClass().getSimpleName());
         fragmentTransaction.commitAllowingStateLoss();
+    }
+
+    @Override
+    public void onClick(View v) {
+
+    }
+
+    public void getLocation() {
+        ((BaseLocation) getActivity()).getLocation();
+    }
+    public void getLocation(@NonNull long timeInterval, @NonNull long fastInterval, @NonNull long displacement) {
+        ((BaseLocation) getActivity()).getLocation(timeInterval, fastInterval, displacement);
+    }
+    public void getLocationWithAddress(@NonNull long timeInterval, @NonNull long fastInterval, @NonNull long displacement) {
+        ((BaseLocation) getActivity()).getLocation(timeInterval, fastInterval, displacement);
+        ((BaseLocation) getActivity()).isAddressEnabled(true);
+    }
+
+    public void stopUpdateLocation() {
+        ((BaseLocation) getActivity()).stopLocationUpdates();
     }
 }

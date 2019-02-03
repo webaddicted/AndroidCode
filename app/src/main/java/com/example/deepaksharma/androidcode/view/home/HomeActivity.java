@@ -4,25 +4,26 @@ import android.content.ClipData;
 import android.content.Intent;
 import android.database.Cursor;
 import android.databinding.ViewDataBinding;
+import android.location.Location;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.ActivityHomeBinding;
 import com.example.deepaksharma.androidcode.global.constant.AppConstant;
 import com.example.deepaksharma.androidcode.utils.GlobalUtilities;
 import com.example.deepaksharma.androidcode.utils.Lg;
-import com.example.deepaksharma.androidcode.view.BaseActivity;
+import com.example.deepaksharma.androidcode.view.base.BaseActivity;
+import com.example.deepaksharma.androidcode.view.base.BaseLocation;
 import com.example.deepaksharma.androidcode.view.fragment.TaskListFragment;
-import com.example.deepaksharma.androidcode.view.fragment.WidgetFragment;
 
 import java.util.ArrayList;
 
-public class HomeActivity extends BaseActivity implements View.OnClickListener {
+public class HomeActivity extends BaseLocation implements View.OnClickListener {
     private static final String TAG = HomeActivity.class.getSimpleName();
     private ActivityHomeBinding mBinding;
     private ArrayList<String> imagesEncodedList;
@@ -127,8 +128,14 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         } catch (Exception e) {
             GlobalUtilities.showToast("Something went wrong");
         }
+    }
 
-
+    @Override
+    public void getCurrentLocation(@NonNull Location location, @NonNull String address) {
+        Log.d(TAG, "getCurrentLocation: getLatitude ->  " + location.getLatitude() + "   getLongitude  ->   " + location.getLongitude());
+    if (address!=null){
+        Log.d(TAG, "getCurrentLocation: getLatitude ->  " + location.getLatitude() + "   getLongitude  ->   " + location.getLongitude()+"  address  ->  "+address);
+    }
     }
 }
 

@@ -38,7 +38,7 @@ public class PermissionsHandler {
      * @param permissionListener is describe permission status
      * @param permissions        is bundle of all permission
      */
-    public static boolean checkAndRequestPermission(@NonNull List<String> permissions, @NonNull PermissionListener permissionListener) {
+    public static boolean requestMultiplePermission(@NonNull List<String> permissions, @NonNull PermissionListener permissionListener) {
         mPerpermissionListener = permissionListener;
         mCustomPermission = permissions;
         if (Build.VERSION.SDK_INT >= 23) {
@@ -65,7 +65,7 @@ public class PermissionsHandler {
      * @param permissionListener is describe permission status
      * @param permissions        is single permission
      */
-    public static boolean checkAndRequestPermission(@NonNull String permissions, @NonNull PermissionListener permissionListener) {
+    public static boolean requestSinglePermission(@NonNull String permissions, @NonNull PermissionListener permissionListener) {
         mPerpermissionListener = permissionListener;
         mCustomPermission = Arrays.asList(new String[]{permissions});
         if (Build.VERSION.SDK_INT >= 23) {
@@ -73,9 +73,6 @@ public class PermissionsHandler {
 //                askRequestPermissions(new String[]{permissions});
                 ActivityCompat.requestPermissions(mActivity, new String[]{permissions}, PERMISSION_CODE);
                 return false;
-            } else {
-                // Permission already granted.
-//                mPerpermissionListener.onPermissionGranted();
             }
         }
         return true;
@@ -131,7 +128,7 @@ public class PermissionsHandler {
             public void onClick(DialogInterface dialog, int which) {
                 switch (which) {
                     case DialogInterface.BUTTON_POSITIVE:
-                        checkAndRequestPermission(mCustomPermission, mPerpermissionListener);
+                        requestMultiplePermission(mCustomPermission, mPerpermissionListener);
                         break;
                     case DialogInterface.BUTTON_NEGATIVE:
                         mPerpermissionListener.onPermissionDenied(mCustomPermission);

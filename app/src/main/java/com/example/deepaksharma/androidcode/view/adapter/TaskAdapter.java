@@ -1,8 +1,12 @@
 package com.example.deepaksharma.androidcode.view.adapter;
 
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,10 +50,13 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull TaskAdapter.ViewHolder holder, int position) {
         if (searchText!=null && searchText.length()>1){
            String completeText = mAction.get(position);
+            SpannableString spannableString = new SpannableString(mAction.get(position));
+            ForegroundColorSpan foregroundSpan = new ForegroundColorSpan(Color.GREEN);
             for (int i = -1; (i = completeText.indexOf(searchText, i + 1)) != -1; i++) {
                 int endText = searchText.length()+i;
-                GlobalUtilities.setSpannable(holder.binding.txtName,mAction.get(position),i,endText);
+                spannableString.setSpan(foregroundSpan, i, endText, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
+            holder.binding.txtName.setText(spannableString);
         }else {
             holder.binding.txtName.setText(mAction.get(position));
         }

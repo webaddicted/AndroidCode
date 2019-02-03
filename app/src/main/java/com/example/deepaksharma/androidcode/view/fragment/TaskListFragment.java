@@ -10,7 +10,7 @@ import android.view.View;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.FragmentTaskListBinding;
-import com.example.deepaksharma.androidcode.view.BaseFragment;
+import com.example.deepaksharma.androidcode.view.base.BaseFragment;
 import com.example.deepaksharma.androidcode.view.adapter.TaskAdapter;
 import com.example.deepaksharma.androidcode.view.home.HomeActivity;
 
@@ -40,7 +40,7 @@ public class TaskListFragment extends BaseFragment {
             "WIFI", "UI Design", "Payment Integration", "ButterKnife", "Image Crop and WhatsUp Type Image Selection",
             "Best Site And Ui Page Link Best Code", "Recycle View"};
 
-    String worktask[] = {"widgets", "webview", "login signup flow", "select multiple image"};
+    String worktask[] = {"widgets", "webview", "login signup flow", "location","select multiple image"};
 
 
     private TaskAdapter mHomeAdapter;
@@ -80,7 +80,7 @@ public class TaskListFragment extends BaseFragment {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 String text = mBinding.edtSearch.getText().toString().toLowerCase(Locale.getDefault());
-              mHomeAdapter.filter(text);
+                mHomeAdapter.filter(text);
 //                mHomeAdapter.getFilter().filter(charSequence.toString());
             }
 
@@ -106,6 +106,8 @@ public class TaskListFragment extends BaseFragment {
             navigateScreen(SelectMultipleFileFragment.TAG);
         } else if (click.equals("select multiple image")) {
             navigateScreen(SelectMultipleFileFragment.TAG);
+        } else if (click.equals("location")) {
+            navigateScreen(GpsLocationFragment.TAG);
         }
 
     }
@@ -125,6 +127,9 @@ public class TaskListFragment extends BaseFragment {
             navigateFragment(R.id.container, frm, true);
         } else if (tag.equals(SelectMultipleFileFragment.TAG)) {
             frm = SelectMultipleFileFragment.getInstance(getArguments());
+            navigateFragment(R.id.container, frm, true);
+        } else if (tag.equals(GpsLocationFragment.TAG)) {
+            frm = GpsLocationFragment.getInstance(getArguments());
             navigateFragment(R.id.container, frm, true);
         }
     }

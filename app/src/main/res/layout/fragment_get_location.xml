@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_get_location"
+            style="@style/Button"
+            android:layout_marginTop="@dimen/dp15"
+            android:text="@string/get_location"/>
+
+        <Button
+            android:id="@+id/btn_get_location_with_param"
+            style="@style/Button"
+            android:layout_marginTop="@dimen/dp15"
+            android:text="@string/get_continue_location"/>
+        <Button
+            android:id="@+id/btn_location_with_address"
+            style="@style/Button"
+            android:layout_marginTop="@dimen/dp15"
+            android:text="@string/get_updated_location_address"/>
+        <Button
+            android:id="@+id/btn_stop_location"
+            style="@style/Button"
+            android:layout_marginTop="@dimen/dp15"
+            android:text="@string/stop_location_update"/>
+
+    </LinearLayout>
+</layout>

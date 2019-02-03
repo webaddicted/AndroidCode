@@ -7,9 +7,8 @@ import android.view.View;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.FragmentSelectMultipleFileBinding;
-import com.example.deepaksharma.androidcode.databinding.FragmentWidgetBinding;
 import com.example.deepaksharma.androidcode.global.constant.AppConstant;
-import com.example.deepaksharma.androidcode.view.BaseFragment;
+import com.example.deepaksharma.androidcode.view.base.BaseFragment;
 import com.example.deepaksharma.androidcode.view.home.HomeActivity;
 
 public class SelectMultipleFileFragment extends BaseFragment implements View.OnClickListener {

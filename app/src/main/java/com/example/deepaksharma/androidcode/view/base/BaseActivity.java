@@ -1,4 +1,4 @@
-package com.example.deepaksharma.androidcode.view;
+package com.example.deepaksharma.androidcode.view.base;
 
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;

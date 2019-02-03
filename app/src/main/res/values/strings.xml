@@ -53,5 +53,10 @@
     <string name="delete">delete</string>
     <string name="long_click_here">plong click</string>
     <string name="web_view_title">web view</string>
+    <string name="current_location_title">current location</string>
+    <string name="get_continue_location">Get Location with parameter</string>
+    <string name="get_location">Get Location</string>
+    <string name="stop_location_update">stop location update</string>
+    <string name="get_updated_location_address">get updated location with address</string>
 
 </resources>

@@ -8,7 +8,7 @@ import android.webkit.WebView;
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.FragmentWebviewBinding;
 import com.example.deepaksharma.androidcode.utils.WebViewPageClient;
-import com.example.deepaksharma.androidcode.view.BaseFragment;
+import com.example.deepaksharma.androidcode.view.base.BaseFragment;
 import com.example.deepaksharma.androidcode.view.home.HomeActivity;
 
 public class WebViewFragment extends BaseFragment {
