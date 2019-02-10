@@ -1,11 +1,8 @@
 package com.example.deepaksharma.androidcode.utils;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.graphics.Bitmap;
@@ -16,7 +13,6 @@ import android.location.Geocoder;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
@@ -340,5 +336,12 @@ public class GlobalUtilities {
     public static void btnClickAnimation(View view){
         Animation fadeAnimation = AnimationUtils.loadAnimation(view.getContext(), R.anim.fade_in);
         view.startAnimation(fadeAnimation);
+    }
+
+    public static ViewDataBinding getLayoutBinding(Context context, int layout) {
+        return DataBindingUtil.
+                inflate(LayoutInflater.from(context),
+                       layout,
+                        null,false);
     }
 }

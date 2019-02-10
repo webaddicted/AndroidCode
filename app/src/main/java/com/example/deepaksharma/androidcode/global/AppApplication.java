@@ -5,6 +5,7 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 
 import com.example.deepaksharma.androidcode.R;
+import com.example.deepaksharma.androidcode.global.sharedPref.PreferenceUtils;
 import com.example.deepaksharma.androidcode.services.NetworkChangeReceiver;
 import com.example.deepaksharma.androidcode.utils.GlobalUtilities;
 import com.facebook.stetho.Stetho;
@@ -28,6 +29,7 @@ public class AppApplication extends Application {
                 .setFontAttrId(R.attr.fontPath)
                 .build());
 //        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder().setDefaultFontPath("fonts/Ciscopic-Regular.ttf").setFontAttrId(R.attr.fontPath).build());
+        PreferenceUtils.getInstance(getApplicationContext());
         mIsNetworkConnected = GlobalUtilities.getNetworkState();
         registerReceiver(mNetworkReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
         ImageLoader.getInstance().init(GlobalUtilities.getImageConfig());

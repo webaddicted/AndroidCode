@@ -17,4 +17,5 @@
     <color name="green">#00de4a</color>
     <color name="brown">#bdbdbe</color>
     <color name="red">#ff090b</color>
+    <color name="transprant">#00000000</color>
 </resources>

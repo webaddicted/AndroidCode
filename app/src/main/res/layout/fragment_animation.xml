@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/image_animation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/dungeon_hunter" />
+
+                <Button
+                    android:id="@+id/btn_blink"
+                    style="@style/Button"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:text="@string/blink" />
+
+                <Button
+                    android:id="@+id/btn_fade"
+                    style="@style/Button"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:text="@string/fade" />
+
+                <Button
+                    android:id="@+id/btn_zoom"
+                    style="@style/Button"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:text="@string/zoom" />
+
+                <Button
+                    android:id="@+id/btn_move"
+                    style="@style/Button"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:text="@string/move" />
+
+                <Button
+                    android:id="@+id/btn_rotate"
+                    style="@style/Button"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:text="@string/rotate" />
+
+                <TextView
+                    android:id="@+id/txt_fade_in"
+                    style="@style/TextView_Regular"
+                    android:layout_gravity="start"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:text="@string/fade_in" />
+
+                <Button
+                    android:id="@+id/btn_fade_in"
+                    style="@style/Button"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:text="@string/fade_in" />
+
+                <TextView
+                    android:id="@+id/txt_fade_out"
+                    style="@style/TextView_Regular"
+                    android:layout_gravity="start"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:text="@string/fade_out" />
+
+                <Button
+                    android:id="@+id/btn_fade_out"
+                    style="@style/Button"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:text="@string/fade_out" />
+
+                <TextView
+                    android:id="@+id/txt_cross_fade_out"
+                    style="@style/TextView_Regular"
+                    android:layout_gravity="start"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:text="@string/cross_fade_out" />
+
+                <Button
+                    android:id="@+id/btn_cross_fade_out"
+                    style="@style/Button"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:text="@string/cross_fade_out" />
+
+
+                <TextView
+                    android:id="@+id/txt_cross_fade_in"
+                    style="@style/TextView_Regular"
+                    android:layout_gravity="start"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:text="@string/cross_fade_in" />
+
+                <Button
+                    android:id="@+id/btn_cross_fade_in"
+                    style="@style/Button"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:text="@string/cross_fade_in" />
+
+                <TextView
+                    android:id="@+id/txt_zoom_in"
+                    style="@style/TextView_Regular"
+                    android:layout_gravity="start"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:text="@string/zoom_in" />
+
+                <Button
+                    android:id="@+id/btn_zoom_in"
+                    style="@style/Button"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:text="@string/zoom_in" />
+
+                <TextView
+                    android:id="@+id/txt_zoom_out"
+                    style="@style/TextView_Regular"
+                    android:layout_gravity="start"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:text="@string/zoom_out" />
+
+                <Button
+                    android:id="@+id/btn_zoom_out"
+                    style="@style/Button"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:text="@string/zoom_out" />
+
+                <TextView
+                    android:id="@+id/txt_slide_up"
+                    style="@style/TextView_Regular"
+                    android:layout_gravity="start"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:text="@string/slide_up" />
+
+                <Button
+                    android:id="@+id/btn_slide_up"
+                    style="@style/Button"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:text="@string/slide_up" />
+
+                <TextView
+                    android:id="@+id/txt_slide_down"
+                    style="@style/TextView_Regular"
+                    android:layout_gravity="start"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:text="@string/slide_down" />
+
+                <Button
+                    android:id="@+id/btn_slide_down"
+                    style="@style/Button"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:text="@string/slide_down" />
+
+
+                <TextView
+                    android:id="@+id/txt_bounce"
+                    style="@style/TextView_Regular"
+                    android:layout_gravity="start"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:text="@string/bounce" />
+
+                <Button
+                    android:id="@+id/btn_bounce"
+                    style="@style/Button"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:text="@string/bounce" />
+
+                <TextView
+                    android:id="@+id/txt_sequence"
+                    style="@style/TextView_Regular"
+                    android:layout_gravity="start"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:text="@string/sequence" />
+
+                <Button
+                    android:id="@+id/btn_sequence"
+                    style="@style/Button"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:text="@string/sequence" />
+
+
+                <Button
+                    android:id="@+id/btn_left_right"
+                    style="@style/Button"
+                    android:text="@string/left_right"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp22" />
+
+                <Button
+                    android:id="@+id/btn_top_tob_bottom"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp20"
+                    android:background="#23ddff"
+                    android:text="@string/top_to_bottom" />
+
+                <Button
+                    android:id="@+id/btn_bottom_to_top"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:background="#ccff55"
+                    android:text="@string/botom_to_top" />
+
+                <Button
+                    android:id="@+id/btn_right_to_left"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:background="#77ff11"
+                    android:text="@string/right_to_left" />
+
+                <Button
+                    android:id="@+id/btn_left_to_right"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:background="#ff0000"
+                    android:text="@string/left_to_right" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

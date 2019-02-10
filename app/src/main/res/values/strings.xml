@@ -41,6 +41,10 @@
     <string name="web_view_title">web view</string>
     <string name="current_location_title">current location</string>
     <string name="dialog_title">dialog</string>
+    <string name="dynamic_layout_title">dynamic layout</string>
+    <string name="shared_preference_title">shared preference</string>
+    <string name="device_info_title">device info</string>
+    <string name="speech_to_text_title">speech to text</string>
     <!--{END SCREEN TITLE NAME}-->
     <string name="select_image">select image</string>
     <string name="login">login</string>
@@ -69,6 +73,44 @@
     <string name="selection_list_dialog">selection list dialog</string>
     <string name="select_multiple_image">select multiple image</string>
     <string name="select_video">select video</string>
+    <string name="date">date</string>
+    <string name="particulars">particulars</string>
+    <string name="vch_type">vch type</string>
+    <string name="vch_no">vch no.</string>
+    <string name="debit">debit</string>
+    <string name="credit">credit</string>
+    <string name="total_amount">total amount</string>
+    <string name="set_value_in_preference">set value in preference</string>
+    <string name="get_value_from_preference">get value from preference</string>
+    <string name="clear_preference">clear preference</string>
+    <string name="remove_key">remove key</string>
+    <string name="successfully_save">successfully save</string>
+    <string name="no_data_found">no data found</string>
+    <string name="successfully_remove_key">successfully remove key</string>
+    <string name="successfully_clear_preference">successfully clear preference</string>
+    <string name="text_to_speech">text to speech</string>
+    <string name="blink">blink</string>
+    <string name="fade">fade</string>
+    <string name="zoom">zoom</string>
+    <string name="move">move</string>
+    <string name="rotate">rotate</string>
+    <string name="slide">slide</string>
+    <string name="fade_in">fade in</string>
+    <string name="fade_out">fade out</string>
+    <string name="cross_fade_out">cross fade out</string>
+    <string name="cross_fade_in">cross fade in</string>
+    <string name="zoom_in">zoom in</string>
+    <string name="zoom_out">zoom out</string>
+    <string name="slide_up">slide up</string>
+    <string name="slide_down">slide down</string>
+    <string name="bounce">bounce</string>
+    <string name="sequence">sequence</string>
+    <string name="left_right">left right animation</string>
+    <string name="top_to_bottom">top to bottom</string>
+    <string name="botom_to_top">botom to top</string>
+    <string name="right_to_left">right to left</string>
+    <string name="left_to_right">left to right</string>
+    <string name="animation_title">animation</string>
 
 
 </resources>

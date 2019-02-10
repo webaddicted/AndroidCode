@@ -40,7 +40,8 @@ public class TaskListFragment extends BaseFragment {
             "WIFI", "UI Design", "Payment Integration", "ButterKnife", "Image Crop and WhatsUp Type Image Selection",
             "Best Site And Ui Page Link Best Code", "Recycle View"};
 
-    String worktask[] = {"widgets", "webview", "dialog","location", "login signup flow", "select multiple image"};
+    String worktask[] = {"widgets", "webview", "dialog", "location", "login signup flow", "select multiple image", "dynamic layout",
+            "shared preference", "device info", "speech to text", "animation"};
 
 
     private TaskAdapter mHomeAdapter;
@@ -110,6 +111,16 @@ public class TaskListFragment extends BaseFragment {
             navigateScreen(GpsLocationFragment.TAG);
         } else if (click.equals("dialog")) {
             navigateScreen(DialogFragment.TAG);
+        } else if (click.equals("dynamic layout")) {
+            navigateScreen(DynamicLayoutFragment.TAG);
+        } else if (click.equals("shared preference")) {
+            navigateScreen(SharePreferenceFragment.TAG);
+        } else if (click.equals("device info")) {
+            navigateScreen(GetPhoneDetailFragment.TAG);
+        } else if (click.equals("speech to text")) {
+            navigateScreen(SpeechToTextFragment.TAG);
+        } else if (click.equals("animation")) {
+            navigateScreen(AnimationFragment.TAG);
         }
 
     }
@@ -135,6 +146,21 @@ public class TaskListFragment extends BaseFragment {
             navigateFragment(R.id.container, frm, true);
         } else if (tag.equals(DialogFragment.TAG)) {
             frm = DialogFragment.getInstance(getArguments());
+            navigateFragment(R.id.container, frm, true);
+        } else if (tag.equals(DynamicLayoutFragment.TAG)) {
+            frm = DynamicLayoutFragment.getInstance(getArguments());
+            navigateFragment(R.id.container, frm, true);
+        } else if (tag.equals(SharePreferenceFragment.TAG)) {
+            frm = SharePreferenceFragment.getInstance(getArguments());
+            navigateFragment(R.id.container, frm, true);
+        } else if (tag.equals(GetPhoneDetailFragment.TAG)) {
+            frm = GetPhoneDetailFragment.getInstance(getArguments());
+            navigateFragment(R.id.container, frm, true);
+        } else if (tag.equals(SpeechToTextFragment.TAG)) {
+            frm = SpeechToTextFragment.getInstance(getArguments());
+            navigateFragment(R.id.container, frm, true);
+        } else if (tag.equals(AnimationFragment.TAG)) {
+            frm = AnimationFragment.getInstance(getArguments());
             navigateFragment(R.id.container, frm, true);
         }
     }

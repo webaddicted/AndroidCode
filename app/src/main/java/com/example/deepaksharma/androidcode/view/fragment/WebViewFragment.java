@@ -45,11 +45,12 @@ public class WebViewFragment extends BaseFragment {
 
     private void showWebView(WebView webView) {
         try {
+            mBinding.loader.parentLoader.setVisibility(View.VISIBLE);
             webView.getSettings().setJavaScriptEnabled(true);
             //web.getSettings().getAllowUniversalAccessFromFileURLs();
             webView.getSettings().setLoadWithOverviewMode(true);
             webView.getSettings().setUseWideViewPort(true);
-            webView.setWebViewClient(new WebViewPageClient());
+            webView.setWebViewClient(new WebViewPageClient(mBinding.loader.parentLoader));
             webView.loadUrl(mLink);
         } catch (Exception e) {
             e.printStackTrace();
