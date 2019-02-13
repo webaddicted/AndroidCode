@@ -21,31 +21,56 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitXY"
                     android:src="@drawable/dungeon_hunter" />
-
+                <TextView
+                    android:id="@+id/txt_blink"
+                    style="@style/TextView_Regular"
+                    android:layout_gravity="start"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:text="@string/blink" />
                 <Button
                     android:id="@+id/btn_blink"
                     style="@style/Button"
                     android:layout_marginTop="@dimen/dp15"
                     android:text="@string/blink" />
-
+                <TextView
+                    android:id="@+id/txt_fade"
+                    style="@style/TextView_Regular"
+                    android:layout_gravity="start"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:text="@string/fade" />
                 <Button
                     android:id="@+id/btn_fade"
                     style="@style/Button"
                     android:layout_marginTop="@dimen/dp15"
                     android:text="@string/fade" />
-
+                <TextView
+                    android:id="@+id/txt_zoom"
+                    style="@style/TextView_Regular"
+                    android:layout_gravity="start"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:text="@string/zoom" />
                 <Button
                     android:id="@+id/btn_zoom"
                     style="@style/Button"
                     android:layout_marginTop="@dimen/dp15"
                     android:text="@string/zoom" />
-
+                <TextView
+                    android:id="@+id/txt_move"
+                    style="@style/TextView_Regular"
+                    android:layout_gravity="start"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:text="@string/move" />
                 <Button
                     android:id="@+id/btn_move"
                     style="@style/Button"
                     android:layout_marginTop="@dimen/dp15"
                     android:text="@string/move" />
-
+                <TextView
+                    android:id="@+id/txt_rotate"
+                    style="@style/TextView_Regular"
+                    android:layout_gravity="start"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:text="@string/rotate" />
                 <Button
                     android:id="@+id/btn_rotate"
                     style="@style/Button"
@@ -183,7 +208,17 @@
                     style="@style/Button"
                     android:layout_marginTop="@dimen/dp15"
                     android:text="@string/sequence" />
-
+                <TextView
+                    android:id="@+id/txt_together"
+                    style="@style/TextView_Regular"
+                    android:layout_gravity="start"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:text="@string/together" />
+                <Button
+                    android:id="@+id/btn_together"
+                    style="@style/Button"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:text="@string/together" />
 
                 <Button
                     android:id="@+id/btn_left_right"
