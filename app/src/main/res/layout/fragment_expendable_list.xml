@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_expendable"
+            style="@style/Button"
+            android:text="@string/expendable_list_view" />
+
+        <Button
+            android:id="@+id/btn_spinner"
+            style="@style/Button"
+            android:text="@string/spinner" />
+
+        <ExpandableListView
+            android:id="@+id/expandableListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@android:color/transparent" />
+        <!--android:layoutAnimation="@anim/slide_up"-->
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:visibility="gone"
+            android:divider="@android:color/transparent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</layout>

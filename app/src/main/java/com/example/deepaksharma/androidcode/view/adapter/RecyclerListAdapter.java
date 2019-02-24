@@ -6,33 +6,27 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.Spannable;
 import android.text.SpannableString;
-import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.RowTextListBinding;
-import com.example.deepaksharma.androidcode.utils.GlobalUtilities;
-import com.example.deepaksharma.androidcode.view.fragment.TaskListFragment;
-import com.example.deepaksharma.androidcode.view.home.HomeActivity;
+import com.example.deepaksharma.androidcode.view.fragment.RecyclerViewFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
-    private static final String TAG = TaskAdapter.class.getSimpleName();
-    private TaskListFragment mTaskListFragment;
+public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerListAdapter.ViewHolder> {
+    private static final String TAG = RecyclerListAdapter.class.getSimpleName();
+    private RecyclerViewFragment mRecyclerViewFragment;
     private List<String> mAction;
     private List<String> searchArray;
     private String searchText;
 
-    public TaskAdapter(TaskListFragment taskListFragment, List<String> action) {
-        this.mTaskListFragment = taskListFragment;
+    public RecyclerListAdapter(RecyclerViewFragment recyclerViewFragment, List<String> action) {
+        this.mRecyclerViewFragment = recyclerViewFragment;
         this.mAction = action;
         this.searchArray = new ArrayList<>();
         this.searchArray.addAll(action);
@@ -40,26 +34,26 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
     @NonNull
     @Override
-    public TaskAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecyclerListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         RowTextListBinding mBinding = DataBindingUtil.
                 inflate(LayoutInflater.from(parent.getContext()),
                         R.layout.row_text_list,
                         parent, false);
-        return new TaskAdapter.ViewHolder(mBinding);
+        return new RecyclerListAdapter.ViewHolder(mBinding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TaskAdapter.ViewHolder holder, int position) {
-        if (searchText!=null && searchText.length()>1){
-           String completeText = mAction.get(position);
+    public void onBindViewHolder(@NonNull RecyclerListAdapter.ViewHolder holder, int position) {
+        if (searchText != null && searchText.length() > 1) {
+            String completeText = mAction.get(position);
             SpannableString spannableString = new SpannableString(mAction.get(position));
             for (int i = -1; (i = completeText.indexOf(searchText, i + 1)) != -1; i++) {
-                int endText = searchText.length()+i;
+                int endText = searchText.length() + i;
                 ForegroundColorSpan foregroundSpan = new ForegroundColorSpan(Color.GREEN);
                 spannableString.setSpan(foregroundSpan, i, endText, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
             holder.binding.txtName.setText(spannableString);
-        }else {
+        } else {
             holder.binding.txtName.setText(mAction.get(position));
         }
         holder.binding();
@@ -79,7 +73,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         }
 
         public void binding() {
-            binding.card.setOnClickListener(view -> mTaskListFragment.onClicks(mAction.get(getAdapterPosition())));
+//            binding.card.setOnClickListener(view -> mRecyclerViewFragment.onClicks(mAction.get(ViewHolder.this.getAdapterPosition())));
         }
     }
 

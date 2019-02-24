@@ -17,15 +17,13 @@
             app:cardBackgroundColor="@color/white">
 
             <TextView
+                style="@style/TextView_Regular"
                 android:id="@+id/txt_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp9"
                 android:layout_marginTop="@dimen/dp15"
                 android:layout_marginBottom="@dimen/dp15"
-                android:text="@string/app_name"
-                android:textSize="@dimen/sp18"
-                android:textColor="@color/black" />
+                android:layout_gravity="start"
+                android:text="@string/app_name" />
         </android.support.v7.widget.CardView>
     </LinearLayout>
 </layout>

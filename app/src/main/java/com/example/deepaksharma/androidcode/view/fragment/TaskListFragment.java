@@ -41,7 +41,8 @@ public class TaskListFragment extends BaseFragment {
             "Best Site And Ui Page Link Best Code", "Recycle View"};
 
     String worktask[] = {"widgets", "webview", "dialog", "location", "login signup flow", "select multiple image", "dynamic layout",
-            "shared preference", "device info", "speech to text", "animation"};
+            "shared preference", "device info", "speech to text", "animation", "recycler view", "expendable spinner list view",
+            "elaborate recycler view", "image"};
 
 
     private TaskAdapter mHomeAdapter;
@@ -51,7 +52,6 @@ public class TaskListFragment extends BaseFragment {
         fragment.setArguments(bundle);
         return fragment;
     }
-
 
     @Override
     protected int getLayoutId() {
@@ -66,7 +66,6 @@ public class TaskListFragment extends BaseFragment {
 
     private void init() {
         mTaskList = new LinkedList<String>(Arrays.asList(worktask));
-
         setAdapter();
         clickListener();
     }
@@ -99,29 +98,24 @@ public class TaskListFragment extends BaseFragment {
     }
 
     public void onClicks(String click) {
-        if (click.equals("widgets")) {
-            navigateScreen(WidgetFragment.TAG);
-        } else if (click.equals("webview")) {
-            navigateScreen(WebViewFragment.TAG);
-        } else if (click.equals("login signup flow")) {
+        if (click.equals("widgets")) navigateScreen(WidgetFragment.TAG);
+        else if (click.equals("webview")) navigateScreen(WebViewFragment.TAG);
+        else if (click.equals("login signup flow")) navigateScreen(SelectMultipleFileFragment.TAG);
+        else if (click.equals("select multiple image"))
             navigateScreen(SelectMultipleFileFragment.TAG);
-        } else if (click.equals("select multiple image")) {
-            navigateScreen(SelectMultipleFileFragment.TAG);
-        } else if (click.equals("location")) {
-            navigateScreen(GpsLocationFragment.TAG);
-        } else if (click.equals("dialog")) {
-            navigateScreen(DialogFragment.TAG);
-        } else if (click.equals("dynamic layout")) {
-            navigateScreen(DynamicLayoutFragment.TAG);
-        } else if (click.equals("shared preference")) {
-            navigateScreen(SharePreferenceFragment.TAG);
-        } else if (click.equals("device info")) {
-            navigateScreen(GetPhoneDetailFragment.TAG);
-        } else if (click.equals("speech to text")) {
-            navigateScreen(SpeechToTextFragment.TAG);
-        } else if (click.equals("animation")) {
-            navigateScreen(AnimationFragment.TAG);
-        }
+        else if (click.equals("location")) navigateScreen(GpsLocationFragment.TAG);
+        else if (click.equals("dialog")) navigateScreen(DialogFragment.TAG);
+        else if (click.equals("dynamic layout")) navigateScreen(DynamicLayoutFragment.TAG);
+        else if (click.equals("shared preference")) navigateScreen(SharePreferenceFragment.TAG);
+        else if (click.equals("device info")) navigateScreen(GetPhoneDetailFragment.TAG);
+        else if (click.equals("speech to text")) navigateScreen(SpeechToTextFragment.TAG);
+        else if (click.equals("animation")) navigateScreen(AnimationFragment.TAG);
+        else if (click.equals("recycler view")) navigateScreen(RecyclerViewFragment.TAG);
+        else if (click.equals("expendable spinner list view"))
+            navigateScreen(ExpendableSpinnerListFragment.TAG);
+        else if (click.equals("elaborate recycler view"))
+            navigateScreen(ElaborateRecyclerFragment.TAG);
+
 
     }
 
@@ -131,38 +125,31 @@ public class TaskListFragment extends BaseFragment {
      * @param tag represent navigation activity
      */
     private void navigateScreen(String tag) {
-        Fragment frm;
-        if (tag.equals(WidgetFragment.TAG)) {
-            frm = WidgetFragment.getInstance(getArguments());
-            navigateFragment(R.id.container, frm, true);
-        } else if (tag.equals(WebViewFragment.TAG)) {
-            frm = WebViewFragment.getInstance(getArguments());
-            navigateFragment(R.id.container, frm, true);
-        } else if (tag.equals(SelectMultipleFileFragment.TAG)) {
+        Fragment frm = null;
+        if (tag.equals(WidgetFragment.TAG)) frm = WidgetFragment.getInstance(getArguments());
+        else if (tag.equals(WebViewFragment.TAG)) frm = WebViewFragment.getInstance(getArguments());
+        else if (tag.equals(SelectMultipleFileFragment.TAG))
             frm = SelectMultipleFileFragment.getInstance(getArguments());
-            navigateFragment(R.id.container, frm, true);
-        } else if (tag.equals(GpsLocationFragment.TAG)) {
+        else if (tag.equals(GpsLocationFragment.TAG))
             frm = GpsLocationFragment.getInstance(getArguments());
-            navigateFragment(R.id.container, frm, true);
-        } else if (tag.equals(DialogFragment.TAG)) {
-            frm = DialogFragment.getInstance(getArguments());
-            navigateFragment(R.id.container, frm, true);
-        } else if (tag.equals(DynamicLayoutFragment.TAG)) {
+        else if (tag.equals(DialogFragment.TAG)) frm = DialogFragment.getInstance(getArguments());
+        else if (tag.equals(DynamicLayoutFragment.TAG))
             frm = DynamicLayoutFragment.getInstance(getArguments());
-            navigateFragment(R.id.container, frm, true);
-        } else if (tag.equals(SharePreferenceFragment.TAG)) {
+        else if (tag.equals(SharePreferenceFragment.TAG))
             frm = SharePreferenceFragment.getInstance(getArguments());
-            navigateFragment(R.id.container, frm, true);
-        } else if (tag.equals(GetPhoneDetailFragment.TAG)) {
+        else if (tag.equals(GetPhoneDetailFragment.TAG))
             frm = GetPhoneDetailFragment.getInstance(getArguments());
-            navigateFragment(R.id.container, frm, true);
-        } else if (tag.equals(SpeechToTextFragment.TAG)) {
+        else if (tag.equals(SpeechToTextFragment.TAG))
             frm = SpeechToTextFragment.getInstance(getArguments());
-            navigateFragment(R.id.container, frm, true);
-        } else if (tag.equals(AnimationFragment.TAG)) {
+        else if (tag.equals(AnimationFragment.TAG))
             frm = AnimationFragment.getInstance(getArguments());
-            navigateFragment(R.id.container, frm, true);
-        }
+        else if (tag.equals(RecyclerViewFragment.TAG))
+            frm = RecyclerViewFragment.getInstance(getArguments());
+        else if (tag.equals(ExpendableSpinnerListFragment.TAG))
+            frm = ExpendableSpinnerListFragment.getInstance(getArguments());
+        else if (tag.equals(ElaborateRecyclerFragment.TAG))
+            frm = ElaborateRecyclerFragment.getInstance(getArguments());
+        navigateFragment(R.id.container, frm, true);
     }
 
     @Override
