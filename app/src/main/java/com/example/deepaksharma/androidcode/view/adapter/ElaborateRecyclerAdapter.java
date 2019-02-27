@@ -1,25 +1,21 @@
 package com.example.deepaksharma.androidcode.view.adapter;
 
 import android.databinding.DataBindingUtil;
-import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.example.deepaksharma.androidcode.R;
+import com.example.deepaksharma.androidcode.databinding.RowGridBinding;
 import com.example.deepaksharma.androidcode.databinding.RowTextListBinding;
 import com.example.deepaksharma.androidcode.view.fragment.ElaborateRecyclerFragment;
-import com.example.deepaksharma.androidcode.view.fragment.RecyclerViewFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class ElaborateRecyclerAdapter extends RecyclerView.Adapter<ElaborateRecyclerAdapter.ViewHolder> {
+public class ElaborateRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final String TAG = ElaborateRecyclerAdapter.class.getSimpleName();
     private ElaborateRecyclerFragment mElaborateRecyclerFragment;
     private List<String> mAction;
@@ -33,31 +29,9 @@ public class ElaborateRecyclerAdapter extends RecyclerView.Adapter<ElaborateRecy
         this.searchArray.addAll(action);
     }
 
-    @NonNull
-    @Override
-    public ElaborateRecyclerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        RowTextListBinding mBinding = DataBindingUtil.
-                inflate(LayoutInflater.from(parent.getContext()),
-                        R.layout.row_text_list,
-                        parent, false);
-        return new ElaborateRecyclerAdapter.ViewHolder(mBinding);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull ElaborateRecyclerAdapter.ViewHolder holder, int position) {
-        if (searchText != null && searchText.length() > 1) {
-            String completeText = mAction.get(position);
-            SpannableString spannableString = new SpannableString(mAction.get(position));
-            for (int i = -1; (i = completeText.indexOf(searchText, i + 1)) != -1; i++) {
-                int endText = searchText.length() + i;
-                ForegroundColorSpan foregroundSpan = new ForegroundColorSpan(Color.GREEN);
-                spannableString.setSpan(foregroundSpan, i, endText, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            }
-            holder.binding.txtName.setText(spannableString);
-        } else {
-            holder.binding.txtName.setText(mAction.get(position));
-        }
-        holder.binding();
+    private class VIEW_TYPES {
+        public static final int Normal = 1;
+        public static final int Footer = 2;
     }
 
     @Override
@@ -65,18 +39,87 @@ public class ElaborateRecyclerAdapter extends RecyclerView.Adapter<ElaborateRecy
         return (mAction == null || mAction.size() == 0) ? 0 : mAction.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    @Override
+    public int getItemViewType(int position) {
+        if (position == getItemCount()) {
+            return VIEW_TYPES.Footer;
+        } else
+            return VIEW_TYPES.Normal;
+
+
+    }
+
+    @NonNull
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        if (viewType == VIEW_TYPES.Normal) {
+            RowTextListBinding mBinding = DataBindingUtil.
+                    inflate(LayoutInflater.from(parent.getContext()),
+                            R.layout.row_text_list,
+                            parent, false);
+            return new NormalViewHolder(mBinding);
+        } else if (viewType == VIEW_TYPES.Footer) {
+            RowGridBinding mBinding = DataBindingUtil.
+                    inflate(LayoutInflater.from(parent.getContext()),
+                            R.layout.row_grid,
+                            parent, false);
+
+            return new FooterViewHolder(mBinding);
+        }else {
+             throw new IllegalArgumentException("unknown view type");
+        }
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+//        if (searchText != null && searchText.length() > 1) {
+//            String completeText = mAction.get(position);
+//            SpannableString spannableString = new SpannableString(mAction.get(position));
+//            for (int i = -1; (i = completeText.indexOf(searchText, i + 1)) != -1; i++) {
+//                int endText = searchText.length() + i;
+//                ForegroundColorSpan foregroundSpan = new ForegroundColorSpan(Color.GREEN);
+//                spannableString.setSpan(foregroundSpan, i, endText, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+//            }
+//            holder.binding.txtName.setText(spannableString);
+//        } else {
+//            holder.binding.txtName.setText(mAction.get(position));
+//        }
+        if (holder instanceof NormalViewHolder) {
+            ((NormalViewHolder) holder).binding(position);
+        } else if (holder instanceof FooterViewHolder) {
+            ((FooterViewHolder) holder).binding(position);
+        }
+    }
+
+
+    class NormalViewHolder extends RecyclerView.ViewHolder {
         private RowTextListBinding binding;
 
-        public ViewHolder(RowTextListBinding itemView) {
+        public NormalViewHolder(RowTextListBinding itemView) {
             super(itemView.getRoot());
             this.binding = itemView;
         }
 
-        public void binding() {
+        public void binding(int position) {
 //            binding.card.setOnClickListener(view -> mRecyclerViewFragment.onClicks(mAction.get(ViewHolder.this.getAdapterPosition())));
         }
+
     }
+
+    class FooterViewHolder extends RecyclerView.ViewHolder {
+        private RowGridBinding binding;
+
+        public FooterViewHolder(RowGridBinding itemView) {
+            super(itemView.getRoot());
+            this.binding = itemView;
+        }
+
+        public void binding(int position) {
+//            binding.card.setOnClickListener(view -> mRecyclerViewFragment.onClicks(mAction.get(ViewHolder.this.getAdapterPosition())));
+        }
+
+    }
+
 
     public void filter(String charText) {
         charText = charText.toLowerCase(Locale.getDefault());
