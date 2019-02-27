@@ -119,6 +119,11 @@
     <string name="spinner">spinner</string>
     <string name="expend_spinner_title">expendable spinner</string>
     <string name="elaborate_recycler_view_title">elaborate recycler view</string>
-
+    <string name="select_picture">Select Picture</string>
+    <string name="ssl_certificate_error">SSL Certificate error.</string>
+    <string name="ssl_certificate_untrusted">The certificate authority is not trusted.</string>
+    <string name="ssl_certificate_expired">The certificate has expired.</string>
+    <string name="ssl_certificate_mismatch">The certificate Hostname mismatch.</string>
+    <string name="ssl_certificate_notvalid">The certificate is not yet valid.</string>
 
 </resources>

@@ -1,10 +1,12 @@
 package com.example.deepaksharma.androidcode.global;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.webkit.MimeTypeMap;
 
 
 import java.io.File;
@@ -17,6 +19,7 @@ public class FileUtils {
     private static final String SEPARATOR = "/";
     private static final String JPEG = ".jpeg";
     private static final String PNG = ".png";
+    private static final String UPLOAD_IMAGE = "compressed";
 
     public static void createApplicationFolder() {
         File f = new File(String.valueOf(Environment.getExternalStorageDirectory()), File.separator + APP_FOLDER);
@@ -85,5 +88,60 @@ public class FileUtils {
         return dest;
     }
 
+    public static File getPathFromUri(Context context, Uri contentUri) {
+        String res = null;
+        String[] proj = {MediaStore.Images.Media.DATA};
+        Cursor cursor = context.getContentResolver().query(contentUri, proj, null, null, null);
+        if (cursor.moveToFirst()) {
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            res = cursor.getString(column_index);
+        }
+        cursor.close();
+
+        return new File(res);
+    }
+
+
+
+    public static File uploadFile() {
+        return new File(String.valueOf(Environment.getExternalStorageDirectory()), File.separator + APP_FOLDER + File.separator + UPLOAD_IMAGE + "/");
+    }
+
+    public static Uri fileIntoUri(File file) {
+        return Uri.fromFile(file);
+    }
+
+    public static String getMimeType(String url) {
+        String type = null;
+        String extension = MimeTypeMap.getFileExtensionFromUrl(url);
+        if (extension != null) {
+            type = MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension);
+        }
+        return type;
+    }
+
+    public long getFileSizeInKb(File file) {
+        return file.length() / 1024;
+    }
+
+    public static long getFileSizeInMb(File file) {
+        // Get length of file in bytes
+        long fileSizeInBytes = file.length();
+        // Convert the bytes to Kilobytes (1 KB = 1024 Bytes)
+        long fileSizeInKB = fileSizeInBytes / 1024;
+        // Convert the KB to MegaBytes (1 MB = 1024 KBytes)
+        return fileSizeInKB / 1024;
+    }
+
+    public static String getFileSizeInMbTest(File file) {
+        // Get length of file in bytes
+        long fileSizeInBytes = file.length();
+        // Convert the bytes to Kilobytes (1 KB = 1024 Bytes)
+        long fileSizeInKB = fileSizeInBytes / 1024;
+        // Convert the KB to MegaBytes (1 MB = 1024 KBytes)
+        long fileSizeInMB = fileSizeInKB / 1024;
+        if (fileSizeInMB > 0) return fileSizeInMB+ " MB ";
+        else return fileSizeInKB+" KB ";
+    }
 
 }
