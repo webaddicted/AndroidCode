@@ -41,7 +41,7 @@ public class ElaborateRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.
 
     @Override
     public int getItemViewType(int position) {
-        if (position == getItemCount()) {
+        if (position == getItemCount()-1) {
             return VIEW_TYPES.Footer;
         } else
             return VIEW_TYPES.Normal;
