@@ -30,6 +30,13 @@
                     android:layout_marginRight="@dimen/dp5"
                     android:layout_toRightOf="@+id/btn_list"
                     android:text="@string/grid" />
+                <Button
+                    android:id="@+id/btn_common"
+                    style="@style/Button"
+                    android:layout_below="@+id/btn_list"
+                    android:layout_marginLeft="@dimen/dp5"
+                    android:layout_marginRight="@dimen/dp5"
+                    android:text="@string/common_adapter" />
             </RelativeLayout>
 
             <EditText

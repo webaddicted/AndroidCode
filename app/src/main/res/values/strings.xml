@@ -125,5 +125,6 @@
     <string name="ssl_certificate_expired">The certificate has expired.</string>
     <string name="ssl_certificate_mismatch">The certificate Hostname mismatch.</string>
     <string name="ssl_certificate_notvalid">The certificate is not yet valid.</string>
+    <string name="common_adapter">common adapter</string>
 
 </resources>

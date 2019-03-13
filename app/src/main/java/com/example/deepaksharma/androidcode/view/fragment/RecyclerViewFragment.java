@@ -3,7 +3,6 @@ package com.example.deepaksharma.androidcode.view.fragment;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.Editable;
@@ -14,6 +13,7 @@ import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.FragmentRecylcerViewBinding;
 import com.example.deepaksharma.androidcode.view.adapter.RecyclerGridAdapter;
 import com.example.deepaksharma.androidcode.view.adapter.RecyclerListAdapter;
+import com.example.deepaksharma.androidcode.view.adapter.CommonRecyclerViewAdapter;
 import com.example.deepaksharma.androidcode.view.base.BaseFragment;
 import com.example.deepaksharma.androidcode.view.home.HomeActivity;
 
@@ -26,6 +26,7 @@ public class RecyclerViewFragment extends BaseFragment {
     private FragmentRecylcerViewBinding mBinding;
     private RecyclerListAdapter mListAdapter;
     private RecyclerGridAdapter mGridAdapter;
+    private CommonRecyclerViewAdapter mCommonAdapter;
 
     public static RecyclerViewFragment getInstance(Bundle bundle) {
         RecyclerViewFragment fragment = new RecyclerViewFragment();
@@ -44,7 +45,8 @@ public class RecyclerViewFragment extends BaseFragment {
         init();
         clickListener();
         getListBean();
-        setListAdapter();
+//        setListAdapter();
+
     }
 
     private void init() {
@@ -53,6 +55,7 @@ public class RecyclerViewFragment extends BaseFragment {
     private void clickListener() {
         mBinding.btnGrid.setOnClickListener(this);
         mBinding.btnList.setOnClickListener(this);
+        mBinding.btnCommon.setOnClickListener(this);
         mBinding.edtSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -81,6 +84,13 @@ public class RecyclerViewFragment extends BaseFragment {
         }
         return mList;
     }
+    private void setCommonAdapter() {
+        mGridAdapter = null;
+        mCommonAdapter = new CommonRecyclerViewAdapter(RecyclerViewFragment.this, getListBean());
+        mBinding.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        mBinding.recyclerView.setAdapter(mCommonAdapter);
+    }
+
 
     private void setListAdapter() {
         mGridAdapter = null;
@@ -114,7 +124,9 @@ public class RecyclerViewFragment extends BaseFragment {
             case R.id.btn_grid:
                 setGridAdapter();
                 break;
-
+            case R.id.btn_common:
+                setCommonAdapter();
+                break;
         }
     }
 }
