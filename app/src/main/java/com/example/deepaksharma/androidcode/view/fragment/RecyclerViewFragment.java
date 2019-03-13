@@ -86,7 +86,7 @@ public class RecyclerViewFragment extends BaseFragment {
     }
     private void setCommonAdapter() {
         mGridAdapter = null;
-        mCommonAdapter = new CommonRecyclerViewAdapter(RecyclerViewFragment.this, getListBean());
+        mCommonAdapter = new CommonRecyclerViewAdapter(getListBean());
         mBinding.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         mBinding.recyclerView.setAdapter(mCommonAdapter);
     }

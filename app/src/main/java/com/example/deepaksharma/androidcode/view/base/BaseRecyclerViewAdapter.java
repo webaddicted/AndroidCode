@@ -9,16 +9,16 @@ import android.view.ViewGroup;
 
 public abstract class BaseRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final String TAG = BaseRecyclerViewAdapter.class.getSimpleName();
-    protected abstract int getLayoutId();
+    protected abstract int getLayoutId(int viewType);
     protected abstract int getListSize();
-    protected abstract void onBindTo(ViewDataBinding rowBinding, int adapterPosition, int position);
+    protected abstract void onBindTo(ViewDataBinding rowBinding,int position);
 
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ViewDataBinding rowBinding = DataBindingUtil.
                 inflate(LayoutInflater.from(parent.getContext()),
-                        getLayoutId(),
+                        getLayoutId(viewType),
                         parent, false);
         return new BaseRecyclerViewAdapter.ViewHolder(rowBinding);
     }
@@ -42,7 +42,9 @@ public abstract class BaseRecyclerViewAdapter extends RecyclerView.Adapter<Recyc
         }
 
         public void binding(int position) {
-            onBindTo(mRowBinding, getAdapterPosition(), position);
+//            sometime adapter position  is -1 that case handle by position
+            if (getAdapterPosition()>=0) onBindTo(mRowBinding, getAdapterPosition());
+            else onBindTo(mRowBinding, position);
         }
     }
 }
