@@ -1,5 +1,6 @@
 package com.example.deepaksharma.androidcode.view.base;
 
+import android.Manifest;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -14,6 +15,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.deepaksharma.androidcode.R;
+import com.example.deepaksharma.androidcode.global.FileUtils;
+import com.example.deepaksharma.androidcode.global.PermissionsHandler;
 import com.example.deepaksharma.androidcode.global.constant.AppConstant;
 import com.example.deepaksharma.androidcode.global.image.ImagePicker;
 import com.example.deepaksharma.androidcode.model.eventBus.EventBusListener;
@@ -27,8 +30,9 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class BaseActivity extends AppCompatActivity implements LayoutListener {
+public class BaseActivity extends AppCompatActivity implements LayoutListener, PermissionsHandler.PermissionListener {
     private HomeViewModel mHomeViewModel;
 
     @Override
@@ -121,6 +125,34 @@ public class BaseActivity extends AppCompatActivity implements LayoutListener {
                 .setGuidelines(CropImageView.Guidelines.ON)
                 .setMultiTouchEnabled(true)
                 .start(this);
+    }
+
+    protected void checkStoragePermission() {
+        List<String> multiplePermission = new ArrayList<>();
+        multiplePermission.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        multiplePermission.add(Manifest.permission.READ_EXTERNAL_STORAGE);
+        multiplePermission.add(Manifest.permission.CAMERA);
+
+        if (PermissionsHandler.checkMultiplePermission(multiplePermission)) {
+            FileUtils.createApplicationFolder();
+            mHomeViewModel.mIsPermissionGranted.postValue(true);
+        } else
+            PermissionsHandler.requestMultiplePermission(multiplePermission, this);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        PermissionsHandler.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @Override
+    public void onPermissionGranted(List<String> mCustomPermission) {
+        mHomeViewModel.mIsPermissionGranted.postValue(true);
+    }
+
+    @Override
+    public void onPermissionDenied(List<String> mCustomPermission) {
+        mHomeViewModel.mIsPermissionGranted.postValue(false);
     }
 
 

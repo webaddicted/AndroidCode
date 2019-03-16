@@ -4,12 +4,9 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.view.View;
 
 import com.example.deepaksharma.androidcode.R;
@@ -17,17 +14,14 @@ import com.example.deepaksharma.androidcode.databinding.FragmentImageBinding;
 import com.example.deepaksharma.androidcode.global.StorageInfoUtils;
 import com.example.deepaksharma.androidcode.global.constant.AppConstant;
 import com.example.deepaksharma.androidcode.utils.GlobalUtilities;
-import com.example.deepaksharma.androidcode.view.adapter.CommonRecyclerViewAdapter;
 import com.example.deepaksharma.androidcode.view.adapter.DeviceImageRecyclerViewAdapter;
 import com.example.deepaksharma.androidcode.view.base.BaseFragment;
 import com.example.deepaksharma.androidcode.view.home.HomeActivity;
 import com.example.deepaksharma.androidcode.viewModel.home.HomeViewModel;
-import com.google.gson.Gson;
 import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.io.File;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ImageFragment extends BaseFragment {
@@ -75,7 +69,7 @@ public class ImageFragment extends BaseFragment {
         super.onClick(v);
         switch (v.getId()) {
             case R.id.btn_all_image:
-                setAdapter();
+                checkPermission();
                 break;
             case R.id.btn_crop_image:
                 cropImage();
@@ -87,6 +81,14 @@ public class ImageFragment extends BaseFragment {
                 whatAppTypeImage();
                 break;
         }
+    }
+
+    private void checkPermission() {
+        checkStoragePermission();
+        mHomeViewModel.mIsPermissionGranted.observe(this, permissionGranted -> {
+            if (permissionGranted) setAdapter();
+            else GlobalUtilities.showToast(getResources().getString(R.string.permission_require));
+        });
     }
 
     private void setAdapter() {

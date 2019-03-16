@@ -91,4 +91,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         ((BaseLocation) getActivity()).stopLocationUpdates();
     }
 
+    public void checkStoragePermission(){
+        ((BaseActivity) getActivity()).checkStoragePermission();
+    }
 }

@@ -132,6 +132,7 @@
     <string name="capture_image_in_bg">capture image in background</string>
     <string name="whats_app_type">what\'s app type</string>
     <string name="device_image_title">Device image</string>
+    <string name="permission_require">permission require to access this feature.</string>
     <string-array name="image_loader">
         <item>app_color</item><!--app color-->
         <item>other image</item><!--other image-->

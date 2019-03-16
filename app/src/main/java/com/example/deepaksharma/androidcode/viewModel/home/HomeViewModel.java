@@ -10,4 +10,5 @@ import java.util.ArrayList;
 public class HomeViewModel extends ViewModel {
     public MutableLiveData<ArrayList<String>> mSpeechToText = new MutableLiveData<>();
     public  MutableLiveData<CropImage.ActivityResult>mCroppedImage = new MutableLiveData<>();
+    public MutableLiveData<Boolean> mIsPermissionGranted = new MutableLiveData<>();
 }
