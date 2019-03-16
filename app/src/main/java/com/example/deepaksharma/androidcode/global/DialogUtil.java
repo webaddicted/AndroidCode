@@ -2,13 +2,19 @@ package com.example.deepaksharma.androidcode.global;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.example.deepaksharma.androidcode.R;
@@ -251,4 +257,52 @@ public class DialogUtil {
         return alertDialog;
     }
 
+//    {START SHOW DIALOG STYLE}
+//    apply on resume method
+
+    /**
+     * show dialog with transprant background
+     *
+     * @param activity reference of activity
+     * @param dialog   reference of dialog
+     */
+    public static void modifyDialogBounds(Activity activity, Dialog dialog) {
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(activity, android.R.color.transparent)));
+        dialog.getWindow().getDecorView().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        Window window = dialog.getWindow();
+        lp.copyFrom(window.getAttributes());
+        //This makes the dialog take up the full width
+        //lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.width = (int) (dialog.getContext().getResources().getDisplayMetrics().widthPixels * 0.83);
+        //  lp.height = (int) (dialog.getContext().getResources().getDisplayMetrics().heightPixels * 0.55);
+        window.setAttributes(lp);
+    }
+
+    /**
+     * show dialog in full screen
+     *
+     * @param activity reference of activity
+     * @param dialog   reference of dialog
+     */
+    public static void fullScreenDialogBounds(Activity activity, Dialog dialog) {
+        if (dialog != null && dialog.getWindow() != null) {
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(activity, android.R.color.transparent)));
+            dialog.getWindow().getDecorView().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            if (dialog != null) {
+                int width = ViewGroup.LayoutParams.MATCH_PARENT;
+                int height = ViewGroup.LayoutParams.MATCH_PARENT;
+                dialog.getWindow().setLayout(width, height);
+            }
+            WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+            Window window = dialog.getWindow();
+            lp.copyFrom(window.getAttributes());
+            //This makes the dialog take up the full width
+            //lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+            lp.width = (int) (dialog.getContext().getResources().getDisplayMetrics().widthPixels * 0.83);
+            //  lp.height = (int) (dialog.getContext().getResources().getDisplayMetrics().heightPixels * 0.55);
+            window.setAttributes(lp);
+        }
+    }
+//    {STOP SHOW DIALOG STYLE}
 }

@@ -38,15 +38,13 @@ private static final String TAG = NetworkChangeReceiver.class.getSimpleName();
     @Override
     public void onReceive(Context context, Intent intent) {
         Log.d("TAG", "onReceive: ");
-        if (GlobalUtilities.getNetworkState()) {
+        if (GlobalUtilities.isNetworkAvailable()) {
             EventBus.getDefault().post(new NetworkListenerBean(true));
-            GlobalUtilities.showToast(context.getResources().getString(R.string.internet_connected));
             if (connectivityReceiverListener != null)
                 connectivityReceiverListener.onNetworkConnectionChanged(true);
         } else {
             AppApplication.getInstance().setIsNetworkConnected(false);
             EventBus.getDefault().post(new NetworkListenerBean(false));
-            GlobalUtilities.showToast(context.getResources().getString(R.string.no_network_msg));
             if (connectivityReceiverListener != null)
                 connectivityReceiverListener.onNetworkConnectionChanged(false);
         }

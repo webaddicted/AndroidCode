@@ -17,6 +17,7 @@ import com.example.deepaksharma.androidcode.global.constant.AppConstant;
 import com.example.deepaksharma.androidcode.view.base.BaseLocation;
 import com.example.deepaksharma.androidcode.view.fragment.TaskListFragment;
 import com.example.deepaksharma.androidcode.viewModel.home.HomeViewModel;
+import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.util.ArrayList;
 
@@ -35,7 +36,7 @@ public class HomeActivity extends BaseLocation implements View.OnClickListener {
     @Override
     public void initUI(ViewDataBinding binding) {
         mBinding = (ActivityHomeBinding) binding;
-        mHomeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
+
         init();
         clickListener();
     }
@@ -83,26 +84,12 @@ public class HomeActivity extends BaseLocation implements View.OnClickListener {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && data != null) {
-            switch (requestCode) {
-                case AppConstant.REQUEST_CODE_SPEECH_INPUT: {
-                        ArrayList<String> result = data
-                                .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-                        mHomeViewModel.mSpeechToText.postValue(result);
-                    break;
-                }
-            }
-        }
-    }
-
-    @Override
     public void getCurrentLocation(@NonNull Location location, @NonNull String address) {
         Log.d(TAG, "getCurrentLocation: getLatitude ->  " + location.getLatitude() + "   getLongitude  ->   " + location.getLongitude());
         if (address != null) {
             Log.d(TAG, "getCurrentLocation: getLatitude ->  " + location.getLatitude() + "   getLongitude  ->   " + location.getLongitude() + "  address  ->  " + address);
         }
     }
+
 }
 

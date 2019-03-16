@@ -126,5 +126,14 @@
     <string name="ssl_certificate_mismatch">The certificate Hostname mismatch.</string>
     <string name="ssl_certificate_notvalid">The certificate is not yet valid.</string>
     <string name="common_adapter">common adapter</string>
-
+    <string name="get_all_image">get all device image</string>
+    <string name="image_view_type">image view type</string>
+    <string name="crop_image">crop_image</string>
+    <string name="capture_image_in_bg">capture image in background</string>
+    <string name="whats_app_type">what\'s app type</string>
+    <string name="device_image_title">Device image</string>
+    <string-array name="image_loader">
+        <item>app_color</item><!--app color-->
+        <item>other image</item><!--other image-->
+    </string-array>
 </resources>

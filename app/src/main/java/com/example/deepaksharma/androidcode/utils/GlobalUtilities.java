@@ -12,6 +12,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
@@ -22,6 +23,7 @@ import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -35,18 +37,24 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.global.AppApplication;
+import com.example.deepaksharma.androidcode.global.FileUtils;
 import com.example.deepaksharma.androidcode.global.constant.AppConstant;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.decode.BaseImageDecoder;
 
+import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Modifier;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 
 import static android.support.constraint.Constraints.TAG;
 
@@ -141,19 +149,55 @@ public class GlobalUtilities {
             Log.d(TAG, "hideKeyboard: " + ignored);
         }
     }
+
+    /***
+     * Show SoftInput Keyboard
+     * @param activity reference of current activity
+     */
+    public static void showKeyboard(Activity activity) {
+        if (activity != null) {
+            InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (imm != null)
+                imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+        }
+    }
+
 //    {END HIDE SHOW KEYBOARD}
+
+
+//      {START STRING TO JSON & JSON TO STRING}
+
+    /**
+     * @param json  json String converted by Gson to string
+     * @param clazz referance of class type like MyBean.class
+     * @param <T>
+     * @return bean referance
+     */
+    public static <T> T stringToJson(String json, Class<T> clazz) {
+        return new GsonBuilder()
+                .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
+                .create().fromJson(json, clazz);
+    }
+
+    /**
+     * @param clazz referance of any bean
+     * @return
+     */
+    public static String jsonToString(Class clazz) {
+        return new Gson().toJson(clazz);
+    }
+
+    //{END STRING TO JSON & JSON TO STRING}
 
     /**
      * Gets network state.
      *
      * @return the network state
      */
-    public static boolean getNetworkState() {
-        ConnectivityManager cm =
-                (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        return activeNetwork != null &&
-                activeNetwork.isConnectedOrConnecting();
+    public static boolean isNetworkAvailable() {
+        ConnectivityManager connMgr = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = connMgr.getActiveNetworkInfo();
+        return activeNetwork != null && activeNetwork.isAvailable() && activeNetwork.isConnected();
     }
 
     /**
@@ -173,103 +217,15 @@ public class GlobalUtilities {
         Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
     }
 
-
-    /**
-     * get lat long address using geocoder
-     *
-     * @param latitude
-     * @param longitude
-     * @return address
-     */
-    public static String getAddress(String latitude, String longitude) {
-        Geocoder geocoder;
-        List<Address> addresses;
-        String address = "";
-        geocoder = new Geocoder(mContext.getApplicationContext(), Locale.getDefault());
-
-        try {
-            addresses = geocoder.getFromLocation(Double.valueOf(latitude), Double.valueOf(longitude), 1);
-            if (addresses.size() > 0)
-                address = addresses.get(0).getAddressLine(0);
-        } catch (IOException e) {
-            e.printStackTrace();
-            Log.d(TAG, "getAddress: " + e);
-        } catch (IllegalArgumentException exception) {
-            exception.printStackTrace();
-            Log.d(TAG, "getAddress: " + exception);
-        }
-        return address;
-    }
-
-    /**
-     * get distance between two lat long
-     *
-     * @param currlat
-     * @param currlng
-     * @param givenlat
-     * @param givenlng
-     * @return distane in miles
-     */
-    public static double checkdistance(double currlat, double currlng, double givenlat, double givenlng) {
-
-        double earthRadius = 3958.75; // in miles, change to 6371 for kilometer output
-
-        double dLat = Math.toRadians(givenlat - currlat);
-        double dLng = Math.toRadians(givenlng - currlng);
-
-        double sindLat = Math.sin(dLat / 2);
-        double sindLng = Math.sin(dLng / 2);
-
-        double a = Math.pow(sindLat, 2) + Math.pow(sindLng, 2)
-                * Math.cos(Math.toRadians(currlat)) * Math.cos(Math.toRadians(givenlat));
-
-        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
-        double dist = earthRadius * c;
-
-        return dist; // output distance, in MILES
-    }
-//    {START SHOW IMAGE}
-
-    /**
-     * show image from url in circle
-     *
-     * @param imgUrl   image url
-     * @param targetIv image view
-     */
-    public static void showCircularImageUsingUrl(String imgUrl, ImageView targetIv) {
-        Glide.with(mContext)
-                .load(imgUrl).asBitmap()
-                .error(R.drawable.logo)
-                .placeholder(R.drawable.logo)
-                .into(new BitmapImageViewTarget(targetIv) {
-                    @Override
-                    protected void setResource(Bitmap resource) {
-                        RoundedBitmapDrawable circularBitmapDrawable =
-                                RoundedBitmapDrawableFactory.create(mContext.getResources(), resource);
-                        circularBitmapDrawable.setCircular(true);
-                        targetIv.setImageDrawable(circularBitmapDrawable);
-                    }
-                });
-    }
-
-    /**
-     * show image from url
-     *
-     * @param imgUrl   image url
-     * @param targetIv image view
-     */
-    public static void showImageUsingUrl(String imgUrl, final ImageView targetIv) {
-        Glide.with(mContext)
-                .load(imgUrl).asBitmap()
-                .error(R.drawable.logo)
-                .placeholder(R.drawable.logo)
-                .into(targetIv);
-    }
-
-    //    {END SHOW IMAGE}
-
     //block up when loder show on screen
+
+    /**
+     * handle ui
+     *
+     * @param activity
+     * @param view
+     * @param isBlockUi
+     */
     public static void handleUI(Activity activity, View view, boolean isBlockUi) {
         if (isBlockUi) {
             activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
@@ -279,46 +235,6 @@ public class GlobalUtilities {
             activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
             view.setVisibility(View.GONE);
         }
-    }
-
-    public static void modifyDialogBounds(Activity activity, Dialog dialog) {
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(activity, android.R.color.transparent)));
-        dialog.getWindow().getDecorView().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-        Window window = dialog.getWindow();
-        lp.copyFrom(window.getAttributes());
-        //This makes the dialog take up the full width
-        //lp.width = WindowManager.LayoutParams.MATCH_PARENT;
-        lp.width = (int) (dialog.getContext().getResources().getDisplayMetrics().widthPixels * 0.83);
-        //  lp.height = (int) (dialog.getContext().getResources().getDisplayMetrics().heightPixels * 0.55);
-        window.setAttributes(lp);
-    }
-
-    public static ImageLoaderConfiguration getImageConfig() {
-        ImageLoaderConfiguration config = null;
-        if (config == null) {
-            config = new ImageLoaderConfiguration.Builder(AppApplication.getInstance())
-//                    .memoryCacheSize(175 * 1024)
-//                    .diskCacheSize(175 * 1024)
-//                    .imageDecoder(new SvgDecoder().decode())
-                    .imageDecoder(new BaseImageDecoder(true))
-                    .defaultDisplayImageOptions(imageLoaders())
-                    .build();
-        }
-        return config;
-    }
-
-    public static DisplayImageOptions imageLoaders() {
-        DisplayImageOptions options = null;
-        if (options == null) {
-            options = new DisplayImageOptions.Builder()
-                    .showImageOnLoading(R.drawable.error_img)
-                    .showImageOnFail(R.drawable.error_img)
-                    .cacheInMemory(true)
-                    .cacheOnDisk(true)
-                    .build();
-        }
-        return options;
     }
 
     public static void setSpannable(TextView textView, String txtSpannable, int starText, int endText) {
@@ -333,7 +249,8 @@ public class GlobalUtilities {
     public static ViewDataBinding bindView(Activity activity, int custom_dialog) {
         return DataBindingUtil.inflate(LayoutInflater.from(activity), custom_dialog, null, false);
     }
-    public static void btnClickAnimation(View view){
+
+    public static void btnClickAnimation(View view) {
         Animation fadeAnimation = AnimationUtils.loadAnimation(view.getContext(), R.anim.fade_in);
         view.startAnimation(fadeAnimation);
     }
@@ -341,7 +258,21 @@ public class GlobalUtilities {
     public static ViewDataBinding getLayoutBinding(Context context, int layout) {
         return DataBindingUtil.
                 inflate(LayoutInflater.from(context),
-                       layout,
-                        null,false);
+                        layout,
+                        null, false);
     }
+    /**
+     * @param sizeOfRandomString length of random string
+     * @return generate a random string
+     */
+    public static String getRandomString(final int sizeOfRandomString) {
+        String ALLOWED_CHARACTERS = "0123456789qwertyuiopasdfghjklzxcvbnm";
+        final Random random = new Random();
+        final StringBuilder sb = new StringBuilder(sizeOfRandomString);
+        for (int i = 0; i < sizeOfRandomString; ++i)
+            sb.append(ALLOWED_CHARACTERS.charAt(random.nextInt(ALLOWED_CHARACTERS.length())));
+        return sb.toString();
+    }
+
+
 }

@@ -344,4 +344,33 @@ public abstract class BaseLocation extends BaseActivity implements
         MIN_DISTANCE_CHANGE_FOR_UPDATES = 1;
     }
 
+    /**
+     * get distance between two lat long
+     *
+     * @param currlat
+     * @param currlng
+     * @param givenlat
+     * @param givenlng
+     * @return distane in miles
+     */
+    public static double checkDistance(double currlat, double currlng, double givenlat, double givenlng) {
+
+        double earthRadius = 3958.75; // in miles, change to 6371 for kilometer output
+
+        double dLat = Math.toRadians(givenlat - currlat);
+        double dLng = Math.toRadians(givenlng - currlng);
+
+        double sindLat = Math.sin(dLat / 2);
+        double sindLng = Math.sin(dLng / 2);
+
+        double a = Math.pow(sindLat, 2) + Math.pow(sindLng, 2)
+                * Math.cos(Math.toRadians(currlat)) * Math.cos(Math.toRadians(givenlat));
+
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+        double dist = earthRadius * c;
+
+        return dist; // output distance, in MILES
+    }
+
 }

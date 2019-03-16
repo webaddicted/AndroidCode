@@ -10,4 +10,6 @@ public class AppConstant {
     public static final String DATE_FORMAT1 = "dd/MM/yyyy";
     public static final String DATE_FORMAT_SRC = "yyyy-MM-dd'T'HH:mm:ss'Z'";
     public static final String DATE_FORMAT_DST = "dd MMM yyyy hh:mm:ss a";
+    public static final String SELECTED_POSITION = "selected_position";
+    public static final String GALLERY_IMAGE = "gallery_image";
 }

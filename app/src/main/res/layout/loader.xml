@@ -5,6 +5,9 @@
         android:id="@+id/parent_loader"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:gravity="center"
         android:orientation="vertical"
         android:visibility="gone">
@@ -13,6 +16,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_margin="@dimen/dp28"
             android:src="@raw/bubble_loader1" />
+
     </LinearLayout>
 </layout>

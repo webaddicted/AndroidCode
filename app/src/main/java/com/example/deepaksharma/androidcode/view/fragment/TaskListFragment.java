@@ -115,6 +115,7 @@ public class TaskListFragment extends BaseFragment {
             navigateScreen(ExpendableSpinnerListFragment.TAG);
         else if (click.equals("elaborate recycler view"))
             navigateScreen(ElaborateRecyclerFragment.TAG);
+        else if (click.equals("image")) navigateScreen(ImageFragment.TAG);
 
 
     }
@@ -149,6 +150,8 @@ public class TaskListFragment extends BaseFragment {
             frm = ExpendableSpinnerListFragment.getInstance(getArguments());
         else if (tag.equals(ElaborateRecyclerFragment.TAG))
             frm = ElaborateRecyclerFragment.getInstance(getArguments());
+        else if (tag.equals(ImageFragment.TAG))
+            frm = ImageFragment.getInstance(getArguments());
         navigateFragment(R.id.container, frm, true);
     }
 

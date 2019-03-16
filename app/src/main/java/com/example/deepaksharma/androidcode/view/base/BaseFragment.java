@@ -11,11 +11,10 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AnimationUtils;
 
 import com.example.deepaksharma.androidcode.model.eventBus.EventBusListener;
 import com.example.deepaksharma.androidcode.utils.GlobalUtilities;
-import com.example.deepaksharma.androidcode.view.home.HomeActivity;
+import com.theartofdev.edmodo.cropper.CropImage;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -91,4 +90,5 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     public void stopUpdateLocation() {
         ((BaseLocation) getActivity()).stopLocationUpdates();
     }
+
 }

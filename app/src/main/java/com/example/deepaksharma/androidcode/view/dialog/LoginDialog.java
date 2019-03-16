@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.CustomDialogBinding;
+import com.example.deepaksharma.androidcode.global.DialogUtil;
 import com.example.deepaksharma.androidcode.utils.GlobalUtilities;
 import com.example.deepaksharma.androidcode.view.base.BaseDialogFragment;
 import com.example.deepaksharma.androidcode.view.home.HomeActivity;
@@ -45,7 +46,7 @@ public class LoginDialog extends BaseDialogFragment {
     @Override
     public void onResume() {
         super.onResume();
-        GlobalUtilities.modifyDialogBounds(getActivity(), getDialog());
+        DialogUtil.modifyDialogBounds(getActivity(), getDialog());
     }
 
     @Override

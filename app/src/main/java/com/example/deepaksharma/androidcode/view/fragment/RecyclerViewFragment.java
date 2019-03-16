@@ -72,18 +72,16 @@ public class RecyclerViewFragment extends BaseFragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
-
             }
         });
     }
 
     private List<String> getListBean() {
         List<String> mList = new ArrayList<>();
-        for (int i = 0; i < 50; i++) {
-            mList.add("task - # " + i);
-        }
+        for (int i = 0; i < 50; i++) mList.add("task - # " + i);
         return mList;
     }
+
     private void setCommonAdapter() {
         mGridAdapter = null;
         mCommonAdapter = new CommonRecyclerViewAdapter(getListBean());

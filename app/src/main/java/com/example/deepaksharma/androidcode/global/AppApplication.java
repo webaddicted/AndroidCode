@@ -30,9 +30,9 @@ public class AppApplication extends Application {
                 .build());
 //        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder().setDefaultFontPath("fonts/Ciscopic-Regular.ttf").setFontAttrId(R.attr.fontPath).build());
         PreferenceUtils.getInstance(getApplicationContext());
-        mIsNetworkConnected = GlobalUtilities.getNetworkState();
+        mIsNetworkConnected = GlobalUtilities.isNetworkAvailable();
         registerReceiver(mNetworkReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
-        ImageLoader.getInstance().init(GlobalUtilities.getImageConfig());
+        ImageLoader.getInstance().init(ImageLoaderUtils.getImageConfig());
     }
 
     /**

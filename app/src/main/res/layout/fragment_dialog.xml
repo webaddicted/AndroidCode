@@ -18,7 +18,6 @@
             android:layout_marginTop="@dimen/dp15"
             android:text="@string/two_event_dialog" />
 
-
         <Button
             android:id="@+id/btn_custom_dialog"
             style="@style/Button"

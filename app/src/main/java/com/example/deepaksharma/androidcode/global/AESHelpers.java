@@ -36,7 +36,6 @@ public class AESHelpers {
     //togglable log option (please turn off in live!)
     public static boolean DEBUG_LOG_ENABLED = false;
 
-
     /**
      * Generates SHA256 hash of the password which is used as key
      *

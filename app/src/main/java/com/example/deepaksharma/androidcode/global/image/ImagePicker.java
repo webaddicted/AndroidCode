@@ -1,4 +1,4 @@
-package com.example.deepaksharma.androidcode.global;
+package com.example.deepaksharma.androidcode.global.image;
 
 import android.app.Activity;
 import android.content.ContentUris;
@@ -14,6 +14,8 @@ import android.provider.MediaStore;
 import android.util.Log;
 
 import com.example.deepaksharma.androidcode.R;
+import com.example.deepaksharma.androidcode.global.CompressImage;
+import com.example.deepaksharma.androidcode.global.FileUtils;
 
 import java.io.File;
 import java.util.ArrayList;

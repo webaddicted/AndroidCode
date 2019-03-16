@@ -31,9 +31,7 @@ public class CompressImage {
         Bitmap scaledBitmap = null;
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
-
         Bitmap bmp = BitmapFactory.decodeFile(filePath, options);
-
         int actualHeight = options.outHeight;
         int actualWidth = options.outWidth;
         float maxHeight = 816.0f;
