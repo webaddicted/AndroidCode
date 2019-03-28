@@ -23,28 +23,18 @@ import java.util.List;
 
 public class ImagePicker {
     private static final String TAG = ImagePicker.class.getSimpleName();
-    public static final int REQUEST_CAMERA = 5000;
-    public static final int SELECT_FILE = 5001;
-    public static final int PICK_IMAGE_MULTIPLE = 5002;
+    public static final int REQUEST_CAMERA_VIDEO = 5000;
+//    public static final int SELECT_FILE = 5001;
+    public static final int SELECT_FILE_FROM_GALLERY = 5002;
+//    private static final int RECORD_VIDEO = 5003;
     private static ImagePickerListener mImagePickerListener;
-    private static String imageEncoded;
+//    private static String imageEncoded;
     private static ArrayList<File> selectedImage;
     public static String[] mMimeTypes = {"image/jpeg", "image/png", "image/jpg", "video/mp4"};
-    public static String[] mMimeTypesSingle = {"image/jpeg", "image/png", "image/jpg"};
+    public static String[] mVideoMimeTypes = {"video/3gp", "video/mpeg", "video/avi", "video/mp4"};
+    public static String[] mImageMimeTypes = {"image/jpeg", "image/png", "image/jpg"};
+//    private static File mCaptureImageFile;
 
-    /**
-     * capture image for native camera
-     */
-    public static void captureRecordImage(Activity activity, ImagePickerListener imagePickerListener) {
-        mImagePickerListener = imagePickerListener;
-//        new Intent(MediaStore.INTENT_ACTION_STILL_IMAGE_CAMERA);
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        Intent takeVideoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
-        takeVideoIntent.putExtra("android.intent.extra.durationLimit", 58000);
-        Intent chooserIntent = Intent.createChooser(takePictureIntent, "Capture Image or Video");
-        chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[]{takeVideoIntent});
-        activity.startActivityForResult(chooserIntent, REQUEST_CAMERA);
-    }
 
     /**
      * capture image for native camera
@@ -52,30 +42,42 @@ public class ImagePicker {
     public static void captureImage(Activity activity, ImagePickerListener imagePickerListener) {
         mImagePickerListener = imagePickerListener;
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        activity.startActivityForResult(intent, REQUEST_CAMERA);
+        activity.startActivityForResult(intent, REQUEST_CAMERA_VIDEO);
     }
 
     /**
      * pick image from gallery
      */
-    public static void galleryImage(Activity activity, ImagePickerListener imagePickerListener) {
+    public static void selectImage(Activity activity, ImagePickerListener imagePickerListener) {
         mImagePickerListener = imagePickerListener;
-        //Intent intent = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//        Intent intent = new Intent();
-////        intent.setDataAndType(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
-//        intent.setType("image/*");
-//        intent.putExtra(Intent.EXTRA_MIME_TYPES, mMimeTypesSingle);
-//        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, false);
-//        intent.setAction(Intent.ACTION_GET_CONTENT);
-//        //intent.setType("image/*");
-//        activity.startActivityForResult(Intent.createChooser(intent, activity.getResources().getString(R.string.select_picture)),
-//                PICK_IMAGE_MULTIPLE);
-
         Intent intent = new Intent();
         intent.setType("image/*");
-        intent.putExtra(Intent.EXTRA_MIME_TYPES, mMimeTypesSingle);
+        intent.putExtra(Intent.EXTRA_MIME_TYPES, mImageMimeTypes);
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        activity.startActivityForResult(Intent.createChooser(intent, activity.getResources().getString(R.string.select_picture)), PICK_IMAGE_MULTIPLE);
+        activity.startActivityForResult(Intent.createChooser(intent, activity.getResources().getString(R.string.select_picture)), SELECT_FILE_FROM_GALLERY);
+    }
+
+    /**
+     * pick image from gallery
+     */
+    public static void selectVideo(Activity activity, ImagePickerListener imagePickerListener) {
+        mImagePickerListener = imagePickerListener;
+        Intent intent = new Intent();
+        intent.setType("video/*");
+        intent.putExtra(Intent.EXTRA_MIME_TYPES, mVideoMimeTypes);
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        activity.startActivityForResult(Intent.createChooser(intent, activity.getResources().getString(R.string.select_video)), SELECT_FILE_FROM_GALLERY);
+    }
+
+    /**
+     * capture image for native camera
+     */
+    public static void recordVideo(Activity activity, ImagePickerListener imagePickerListener) {
+        mImagePickerListener = imagePickerListener;
+        Intent takeVideoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+        takeVideoIntent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, 5);
+        takeVideoIntent.putExtra("EXTRA_VIDEO_QUALITY", 0);
+        activity.startActivityForResult(takeVideoIntent, REQUEST_CAMERA_VIDEO);
     }
 
     public static void selectMultipleImage(Activity activity, ImagePickerListener imagePickerListener) {
@@ -85,54 +87,58 @@ public class ImagePicker {
         intent.putExtra(Intent.EXTRA_MIME_TYPES, mMimeTypes);
         intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
         intent.setAction(Intent.ACTION_GET_CONTENT);
-//        intent.addCategory(Intent.CATEGORY_OPENABLE);
-//        intent.setType("*/*");
-        activity.startActivityForResult(Intent.createChooser(intent, activity.getResources().getString(R.string.select_picture)), PICK_IMAGE_MULTIPLE);
+        activity.startActivityForResult(Intent.createChooser(intent, activity.getResources().getString(R.string.select_picture)), SELECT_FILE_FROM_GALLERY);
     }
 
-    //    public static void selectGalleryImage(Activity activity, ImagePickerListener imagePickerListener) {
-//        mImagePickerListener = imagePickerListener;
-//        Intent intent = new Intent();
-//        intent.setType("image/*");
-//        intent.putExtra(Intent.EXTRA_MIME_TYPES, mMimeTypesSingle);
-////        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-//        intent.setAction(Intent.ACTION_GET_CONTENT);
-////        intent.addCategory(Intent.CATEGORY_OPENABLE);
-////        intent.setType("*/*");
-//        activity.startActivityForResult(Intent.createChooser(intent, activity.getResources().getString(R.string.select_picture)), PICK_IMAGE_MULTIPLE);
-//    }
+    /**
+     * capture image for native camera
+     */
+    public static void captureRecordImage(Activity activity, ImagePickerListener imagePickerListener) {
+        mImagePickerListener = imagePickerListener;
+//        Intent chooserIntent = new Intent(MediaStore.INTENT_ACTION_STILL_IMAGE_CAMERA);
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        Intent takeVideoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+        takeVideoIntent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, 5);
+        takeVideoIntent.putExtra("EXTRA_VIDEO_QUALITY", 0);
+        Intent chooserIntent = Intent.createChooser(takePictureIntent, "Capture Image or Video");
+        chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[]{takeVideoIntent});
+        activity.startActivityForResult(chooserIntent, REQUEST_CAMERA_VIDEO);
+    }
+
     public static void onActivityResult(Activity activity, int requestCode, int resultCode, Intent data) {
         List<File> file = new ArrayList<>();
-        File compressedFiles=null;
+        File compressedFiles = null;
         switch (requestCode) {
-            case REQUEST_CAMERA:
+            case REQUEST_CAMERA_VIDEO:
                 Bitmap bitmap = null;
                 if (data.getExtras() != null) {
                     bitmap = (Bitmap) data.getExtras().get("data");
-                    file.add(FileUtils.saveBitmapImage(bitmap));
+                    File originalFile = FileUtils.saveImage(bitmap);
+//                    updateGallery(activity, originalFile.toString());
+//                    compressedFiles = CompressImage.compressImage(activity, originalFile.toString());
+                    file.add(originalFile);
+//                    Log.d(TAG, "onActivityResult: old Image - " + FileUtils.getFileSizeInMbTest(originalFile) +
+//                            "\n compress image - " + FileUtils.getFileSizeInMbTest(compressedFiles));
                 } else if (data.getData() != null) {
+                    // in case of record video
                     file = getData(activity, data);
                 }
-//                 compressedFiles = CompressImage.compressImage(file.toString());
-//                Log.d(TAG, "onActivityResult: old Image - " + FileUtils.getFileSizeInMbTest(file.get(0)) +
-//                        "\n compress image - " + FileUtils.getFileSizeInMbTest(compressedFiles));
-////                file.clear();
-//                file.set(0,compressedFiles);
                 mImagePickerListener.imagePath(file);
                 break;
-            case SELECT_FILE:
-                Uri uri = data.getData();
-                file.add(FileUtils.getPathFromUri(activity, uri));
-//                Lg.d(TAG, "onActivityResult: "+LocalImage.getUriRealPath(uri));
-                mImagePickerListener.imagePath(file);
-                break;
-            case PICK_IMAGE_MULTIPLE:
+//            case SELECT_FILE:
+//                Uri uri = data.getData();
+//                file.add(FileUtils.getPathFromUri(activity, uri));
+//                mImagePickerListener.imagePath(file);
+//                break;
+            case SELECT_FILE_FROM_GALLERY:
                 List<File> files = getData(activity, data);
                 for (int i = 0; i < files.size(); i++) {
-                    if (FileUtils.getMimeType(files.get(i).toString()).equals(ImagePicker.mMimeTypes[0]) ||
-                            FileUtils.getMimeType(files.get(i).toString()).equals(ImagePicker.mMimeTypes[1]) ||
-                            FileUtils.getMimeType(files.get(i).toString()).equals(ImagePicker.mMimeTypes[2])) {
-                         compressedFiles = CompressImage.compressImage(activity,files.get(i).toString());
+                    String filePath = files.get(i).toString();
+                    filePath.substring(filePath.lastIndexOf(".") + 1);
+                    if (filePath.contains(ImagePicker.mMimeTypes[0]) ||
+                            filePath.contains(ImagePicker.mMimeTypes[1]) ||
+                            filePath.contains(ImagePicker.mMimeTypes[2])) {
+                        compressedFiles = CompressImage.compressImage(activity, files.get(i).toString());
                         Log.d(TAG, "onActivityResult: old Image - " + FileUtils.getFileSizeInMbTest(files.get(i)) +
                                 "\n compress image - " + FileUtils.getFileSizeInMbTest(compressedFiles));
                         files.set(i, compressedFiles);
@@ -156,45 +162,6 @@ public class ImagePicker {
         }
         return selectedImage;
     }
-
-//    private static ArrayList<String> getImage(Intent data) {
-//        String[] filePathColumn = {MediaStore.Images.Media.DATA};
-//        ArrayList<String> imagesEncodedList = new ArrayList<String>();
-//        if (data.getData() != null) {
-//            Uri mImageUri = data.getData();
-//            // Get the cursor
-//            Cursor cursor = activity.getContentResolver().query(mImageUri,
-//                    filePathColumn, null, null, null);
-//            // Move to first row
-//            cursor.moveToFirst();
-//            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-//            imageEncoded = cursor.getString(columnIndex);
-//            cursor.close();
-//        } else {
-//            if (data.getClipData() != null) {
-//                ClipData mClipData = data.getClipData();
-//                ArrayList<Uri> mArrayUri = new ArrayList<Uri>();
-//                for (int i = 0; i < mClipData.getItemCount(); i++) {
-//
-//                    ClipData.Item item = mClipData.getItemAt(i);
-//                    Uri uri = item.getUri();
-//                    mArrayUri.add(uri);
-//                    // Get the cursor
-//                    Cursor cursor = activity .getContentResolver().query(uri, filePathColumn, null, null, null);
-//                    // Move to first row
-//                    cursor.moveToFirst();
-//
-//                    int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-//                    imageEncoded = cursor.getString(columnIndex);
-//                    imagesEncodedList.add(imageEncoded);
-//                    cursor.close();
-//
-//                }
-//                Lg.d(TAG, "selected Images" + mArrayUri.size());
-//            }
-//        }
-//        return imagesEncodedList;
-//    }
 
     public interface ImagePickerListener {
         void imagePath(List<File> filePath);
@@ -319,5 +286,11 @@ public class ImagePicker {
     public static boolean isMediaDocument(Uri uri) {
         return "com.android.providers.media.documents".equals(uri.getAuthority());
     }
-
+    private static void updateGallery(Context context, String imagePath) {
+        Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+        File f = new File(imagePath);
+        Uri contentUri = Uri.fromFile(f);
+        mediaScanIntent.setData(contentUri);
+        context.sendBroadcast(mediaScanIntent);
+    }
 }

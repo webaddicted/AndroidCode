@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:background="@color/brown_light"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/relative"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/btn_boot"
+                    style="@style/Button"
+                    android:layout_marginLeft="@dimen/dp5"
+                    android:layout_marginRight="@dimen/dp5"
+                    android:text="@string/boot" />
+
+                <Button
+                    android:id="@+id/btn_sim_change_receiver"
+                    style="@style/Button"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="@dimen/dp5"
+                    android:layout_marginRight="@dimen/dp5"
+                    android:layout_toRightOf="@+id/btn_boot"
+                    android:text="@string/sim_change_receiver" />
+
+                <Button
+                    android:id="@+id/btn_sms_receiver"
+                    style="@style/Button"
+                    android:layout_below="@+id/btn_boot"
+                    android:layout_marginLeft="@dimen/dp5"
+                    android:layout_marginRight="@dimen/dp5"
+                    android:text="@string/sms_receiver" />
+
+                <Button
+                    android:id="@+id/btn_network_state_change"
+                    style="@style/Button"
+                    android:layout_below="@+id/btn_sim_change_receiver"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="@dimen/dp5"
+                    android:layout_marginRight="@dimen/dp5"
+                    android:text="@string/network_state_change" />
+
+                <Button
+                    android:id="@+id/btn_referral_code"
+                    style="@style/Button"
+                    android:layout_below="@+id/btn_sms_receiver"
+                    android:layout_marginLeft="@dimen/dp5"
+                    android:layout_marginRight="@dimen/dp5"
+                    android:text="@string/referral_code" />
+                <Button
+                    android:id="@+id/btn_local_receiver"
+                    style="@style/Button"
+                    android:layout_below="@+id/btn_network_state_change"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="@dimen/dp5"
+                    android:layout_marginRight="@dimen/dp5"
+                    android:layout_toRightOf="@+id/btn_list"
+                    android:text="@string/local_receiver" />
+                <!--<Button-->
+                    <!--android:id="@+id/btn_swipe_to_delete"-->
+                    <!--style="@style/Button"-->
+                    <!--android:layout_below="@+id/btn_end_less_scroll"-->
+                    <!--android:layout_marginLeft="@dimen/dp5"-->
+                    <!--android:layout_marginRight="@dimen/dp5"-->
+                    <!--android:text="@string/swipe_to_delete" />-->
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </FrameLayout>
+</layout>

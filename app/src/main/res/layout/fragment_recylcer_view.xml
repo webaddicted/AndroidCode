@@ -4,6 +4,7 @@
 
     <FrameLayout
         android:layout_width="match_parent"
+        android:background="@color/brown_light"
         android:layout_height="match_parent">
 
         <RelativeLayout
@@ -30,6 +31,7 @@
                     android:layout_marginRight="@dimen/dp5"
                     android:layout_toRightOf="@+id/btn_list"
                     android:text="@string/grid" />
+
                 <Button
                     android:id="@+id/btn_common"
                     style="@style/Button"
@@ -37,6 +39,41 @@
                     android:layout_marginLeft="@dimen/dp5"
                     android:layout_marginRight="@dimen/dp5"
                     android:text="@string/common_adapter" />
+
+                <Button
+                    android:id="@+id/btn_elaborate"
+                    style="@style/Button"
+                    android:layout_below="@+id/btn_grid"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="@dimen/dp5"
+                    android:layout_marginRight="@dimen/dp5"
+                    android:layout_toRightOf="@+id/btn_list"
+                    android:text="@string/elaborate_recycler_view_title" />
+
+                <Button
+                    android:id="@+id/btn_end_less_scroll"
+                    style="@style/Button"
+                    android:layout_below="@+id/btn_common"
+                    android:layout_marginLeft="@dimen/dp5"
+                    android:layout_marginRight="@dimen/dp5"
+                    android:text="@string/end_less_scroll" />
+                <Button
+                    android:id="@+id/btn_staggered"
+                    style="@style/Button"
+                    android:layout_below="@+id/btn_elaborate"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="@dimen/dp5"
+                    android:layout_marginRight="@dimen/dp5"
+                    android:layout_toRightOf="@+id/btn_list"
+                    android:text="@string/staggered_recycler_view" />
+                <Button
+                    android:id="@+id/btn_swipe_to_delete"
+                    style="@style/Button"
+                    android:layout_below="@+id/btn_end_less_scroll"
+                    android:layout_marginLeft="@dimen/dp5"
+                    android:layout_marginRight="@dimen/dp5"
+                    android:text="@string/swipe_to_delete" />
+
             </RelativeLayout>
 
             <EditText

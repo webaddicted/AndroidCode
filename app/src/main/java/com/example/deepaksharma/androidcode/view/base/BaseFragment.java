@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.model.eventBus.EventBusListener;
 import com.example.deepaksharma.androidcode.utils.GlobalUtilities;
 import com.theartofdev.edmodo.cropper.CropImage;
@@ -79,9 +80,11 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     public void getLocation() {
         ((BaseLocation) getActivity()).getLocation();
     }
+
     public void getLocation(@NonNull long timeInterval, @NonNull long fastInterval, @NonNull long displacement) {
         ((BaseLocation) getActivity()).getLocation(timeInterval, fastInterval, displacement);
     }
+
     public void getLocationWithAddress(@NonNull long timeInterval, @NonNull long fastInterval, @NonNull long displacement) {
         ((BaseLocation) getActivity()).getLocation(timeInterval, fastInterval, displacement);
         ((BaseLocation) getActivity()).isAddressEnabled(true);
@@ -91,7 +94,13 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         ((BaseLocation) getActivity()).stopLocationUpdates();
     }
 
-    public void checkStoragePermission(){
+    public void checkStoragePermission() {
         ((BaseActivity) getActivity()).checkStoragePermission();
     }
+
+    public String getImageLoader(int imageLoaderPos) {
+        String[] imageLoader = getResources().getStringArray(R.array.image_loader);
+        return imageLoader[imageLoaderPos];
+    }
+
 }

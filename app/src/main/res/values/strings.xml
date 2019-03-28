@@ -133,6 +133,27 @@
     <string name="whats_app_type">what\'s app type</string>
     <string name="device_image_title">Device image</string>
     <string name="permission_require">permission require to access this feature.</string>
+    <string name="capture_image">capture image</string>
+    <string name="record_video">record video</string>
+    <string name="compress_video">compress video</string>
+    <string name="crop_video">crop video</string>
+    <string name="capture_record_video">capture record video</string>
+    <string name="share_text">share text</string>
+    <string name="share_image">share image</string>
+    <string name="share_file_title">share file</string>
+    <string name="share_image_text">share image text</string>
+    <string name="REFERAL_TITLE"><![CDATA[Get back your lost &amp; stolen android mobile phone! Yes, its true! I found a great security app. \"Tesseract Power\" For mobile protection, download it free &amp; check it now.!]]></string>
+    <string name="share_local_image">share local image</string>
+    <string name="send_image_text_email">share image text on email</string>
+    <string name="end_less_scroll">end less scroll</string>
+    <string name="staggered_recycler_view">staggered view</string>
+    <string name="swipe_to_delete">swipe to delete</string>
+    <string name="boot">boot receiver</string>
+    <string name="sim_change_receiver">sim change receiver</string>
+    <string name="referral_code">referral code</string>
+    <string name="sms_receiver">sms receiver</string>
+    <string name="network_state_change">network state change</string>
+    <string name="local_receiver">local receiver</string>
     <string-array name="image_loader">
         <item>app_color</item><!--app color-->
         <item>other image</item><!--other image-->

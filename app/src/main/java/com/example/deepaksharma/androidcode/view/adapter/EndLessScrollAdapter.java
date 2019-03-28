@@ -1,30 +1,28 @@
 package com.example.deepaksharma.androidcode.view.adapter;
 
+import android.content.Context;
 import android.databinding.ViewDataBinding;
 
 import com.example.deepaksharma.androidcode.R;
-import com.example.deepaksharma.androidcode.databinding.RowGridBinding;
 import com.example.deepaksharma.androidcode.databinding.RowTextListBinding;
+import com.example.deepaksharma.androidcode.global.AppApplication;
 import com.example.deepaksharma.androidcode.view.base.BaseRecyclerViewAdapter;
+import com.example.deepaksharma.androidcode.view.fragment.RecyclerViewFragment;
 
 import java.util.List;
 
-public class CommonRecyclerViewAdapter extends BaseRecyclerViewAdapter {
+public class EndLessScrollAdapter extends BaseRecyclerViewAdapter {
     private final List<String> mListBean;
-
-    public CommonRecyclerViewAdapter(List<String> listBean) {
+    private final RecyclerViewFragment mRecyclerViewFragment;
+    private Context mContext = AppApplication.getInstance();
+    public EndLessScrollAdapter(RecyclerViewFragment recyclerViewFragment, List<String> listBean) {
+        this.mRecyclerViewFragment = recyclerViewFragment;
         this.mListBean = listBean;
-    }
-
-    private class VIEW_TYPES {
-        public static final int NORMAL = 1;
-        public static final int FOOTER = 2;
     }
 
     @Override
     protected int getLayoutId(int viewType) {
-        if (viewType == VIEW_TYPES.NORMAL) return R.layout.row_text_list;
-        else return R.layout.row_grid;
+        return R.layout.row_text_list;
     }
 
     @Override
@@ -33,24 +31,23 @@ public class CommonRecyclerViewAdapter extends BaseRecyclerViewAdapter {
     }
 
     @Override
-    public int getItemViewType(int position) {
-        if (position == getItemCount() - 1) return VIEW_TYPES.FOOTER;
-        else return VIEW_TYPES.NORMAL;
+    protected boolean isEndLessScroll() {
+        return true;
     }
+
 
     @Override
     protected void onBindTo(ViewDataBinding rowBinding, int position) {
         if (rowBinding instanceof RowTextListBinding) {
             RowTextListBinding mRowBinding = (RowTextListBinding) rowBinding;
             mRowBinding.txtName.setText(mListBean.get(position));
-        } else if (rowBinding instanceof RowGridBinding) {
-            RowGridBinding mRowGridBinding = (RowGridBinding) rowBinding;
-            mRowGridBinding.txtName.setText(mListBean.get(position));
         }
     }
 
     @Override
-    protected boolean isEndLessScroll() {
-        return false;
+    protected void loadData() {
+        super.loadData();
+        mRecyclerViewFragment.loadNewItems();
     }
+
 }

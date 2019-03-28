@@ -1,5 +1,6 @@
 package com.example.deepaksharma.androidcode.view.adapter;
 
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
@@ -13,6 +14,8 @@ import android.view.ViewGroup;
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.RowGridBinding;
 import com.example.deepaksharma.androidcode.databinding.RowTextListBinding;
+import com.example.deepaksharma.androidcode.global.AppApplication;
+import com.example.deepaksharma.androidcode.global.ImageLoaderUtils;
 import com.example.deepaksharma.androidcode.view.fragment.RecyclerViewFragment;
 
 import java.util.ArrayList;
@@ -25,6 +28,7 @@ public class RecyclerGridAdapter extends RecyclerView.Adapter<RecyclerGridAdapte
     private List<String> mAction;
     private List<String> searchArray;
     private String searchText;
+    private Context mContext = AppApplication.getInstance();
 
     public RecyclerGridAdapter(RecyclerViewFragment recyclerViewFragment, List<String> action) {
         this.mRecyclerViewFragment = recyclerViewFragment;
@@ -74,6 +78,8 @@ public class RecyclerGridAdapter extends RecyclerView.Adapter<RecyclerGridAdapte
         }
 
         public void binding() {
+            String[] imageLoader = mContext.getResources().getStringArray(R.array.image_loader);
+            ImageLoaderUtils.showImageUsingGLIDE(mAction.get(getAdapterPosition()), binding.img, imageLoader[1]);
 //            binding.card.setOnClickListener(view -> mRecyclerViewFragment.onClicks(mAction.get(ViewHolder.this.getAdapterPosition())));
         }
     }

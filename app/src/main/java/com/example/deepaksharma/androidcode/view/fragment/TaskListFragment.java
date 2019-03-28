@@ -42,7 +42,7 @@ public class TaskListFragment extends BaseFragment {
 
     String worktask[] = {"widgets", "webview", "dialog", "location", "login signup flow", "select multiple image", "dynamic layout",
             "shared preference", "device info", "speech to text", "animation", "recycler view", "expendable spinner list view",
-            "elaborate recycler view", "image"};
+            "image","share","receiver","services"};
 
 
     private TaskAdapter mHomeAdapter;
@@ -113,10 +113,10 @@ public class TaskListFragment extends BaseFragment {
         else if (click.equals("recycler view")) navigateScreen(RecyclerViewFragment.TAG);
         else if (click.equals("expendable spinner list view"))
             navigateScreen(ExpendableSpinnerListFragment.TAG);
-        else if (click.equals("elaborate recycler view"))
-            navigateScreen(ElaborateRecyclerFragment.TAG);
         else if (click.equals("image")) navigateScreen(ImageFragment.TAG);
-
+        else if (click.equals("share")) navigateScreen(ShareFragment.TAG);
+        else if (click.equals("receiver"))navigateScreen(ReceiverFragment.TAG);
+        else if (click.equals("services"))navigateScreen(ServicesFragment.TAG);
 
     }
 
@@ -148,11 +148,16 @@ public class TaskListFragment extends BaseFragment {
             frm = RecyclerViewFragment.getInstance(getArguments());
         else if (tag.equals(ExpendableSpinnerListFragment.TAG))
             frm = ExpendableSpinnerListFragment.getInstance(getArguments());
-        else if (tag.equals(ElaborateRecyclerFragment.TAG))
-            frm = ElaborateRecyclerFragment.getInstance(getArguments());
         else if (tag.equals(ImageFragment.TAG))
             frm = ImageFragment.getInstance(getArguments());
+        else if (tag.equals(ShareFragment.TAG))
+            frm = ShareFragment.getInstance(getArguments());
+        else if (tag.equals(ReceiverFragment.TAG))
+            frm = ReceiverFragment.getInstance(getArguments());
+        else if (tag.equals(ServicesFragment.TAG))
+            frm = ServicesFragment.getInstance(getArguments());
         navigateFragment(R.id.container, frm, true);
+
     }
 
     @Override

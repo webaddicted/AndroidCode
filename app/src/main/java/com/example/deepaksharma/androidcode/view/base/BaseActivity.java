@@ -19,8 +19,8 @@ import com.example.deepaksharma.androidcode.global.FileUtils;
 import com.example.deepaksharma.androidcode.global.PermissionsHandler;
 import com.example.deepaksharma.androidcode.global.constant.AppConstant;
 import com.example.deepaksharma.androidcode.global.image.ImagePicker;
+import com.example.deepaksharma.androidcode.model.NetworkListenerBean;
 import com.example.deepaksharma.androidcode.model.eventBus.EventBusListener;
-import com.example.deepaksharma.androidcode.utils.GlobalUtilities;
 import com.example.deepaksharma.androidcode.view.interfaces.LayoutListener;
 import com.example.deepaksharma.androidcode.viewModel.home.HomeViewModel;
 import com.theartofdev.edmodo.cropper.CropImage;
@@ -102,9 +102,8 @@ public class BaseActivity extends AppCompatActivity implements LayoutListener, P
                             .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     mHomeViewModel.mSpeechToText.postValue(resultSpeech);
                     break;
-                case ImagePicker.REQUEST_CAMERA:
-                case ImagePicker.SELECT_FILE:
-                case ImagePicker.PICK_IMAGE_MULTIPLE:
+                case ImagePicker.REQUEST_CAMERA_VIDEO:
+                case ImagePicker.SELECT_FILE_FROM_GALLERY:
                     ImagePicker.onActivityResult(this, requestCode, resultCode, data);
                     break;
                 case CropImage.PICK_IMAGE_CHOOSER_REQUEST_CODE:
@@ -155,5 +154,7 @@ public class BaseActivity extends AppCompatActivity implements LayoutListener, P
         mHomeViewModel.mIsPermissionGranted.postValue(false);
     }
 
-
+    @Subscribe
+    public void NetworkChangeListener(NetworkListenerBean networkListenerBean) {
+    }
 }

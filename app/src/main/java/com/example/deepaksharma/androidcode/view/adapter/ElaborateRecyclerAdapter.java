@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.RowGridBinding;
 import com.example.deepaksharma.androidcode.databinding.RowTextListBinding;
-import com.example.deepaksharma.androidcode.view.fragment.ElaborateRecyclerFragment;
+import com.example.deepaksharma.androidcode.view.fragment.RecyclerViewFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,12 +17,12 @@ import java.util.Locale;
 
 public class ElaborateRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final String TAG = ElaborateRecyclerAdapter.class.getSimpleName();
-    private ElaborateRecyclerFragment mElaborateRecyclerFragment;
+    private RecyclerViewFragment mElaborateRecyclerFragment;
     private List<String> mAction;
     private List<String> searchArray;
     private String searchText;
 
-    public ElaborateRecyclerAdapter(ElaborateRecyclerFragment elaborateRecyclerFragment, List<String> action) {
+    public ElaborateRecyclerAdapter(RecyclerViewFragment elaborateRecyclerFragment, List<String> action) {
         this.mElaborateRecyclerFragment = elaborateRecyclerFragment;
         this.mAction = action;
         this.searchArray = new ArrayList<>();

@@ -1,18 +1,15 @@
-package com.example.deepaksharma.androidcode.services;
+package com.example.deepaksharma.androidcode.receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.global.AppApplication;
 import com.example.deepaksharma.androidcode.model.NetworkListenerBean;
 import com.example.deepaksharma.androidcode.utils.GlobalUtilities;
 
 import org.greenrobot.eventbus.EventBus;
-
-import static android.support.constraint.Constraints.TAG;
 
 /**
  * Created by Deepak Sharma on 06/01/19.
@@ -37,7 +34,7 @@ private static final String TAG = NetworkChangeReceiver.class.getSimpleName();
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.d("TAG", "onReceive: ");
+        Log.d(TAG, "onReceive: ");
         if (GlobalUtilities.isNetworkAvailable()) {
             EventBus.getDefault().post(new NetworkListenerBean(true));
             if (connectivityReceiverListener != null)

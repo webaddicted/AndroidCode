@@ -6,7 +6,7 @@ import android.net.ConnectivityManager;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.global.sharedPref.PreferenceUtils;
-import com.example.deepaksharma.androidcode.services.NetworkChangeReceiver;
+import com.example.deepaksharma.androidcode.receiver.NetworkChangeReceiver;
 import com.example.deepaksharma.androidcode.utils.GlobalUtilities;
 import com.facebook.stetho.Stetho;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -28,6 +28,7 @@ public class AppApplication extends Application {
                 .setDefaultFontPath("fonts/angelina_script_regular.ttf")
                 .setFontAttrId(R.attr.fontPath)
                 .build());
+        FileUtils.createApplicationFolder();
 //        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder().setDefaultFontPath("fonts/Ciscopic-Regular.ttf").setFontAttrId(R.attr.fontPath).build());
         PreferenceUtils.getInstance(getApplicationContext());
         mIsNetworkConnected = GlobalUtilities.isNetworkAvailable();

@@ -1,17 +1,19 @@
 package com.example.deepaksharma.androidcode.global;
 
-import android.content.Context;
-import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Environment;
-import android.provider.MediaStore;
 import android.webkit.MimeTypeMap;
 
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class FileUtils {
     private static final String APP_FOLDER = "AndroidCode";
@@ -25,6 +27,8 @@ public class FileUtils {
         File f = new File(String.valueOf(Environment.getExternalStorageDirectory()), File.separator + APP_FOLDER);
         f.mkdirs();
         f = new File(String.valueOf(Environment.getExternalStorageDirectory()), File.separator + APP_FOLDER + SUB_PROFILE);
+        f.mkdirs();
+        f = new File(String.valueOf(Environment.getExternalStorageDirectory()), File.separator + APP_FOLDER + SEPARATOR + UPLOAD_IMAGE);
         f.mkdirs();
     }
 
@@ -41,22 +45,10 @@ public class FileUtils {
         return urlString.substring(urlString.lastIndexOf('/') + 1).split("\\?")[0].split("#")[0];
     }
 
-//    public static File getPathFromUri(Uri contentUri) {
-//        String res = null;
-//        String[] proj = {MediaStore.Images.Media.DATA};
-//        Cursor cursor = AppInjector.getActivity().getContentResolver().query(contentUri, proj, null, null, null);
-//        if (cursor.moveToFirst()) {
-//            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-//            res = cursor.getString(column_index);
-//        }
-//        cursor.close();
-//
-//        return new File(res);
-//    }
 
     public static File saveBitmapImage(Bitmap bitmap) {
         String filename = System.currentTimeMillis() + JPEG;
-        File dest = new File(subFolder(), filename);
+        File dest = new File(uploadFile(), filename);
         try {
             FileOutputStream out = new FileOutputStream(dest);
             bitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
@@ -68,39 +60,22 @@ public class FileUtils {
         return dest;
     }
 
-    public static File saveBitmapImg(Bitmap bitmap, String fileName) {
-        String filename = String.valueOf(System.currentTimeMillis());
-        if (fileName.endsWith(".png"))
-            filename = filename + PNG;
-        else filename = filename + JPEG;
-        File dest = new File(appFolder(), filename);
+    public static File saveImage(Bitmap image) {
+        String savedImagePath = null;
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss",
+                Locale.getDefault()).format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + ".jpg";
+        File imageFile = new File(subFolder(), imageFileName);
+        savedImagePath = imageFile.getAbsolutePath();
         try {
-            FileOutputStream out = new FileOutputStream(dest);
-            if (fileName.endsWith(".png"))
-                bitmap.compress(Bitmap.CompressFormat.PNG, 90, out);
-            else bitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
-
-            out.flush();
-            out.close();
+            OutputStream fOut = new FileOutputStream(imageFile);
+            image.compress(Bitmap.CompressFormat.JPEG, 100, fOut);
+            fOut.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return dest;
+        return imageFile;
     }
-
-    public static File getPathFromUri(Context context, Uri contentUri) {
-        String res = null;
-        String[] proj = {MediaStore.Images.Media.DATA};
-        Cursor cursor = context.getContentResolver().query(contentUri, proj, null, null, null);
-        if (cursor.moveToFirst()) {
-            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-            res = cursor.getString(column_index);
-        }
-        cursor.close();
-
-        return new File(res);
-    }
-
 
 
     public static File uploadFile() {
@@ -117,6 +92,8 @@ public class FileUtils {
         if (extension != null) {
             type = MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension);
         }
+        if (type == null)
+            type = MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension.toLowerCase());
         return type;
     }
 
@@ -140,8 +117,12 @@ public class FileUtils {
         long fileSizeInKB = fileSizeInBytes / 1024;
         // Convert the KB to MegaBytes (1 MB = 1024 KBytes)
         long fileSizeInMB = fileSizeInKB / 1024;
-        if (fileSizeInMB > 0) return fileSizeInMB+ " MB ";
-        else return fileSizeInKB+" KB ";
+        if (fileSizeInMB > 0) return fileSizeInMB + " MB ";
+        else return fileSizeInKB + " KB ";
     }
 
+    public static Bitmap getBitmapFromFile(File image) {
+        BitmapFactory.Options bmOptions = new BitmapFactory.Options();
+        return BitmapFactory.decodeFile(image.getAbsolutePath(),bmOptions);
+    }
 }

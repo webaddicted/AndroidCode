@@ -32,6 +32,11 @@ public class DeviceImageRecyclerViewAdapter extends BaseRecyclerViewAdapter {
     }
 
     @Override
+    protected boolean isEndLessScroll() {
+        return false;
+    }
+
+    @Override
     protected void onBindTo(ViewDataBinding rowBinding, int position) {
         if (rowBinding instanceof RowGridBinding) {
             RowGridBinding mRowGridBinding = (RowGridBinding) rowBinding;
@@ -40,6 +45,7 @@ public class DeviceImageRecyclerViewAdapter extends BaseRecyclerViewAdapter {
             mRowGridBinding.getRoot().setOnClickListener(v -> mImageFragment.onItemClick(position));
         }
     }
+
 
 }
 
