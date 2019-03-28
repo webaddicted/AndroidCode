@@ -154,6 +154,8 @@
     <string name="sms_receiver">sms receiver</string>
     <string name="network_state_change">network state change</string>
     <string name="local_receiver">local receiver</string>
+    <string name="phone_contact">phone contact</string>
+    <string name="get_sms">get sms</string>
     <string-array name="image_loader">
         <item>app_color</item><!--app color-->
         <item>other image</item><!--other image-->
