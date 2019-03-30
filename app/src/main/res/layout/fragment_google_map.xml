@@ -17,28 +17,28 @@
                 android:layout_height="wrap_content">
 
                 <Button
-                    android:id="@+id/btn_phone_contact"
+                    android:id="@+id/btn_google_map"
                     style="@style/Button"
                     android:layout_marginLeft="@dimen/dp5"
                     android:layout_marginRight="@dimen/dp5"
-                    android:text="@string/phone_contact" />
+                    android:text="@string/google_map" />
 
                 <Button
-                    android:id="@+id/btn_sms"
+                    android:id="@+id/btn_create_polyline"
                     style="@style/Button"
                     android:layout_alignParentRight="true"
                     android:layout_marginLeft="@dimen/dp5"
                     android:layout_marginRight="@dimen/dp5"
-                    android:layout_toRightOf="@+id/btn_boot"
-                    android:text="@string/get_sms" />
+                    android:layout_toRightOf="@+id/btn_google_map"
+                    android:text="@string/draw_polyline" />
 
-                <Button
-                    android:id="@+id/btn_capture_image"
-                    style="@style/Button"
-                    android:layout_below="@+id/btn_phone_contact"
-                    android:layout_marginLeft="@dimen/dp5"
-                    android:layout_marginRight="@dimen/dp5"
-                    android:text="@string/capture_image" />
+                <!--<Button-->
+                    <!--android:id="@+id/btn_capture_image"-->
+                    <!--style="@style/Button"-->
+                    <!--android:layout_below="@+id/btn_phone_contact"-->
+                    <!--android:layout_marginLeft="@dimen/dp5"-->
+                    <!--android:layout_marginRight="@dimen/dp5"-->
+                    <!--android:text="@string/capture_image" />-->
 
 
                 <!--<Button-->

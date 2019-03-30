@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">AndroidCode</string>
+    <string name="google_key">AIzaSyDHsSMsRL1Vg-olFv8B-EToYN5JX7nxbdo</string>
     <string name="no_network_msg">Please check your internet connection &amp; try again</string>
     <string name="lbl_please_wait">Please Wait...</string>
     <string name="internet_connected">network connected</string>
@@ -156,6 +157,13 @@
     <string name="local_receiver">local receiver</string>
     <string name="phone_contact">phone contact</string>
     <string name="get_sms">get sms</string>
+    <string name="read_phone_contact">read phone contact</string>
+    <string name="read_sms">read sms</string>
+    <string name="read_image">read image</string>
+    <string name="service_fragment_title">services</string>
+    <string name="read_call_log">read call log</string>
+    <string name="google_map">google map</string>
+    <string name="draw_polyline">draw polyline</string>
     <string-array name="image_loader">
         <item>app_color</item><!--app color-->
         <item>other image</item><!--other image-->

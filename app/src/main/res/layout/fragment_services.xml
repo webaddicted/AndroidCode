@@ -17,46 +17,46 @@
                 android:layout_height="wrap_content">
 
                 <Button
-                    android:id="@+id/btn_phone_contact"
+                    android:id="@+id/btn_read_phone_contact"
                     style="@style/Button"
                     android:layout_marginLeft="@dimen/dp5"
                     android:layout_marginRight="@dimen/dp5"
-                    android:text="@string/phone_contact" />
+                    android:text="@string/read_phone_contact" />
 
                 <Button
-                    android:id="@+id/btn_sms"
+                    android:id="@+id/btn_read_sms"
                     style="@style/Button"
                     android:layout_alignParentRight="true"
                     android:layout_marginLeft="@dimen/dp5"
                     android:layout_marginRight="@dimen/dp5"
-                    android:layout_toRightOf="@+id/btn_boot"
-                    android:text="@string/get_sms" />
+                    android:layout_toRightOf="@+id/btn_read_phone_contact"
+                    android:text="@string/read_sms" />
 
                 <Button
                     android:id="@+id/btn_capture_image"
                     style="@style/Button"
-                    android:layout_below="@+id/btn_phone_contact"
+                    android:layout_below="@+id/btn_read_phone_contact"
                     android:layout_marginLeft="@dimen/dp5"
                     android:layout_marginRight="@dimen/dp5"
                     android:text="@string/capture_image" />
 
 
-                <!--<Button-->
-                    <!--android:id="@+id/btn_network_state_change"-->
-                    <!--style="@style/Button"-->
-                    <!--android:layout_below="@+id/btn_sim_change_receiver"-->
-                    <!--android:layout_alignParentRight="true"-->
-                    <!--android:layout_marginLeft="@dimen/dp5"-->
-                    <!--android:layout_marginRight="@dimen/dp5"-->
-                    <!--android:text="@string/network_state_change" />-->
+                <Button
+                    android:id="@+id/btn_read_image"
+                    style="@style/Button"
+                    android:layout_below="@+id/btn_read_sms"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="@dimen/dp5"
+                    android:layout_marginRight="@dimen/dp5"
+                    android:text="@string/read_image" />
 
-                <!--<Button-->
-                    <!--android:id="@+id/btn_referral_code"-->
-                    <!--style="@style/Button"-->
-                    <!--android:layout_below="@+id/btn_sms_receiver"-->
-                    <!--android:layout_marginLeft="@dimen/dp5"-->
-                    <!--android:layout_marginRight="@dimen/dp5"-->
-                    <!--android:text="@string/referral_code" />-->
+                <Button
+                    android:id="@+id/btn_read_call_log"
+                    style="@style/Button"
+                    android:layout_below="@+id/btn_capture_image"
+                    android:layout_marginLeft="@dimen/dp5"
+                    android:layout_marginRight="@dimen/dp5"
+                    android:text="@string/read_call_log" />
                 <!--<Button-->
                     <!--android:id="@+id/btn_local_receiver"-->
                     <!--style="@style/Button"-->
@@ -75,7 +75,16 @@
                     <!--android:text="@string/swipe_to_delete" />-->
 
             </RelativeLayout>
-
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/relative"
+                android:layout_marginTop="@dimen/dp5"
+                />
         </RelativeLayout>
+        <include
+            android:id="@+id/loader"
+            layout="@layout/loader" />
     </FrameLayout>
 </layout>

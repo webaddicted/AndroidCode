@@ -42,7 +42,12 @@ public class DeviceImageRecyclerViewAdapter extends BaseRecyclerViewAdapter {
             RowGridBinding mRowGridBinding = (RowGridBinding) rowBinding;
             mRowGridBinding.txtName.setText(mListBean.get(position).getName());
             ImageLoaderUtils.showImageUsingGLIDE(mListBean.get(position), mRowGridBinding.img, getPlaceHolder(1));
-            mRowGridBinding.getRoot().setOnClickListener(v -> mImageFragment.onItemClick(position));
+            mRowGridBinding.getRoot().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mImageFragment != null) mImageFragment.onItemClick(position);
+                }
+            });
         }
     }
 

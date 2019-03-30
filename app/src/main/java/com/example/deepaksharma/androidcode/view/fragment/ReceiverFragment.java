@@ -114,15 +114,11 @@ public class ReceiverFragment extends BaseFragment {
     }
 
     private void localReceiver() {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-
-                Intent broadcastIntent = new Intent();
-                broadcastIntent.setAction(ACTION_UPDATE);
-                broadcastIntent.putExtra("Data", "Broadcast Data");
-                getActivity().sendBroadcast(broadcastIntent);
-            }
+        new Handler().postDelayed(() -> {
+            Intent broadcastIntent = new Intent();
+            broadcastIntent.setAction(ACTION_UPDATE);
+            broadcastIntent.putExtra("Data", "Broadcast Data");
+            getActivity().sendBroadcast(broadcastIntent);
         }, 3000);
 
     }
