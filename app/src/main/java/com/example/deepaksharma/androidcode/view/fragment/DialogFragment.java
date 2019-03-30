@@ -91,7 +91,7 @@ public class DialogFragment extends BaseFragment {
                 break;
             case R.id.btn_list_dialog:
                 DialogUtil.showListDialog(getActivity(), getResources().getString(R.string.select_country), getCountryList(), (dialog, which) -> {
-                        GlobalUtilities.showToast(getCountryList().get(which).toString());
+                    GlobalUtilities.showToast(getCountryList().get(which).toString());
                     dialog.dismiss();
                 });
                 break;

@@ -1,7 +1,7 @@
-<!-- French
- Code: fr. Folder name: values-fr-->
-<resources>
+<!--Japanese
 
+    Code: ja. Folder name: values-ja-->
+<resources>
     <string name="app_name">AndroidCode</string>
     <string name="no_network_msg">कृपया अपने इंटरनेट कनेक्शन की जांच करें &amp; पुनः प्रयास करें</string>
     <string name="lbl_please_wait">कृपया प्रतीक्षा करें...</string>

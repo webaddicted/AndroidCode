@@ -42,7 +42,7 @@ public class TaskListFragment extends BaseFragment {
 
     String worktask[] = {"widgets", "webview", "dialog", "location", "login signup flow", "select multiple image", "dynamic layout",
             "shared preference", "device info", "speech to text", "animation", "recycler view", "expendable spinner list view",
-            "image","share","receiver","services","google map"};
+            "image","share","receiver","services","google map","sqlite data base"};
 
 
     private TaskAdapter mHomeAdapter;
@@ -118,7 +118,7 @@ public class TaskListFragment extends BaseFragment {
         else if (click.equals("receiver"))navigateScreen(ReceiverFragment.TAG);
         else if (click.equals("services"))navigateScreen(ServicesFragment.TAG);
         else if (click.equals("google map"))navigateScreen(GoogleMapFragment.TAG);
-
+else if (click.equals("sqlite data base")) navigateScreen(SqliteDataBaseFragment.TAG);
     }
 
     /**
@@ -159,6 +159,8 @@ public class TaskListFragment extends BaseFragment {
             frm = ServicesFragment.getInstance(getArguments());
         else if (tag.equals(GoogleMapFragment.TAG))
             frm = GoogleMapFragment.getInstance(getArguments());
+        else if (tag.equals(SqliteDataBaseFragment.TAG))
+            frm = SqliteDataBaseFragment.getInstance(getArguments());
         navigateFragment(R.id.container, frm, true);
 
     }

@@ -13,6 +13,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.global.FileUtils;
@@ -23,6 +24,9 @@ import com.example.deepaksharma.androidcode.model.NetworkListenerBean;
 import com.example.deepaksharma.androidcode.model.eventBus.EventBusListener;
 import com.example.deepaksharma.androidcode.view.interfaces.LayoutListener;
 import com.example.deepaksharma.androidcode.viewModel.home.HomeViewModel;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
@@ -32,7 +36,10 @@ import org.greenrobot.eventbus.Subscribe;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.deepaksharma.androidcode.view.fragment.GoogleMapFragment.REQUEST_PLACE;
+
 public class BaseActivity extends AppCompatActivity implements LayoutListener, PermissionsHandler.PermissionListener {
+    private static final String TAG = BaseActivity.class.getSimpleName();
     private HomeViewModel mHomeViewModel;
 
     @Override
@@ -115,6 +122,14 @@ public class BaseActivity extends AppCompatActivity implements LayoutListener, P
                     CropImage.ActivityResult result = CropImage.getActivityResult(data);
                     mHomeViewModel.mCroppedImage.postValue(result);
                     break;
+                case REQUEST_PLACE:
+                    Place searchPlace = PlaceAutocomplete.getPlace(this, data);
+                    mHomeViewModel.mSearchedPlace.postValue(searchPlace);
+                    break;
+                case PlaceAutocomplete.RESULT_ERROR:
+                    Status status = PlaceAutocomplete.getStatus(this, data);
+                    Log.d(TAG, "onActivityResult: "+status.getStatusMessage());
+                    break;
             }
         }
     }
@@ -122,6 +137,7 @@ public class BaseActivity extends AppCompatActivity implements LayoutListener, P
     private void startCropImageActivity(Uri imageUri) {
         CropImage.activity(imageUri)
                 .setGuidelines(CropImageView.Guidelines.ON)
+                .setActivityTitle(getResources().getString(R.string.crop_image))
                 .setMultiTouchEnabled(true)
                 .start(this);
     }
@@ -131,12 +147,19 @@ public class BaseActivity extends AppCompatActivity implements LayoutListener, P
         multiplePermission.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
         multiplePermission.add(Manifest.permission.READ_EXTERNAL_STORAGE);
         multiplePermission.add(Manifest.permission.CAMERA);
-
         if (PermissionsHandler.checkMultiplePermission(multiplePermission)) {
             FileUtils.createApplicationFolder();
             mHomeViewModel.mIsPermissionGranted.postValue(true);
         } else
             PermissionsHandler.requestMultiplePermission(multiplePermission, this);
+    }
+
+    protected void checkLocationPermission() {
+        List<String> multiplePermission = new ArrayList<>();
+        multiplePermission.add(Manifest.permission.ACCESS_FINE_LOCATION);
+        multiplePermission.add(Manifest.permission.ACCESS_COARSE_LOCATION);
+        if (PermissionsHandler.checkMultiplePermission(multiplePermission)) {
+        } else PermissionsHandler.requestMultiplePermission(multiplePermission, this);
     }
 
     @Override

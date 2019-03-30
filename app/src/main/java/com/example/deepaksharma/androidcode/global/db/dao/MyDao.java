@@ -35,7 +35,7 @@ public interface MyDao {
     @Update
     public void updateUserInfo(UserInfo userInfo);
 
-//paging START
+    //paging START
     @Insert//(onConflict = OnConflictStrategy.REPLACE)
     public void insertArtist(List<Pagination.ArticlesBean> articlesBeans);
 

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/relative"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txt_dataBase_type"
+                style="@style/TextView_Heading"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dp5"
+                android:text="DataBaseType" />
+
+            <Button
+                android:id="@+id/btn_sqlite_data_base"
+                style="@style/Button"
+                android:layout_below="@+id/txt_dataBase_type"
+                android:layout_marginTop="@dimen/dp10"
+                android:text="@string/sqlite_database" />
+
+            <Button
+                android:id="@+id/btn_room_database"
+                style="@style/Button"
+                android:layout_below="@+id/txt_dataBase_type"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/dp10"
+                android:text="@string/room_database" />
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/relative"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txt_insert_user"
+                    style="@style/TextView_Regular"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/dp5" />
+
+                <Button
+                    android:id="@+id/btn_insert_user"
+                    style="@style/Button"
+                    android:layout_marginTop="@dimen/dp8"
+                    android:text="@string/insert_user" />
+
+                <TextView
+                    android:id="@+id/txt_get_all_user"
+                    style="@style/TextView_Regular"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/dp5" />
+
+                <Button
+                    android:id="@+id/btn_get_all_user"
+                    style="@style/Button"
+                    android:layout_marginTop="@dimen/dp8"
+                    android:text="@string/get_all_user" />
+
+                <TextView
+                    android:id="@+id/txt_update_user"
+                    style="@style/TextView_Regular"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/dp5" />
+
+                <EditText
+                    android:id="@+id/edt_user_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:layout_marginRight="@dimen/dp10"
+                    android:background="@color/transprant"
+                    android:hint="@string/enter_user_name" />
+
+                <Button
+                    android:id="@+id/btn_update_user"
+                    style="@style/Button"
+                    android:layout_marginTop="@dimen/dp8"
+                    android:text="@string/update_user" />
+
+                <TextView
+                    android:id="@+id/txt_delete_user"
+                    style="@style/TextView_Regular"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/dp5" />
+
+                <EditText
+                    android:id="@+id/edt_delete_user"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:layout_marginRight="@dimen/dp10"
+                    android:background="@color/transprant"
+                    android:hint="@string/enter_user_name" />
+
+                <Button
+                    android:id="@+id/btn_delete_user"
+                    style="@style/Button"
+                    android:layout_marginTop="@dimen/dp8"
+                    android:text="@string/delete_user" />
+
+                <TextView
+                    android:id="@+id/txt_delete_all_user"
+                    style="@style/TextView_Regular"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/dp5" />
+
+                <Button
+                    android:id="@+id/btn_delete_all_user"
+                    style="@style/Button"
+                    android:layout_marginTop="@dimen/dp8"
+                    android:text="@string/delete_all_user" />
+
+                <!--<TextView-->
+                    <!--android:id="@+id/txt_delete_table"-->
+                    <!--style="@style/TextView_Regular"-->
+                    <!--android:layout_centerHorizontal="true"-->
+                    <!--android:layout_marginTop="@dimen/dp5" />-->
+
+                <!--<Button-->
+                    <!--android:id="@+id/btn_delete_table"-->
+                    <!--style="@style/Button"-->
+                    <!--android:layout_marginTop="@dimen/dp8"-->
+                    <!--android:text="@string/delete_table" />-->
+            </LinearLayout>
+        </ScrollView>
+
+        <include
+            android:id="@+id/loader"
+            layout="@layout/loader" />
+    </RelativeLayout>
+</layout>

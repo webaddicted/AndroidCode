@@ -147,14 +147,11 @@ public class ServicesFragment extends BaseFragment {
     @Subscribe
     public void AllImageListener(EventAllImageListener eventAllImageListener) {
         if (eventAllImageListener != null && eventAllImageListener.getmFile() != null && eventAllImageListener.getmFile().size() > 0) {
-            getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    DeviceImageRecyclerViewAdapter mAdapter = new DeviceImageRecyclerViewAdapter(null, eventAllImageListener.getmFile());
-                    mBinding.rv.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-                    mBinding.rv.setAdapter(mAdapter);
-                    GlobalUtilities.handleUI(getActivity(), mBinding.loader.parentLoader, false);
-                }
+            getActivity().runOnUiThread(() -> {
+                DeviceImageRecyclerViewAdapter mAdapter = new DeviceImageRecyclerViewAdapter(null, eventAllImageListener.getmFile());
+                mBinding.rv.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+                mBinding.rv.setAdapter(mAdapter);
+                GlobalUtilities.handleUI(getActivity(), mBinding.loader.parentLoader, false);
             });
         }
     }
@@ -162,14 +159,11 @@ public class ServicesFragment extends BaseFragment {
     @Subscribe
     public void ReadContactListener(EventContactListener eventContactListener) {
         if (eventContactListener != null && eventContactListener.getmAllContact() != null && eventContactListener.getmAllContact().size() > 0) {
-            getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    ContactAdapter mAdapter = new ContactAdapter(null, eventContactListener.getmAllContact());
-                    mBinding.rv.setLayoutManager(new LinearLayoutManager(getActivity()));
-                    mBinding.rv.setAdapter(mAdapter);
-                    GlobalUtilities.handleUI(getActivity(), mBinding.loader.parentLoader, false);
-                }
+            getActivity().runOnUiThread(() -> {
+                ContactAdapter mAdapter = new ContactAdapter(null, eventContactListener.getmAllContact());
+                mBinding.rv.setLayoutManager(new LinearLayoutManager(getActivity()));
+                mBinding.rv.setAdapter(mAdapter);
+                GlobalUtilities.handleUI(getActivity(), mBinding.loader.parentLoader, false);
             });
         }
     }
@@ -177,14 +171,11 @@ public class ServicesFragment extends BaseFragment {
     @Subscribe
     public void ReadSmsListener(EventSmsListener eventSmsListener) {
         if (eventSmsListener != null && eventSmsListener.getmAllSms() != null && eventSmsListener.getmAllSms().size() > 0) {
-            getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    SmsAdapter mAdapter = new SmsAdapter(null, eventSmsListener.getmAllSms());
-                    mBinding.rv.setLayoutManager(new LinearLayoutManager(getActivity()));
-                    mBinding.rv.setAdapter(mAdapter);
-                    GlobalUtilities.handleUI(getActivity(), mBinding.loader.parentLoader, false);
-                }
+            getActivity().runOnUiThread(() -> {
+                SmsAdapter mAdapter = new SmsAdapter(null, eventSmsListener.getmAllSms());
+                mBinding.rv.setLayoutManager(new LinearLayoutManager(getActivity()));
+                mBinding.rv.setAdapter(mAdapter);
+                GlobalUtilities.handleUI(getActivity(), mBinding.loader.parentLoader, false);
             });
         }
     }
@@ -192,14 +183,11 @@ public class ServicesFragment extends BaseFragment {
     @Subscribe
     public void CallLogListener(EventCallLogListener eventCallLogListener) {
         if (eventCallLogListener != null && eventCallLogListener.getmCallLog() != null && eventCallLogListener.getmCallLog().size() > 0) {
-            getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    CallLogAdapter mAdapter = new CallLogAdapter(null, eventCallLogListener.getmCallLog());
-                    mBinding.rv.setLayoutManager(new LinearLayoutManager(getActivity()));
-                    mBinding.rv.setAdapter(mAdapter);
-                    GlobalUtilities.handleUI(getActivity(), mBinding.loader.parentLoader, false);
-                }
+            getActivity().runOnUiThread(() -> {
+                CallLogAdapter mAdapter = new CallLogAdapter(null, eventCallLogListener.getmCallLog());
+                mBinding.rv.setLayoutManager(new LinearLayoutManager(getActivity()));
+                mBinding.rv.setAdapter(mAdapter);
+                GlobalUtilities.handleUI(getActivity(), mBinding.loader.parentLoader, false);
             });
         }
     }

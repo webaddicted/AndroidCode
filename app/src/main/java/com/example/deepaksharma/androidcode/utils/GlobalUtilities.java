@@ -273,6 +273,8 @@ public class GlobalUtilities {
             sb.append(ALLOWED_CHARACTERS.charAt(random.nextInt(ALLOWED_CHARACTERS.length())));
         return sb.toString();
     }
-
+public static int getTwoDigitRandomNo(){
+    return new Random().nextInt(90) + 10;
+}
 
 }

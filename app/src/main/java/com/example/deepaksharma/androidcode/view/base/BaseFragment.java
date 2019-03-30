@@ -97,7 +97,9 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     public void checkStoragePermission() {
         ((BaseActivity) getActivity()).checkStoragePermission();
     }
-
+    public void checkLocationPermission() {
+        ((BaseActivity) getActivity()).checkLocationPermission();
+    }
     public String getImageLoader(int imageLoaderPos) {
         String[] imageLoader = getResources().getStringArray(R.array.image_loader);
         return imageLoader[imageLoaderPos];

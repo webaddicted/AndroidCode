@@ -1,6 +1,6 @@
-<!--Czech
+<!--Japanese
 
-    Code: cs. Folder name: values-cs-->
+    Code: ja. Folder name: values-ja-->
 <resources>
     <string name="app_name">AndroidCode</string>
     <string name="no_network_msg">कृपया अपने इंटरनेट कनेक्शन की जांच करें &amp; पुनः प्रयास करें</string>

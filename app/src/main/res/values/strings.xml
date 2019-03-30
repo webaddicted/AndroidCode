@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">AndroidCode</string>
-    <string name="google_key">AIzaSyDHsSMsRL1Vg-olFv8B-EToYN5JX7nxbdo</string>
+    <string name="google_key">AIzaSyAbO1hDRhhQKHs945QBsNt0yCzBXG3X5Fk</string>
     <string name="no_network_msg">Please check your internet connection &amp; try again</string>
     <string name="lbl_please_wait">Please Wait...</string>
     <string name="internet_connected">network connected</string>
@@ -164,6 +164,20 @@
     <string name="read_call_log">read call log</string>
     <string name="google_map">google map</string>
     <string name="draw_polyline">draw polyline</string>
+    <string name="google_map_title">google map</string>
+    <string name="sqlite_database">sqlite database</string>
+    <string name="room_database">room database</string>
+    <string name="insert_user">insert user</string>
+    <string name="get_all_user">get all user</string>
+    <string name="update_user">update user</string>
+    <string name="delete_user">delete user</string>
+    <string name="delete_all_user">delate all user</string>
+    <string name="delete_table">delete table</string>
+    <string name="user_successfully_inserted">user successfully inserted</string>
+    <string name="enter_user_name">enter user name</string>
+    <string name="user_successfully_updated">user successfullly updated</string>
+    <string name="user_successfully_deleted">user successfully deleted</string>
+    <string name="table_successfully_clear">successfully cleared.</string>
     <string-array name="image_loader">
         <item>app_color</item><!--app color-->
         <item>other image</item><!--other image-->

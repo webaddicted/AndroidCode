@@ -32,14 +32,6 @@
                     android:layout_toRightOf="@+id/btn_google_map"
                     android:text="@string/draw_polyline" />
 
-                <!--<Button-->
-                    <!--android:id="@+id/btn_capture_image"-->
-                    <!--style="@style/Button"-->
-                    <!--android:layout_below="@+id/btn_phone_contact"-->
-                    <!--android:layout_marginLeft="@dimen/dp5"-->
-                    <!--android:layout_marginRight="@dimen/dp5"-->
-                    <!--android:text="@string/capture_image" />-->
-
 
                 <!--<Button-->
                     <!--android:id="@+id/btn_network_state_change"-->
@@ -75,6 +67,32 @@
                     <!--android:text="@string/swipe_to_delete" />-->
 
             </RelativeLayout>
+            <fragment
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/relative"
+                android:layout_marginTop="@dimen/dp10"
+                android:layout_height="match_parent" />
+            <EditText
+                android:id="@+id/edt_search"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp40"
+                android:layout_marginLeft="@dimen/dp5"
+                android:layout_marginTop="@dimen/dp25"
+                android:layout_below="@+id/relative"
+                android:layout_marginRight="@dimen/dp5"
+                android:background="@drawable/edt_round_corner"
+                android:drawableLeft="@drawable/ic_search"
+                android:drawablePadding="@dimen/dp5"
+                android:drawableTint="@color/gray"
+                android:layout_marginBottom="@dimen/dp5"
+                android:ems="10"
+                android:hint="search"
+                android:imeOptions="actionSend"
+                android:inputType="textPersonName"
+                android:paddingLeft="@dimen/dp15"
+                android:textColorHint="@color/gray" />
 
         </RelativeLayout>
     </FrameLayout>

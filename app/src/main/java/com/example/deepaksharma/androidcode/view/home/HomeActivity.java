@@ -36,7 +36,7 @@ public class HomeActivity extends BaseLocation implements View.OnClickListener {
     @Override
     public void initUI(ViewDataBinding binding) {
         mBinding = (ActivityHomeBinding) binding;
-
+        mHomeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
         init();
         clickListener();
     }
@@ -86,9 +86,9 @@ public class HomeActivity extends BaseLocation implements View.OnClickListener {
     @Override
     public void getCurrentLocation(@NonNull Location location, @NonNull String address) {
         Log.d(TAG, "getCurrentLocation: getLatitude ->  " + location.getLatitude() + "   getLongitude  ->   " + location.getLongitude());
-        if (address != null) {
+        mHomeViewModel.setCurrentLocationAddress(location, address);
+        if (address != null)
             Log.d(TAG, "getCurrentLocation: getLatitude ->  " + location.getLatitude() + "   getLongitude  ->   " + location.getLongitude() + "  address  ->  " + address);
-        }
     }
 
 }
