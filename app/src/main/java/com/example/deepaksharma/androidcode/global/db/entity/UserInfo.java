@@ -9,11 +9,11 @@ import com.example.deepaksharma.androidcode.global.constant.DbConstant;
 
 @Entity(tableName = DbConstant.USER_INFO_TABLE)
 public class UserInfo {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private int id;
-    @ColumnInfo(name = "user_name")
+    @ColumnInfo(name = "name")
     private String name;
-    @ColumnInfo(name = "user_mobile")
+    @ColumnInfo(name = "mobileno")
     private String mobileno;
 
     public int getId() {

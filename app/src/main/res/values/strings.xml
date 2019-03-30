@@ -178,6 +178,7 @@
     <string name="user_successfully_updated">user successfullly updated</string>
     <string name="user_successfully_deleted">user successfully deleted</string>
     <string name="table_successfully_clear">successfully cleared.</string>
+    <string name="view_pager_tab_title">view pager tab</string>
     <string-array name="image_loader">
         <item>app_color</item><!--app color-->
         <item>other image</item><!--other image-->

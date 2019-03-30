@@ -7,17 +7,19 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.example.deepaksharma.androidcode.global.constant.DbConstant;
+
 public class UserDbHelper extends SQLiteOpenHelper {
     private static final String TAG = UserDbHelper.class.getSimpleName();
-    private static final String DATABASE_NAME = "UserINFO_DB.db";
-    private static final int DATABASE_VERSION = 1;
-    private static final String TABLE_NAME = "Userlocation";
-    private static final String ID = "_id";     // Column I (Primary Key)
-    private static final String USERNAMEE = "USERNAMEE";    //Column II
-    private static final String MOBILENO = "MOBILENO";  // Column III
-    Context context;
+    private Context context;
+    private static final int DATABASE_VERSION = DbConstant.DB_VERSION;
+    private static final String DATABASE_NAME = DbConstant.DB_NAME;
+    private static final String TABLE_NAME = DbConstant.USER_INFO_TABLE;
+    private static final String ID = "id";     // Column I (Primary Key)
+    private static final String USERNAMEE = "name";    //Column II
+    private static final String MOBILENO = "mobileno";  // Column III
     private static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME +
-            " (" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + USERNAMEE + " Text ," + MOBILENO + " Text);";
+            " (" + ID + " INTEGER PRIMARY KEY , " + USERNAMEE + " Text ," + MOBILENO + " Text);";
 
     public UserDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -31,8 +33,9 @@ public class UserDbHelper extends SQLiteOpenHelper {
         Log.d(TAG, "TABLE Created........");
     }
 
-    public void insertUserInfo(String strUsername, String strMobileNo, SQLiteDatabase db) {
+    public void insertUserInfo(int id, String strUsername, String strMobileNo, SQLiteDatabase db) {
         ContentValues contentValues = new ContentValues();
+        contentValues.put(ID, id);
         contentValues.put(USERNAMEE, strUsername);
         contentValues.put(MOBILENO, strMobileNo);
         db.insert(TABLE_NAME, null, contentValues);
@@ -41,7 +44,7 @@ public class UserDbHelper extends SQLiteOpenHelper {
 
     public Cursor getAllUserInfo(SQLiteDatabase db) {
         Cursor cursor;
-        String[] projections = {USERNAMEE, MOBILENO,};
+        String[] projections = {USERNAMEE, MOBILENO};
         cursor = db.query(TABLE_NAME, projections, null, null, null, null, null);
         return cursor;
     }

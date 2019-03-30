@@ -42,7 +42,7 @@ public class TaskListFragment extends BaseFragment {
 
     String worktask[] = {"widgets", "webview", "dialog", "location", "login signup flow", "select multiple image", "dynamic layout",
             "shared preference", "device info", "speech to text", "animation", "recycler view", "expendable spinner list view",
-            "image","share","receiver","services","google map","sqlite data base"};
+            "image", "share", "receiver", "services", "google map", "sqlite data base", "viewpager tab"};
 
 
     private TaskAdapter mHomeAdapter;
@@ -115,10 +115,11 @@ public class TaskListFragment extends BaseFragment {
             navigateScreen(ExpendableSpinnerListFragment.TAG);
         else if (click.equals("image")) navigateScreen(ImageFragment.TAG);
         else if (click.equals("share")) navigateScreen(ShareFragment.TAG);
-        else if (click.equals("receiver"))navigateScreen(ReceiverFragment.TAG);
-        else if (click.equals("services"))navigateScreen(ServicesFragment.TAG);
-        else if (click.equals("google map"))navigateScreen(GoogleMapFragment.TAG);
-else if (click.equals("sqlite data base")) navigateScreen(SqliteDataBaseFragment.TAG);
+        else if (click.equals("receiver")) navigateScreen(ReceiverFragment.TAG);
+        else if (click.equals("services")) navigateScreen(ServicesFragment.TAG);
+        else if (click.equals("google map")) navigateScreen(GoogleMapFragment.TAG);
+        else if (click.equals("sqlite data base")) navigateScreen(SqliteDataBaseFragment.TAG);
+        else if (click.equals("viewpager tab")) navigateScreen(ViewPagerTabFragment.TAG);
     }
 
     /**
@@ -161,8 +162,9 @@ else if (click.equals("sqlite data base")) navigateScreen(SqliteDataBaseFragment
             frm = GoogleMapFragment.getInstance(getArguments());
         else if (tag.equals(SqliteDataBaseFragment.TAG))
             frm = SqliteDataBaseFragment.getInstance(getArguments());
+        else if (tag.equals(ViewPagerTabFragment.TAG))
+            frm = ViewPagerTabFragment.getInstance(getArguments());
         navigateFragment(R.id.container, frm, true);
-
     }
 
     @Override

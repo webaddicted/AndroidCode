@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_share_text"
+                style="@style/Button"
+                android:layout_marginTop="@dimen/dp15"
+                android:text="@string/share_text" />
+
+            <Button
+                android:id="@+id/btn_share_image"
+                style="@style/Button"
+                android:layout_marginTop="@dimen/dp15"
+                android:text="@string/share_image" />
+            <Button
+                android:id="@+id/btn_share_img_text"
+                style="@style/Button"
+                android:layout_marginTop="@dimen/dp15"
+                android:text="@string/share_image_text" />
+            <Button
+                android:id="@+id/btn_share_local_image"
+                style="@style/Button"
+                android:layout_marginTop="@dimen/dp15"
+                android:text="@string/share_local_image" />
+            <Button
+                android:id="@+id/btn_send_email"
+                style="@style/Button"
+                android:layout_marginTop="@dimen/dp15"
+                android:text="@string/send_image_text_email" />
+        </LinearLayout>
+
+        <include
+            android:id="@+id/loader"
+            layout="@layout/loader" />
+    </RelativeLayout>
+</layout>

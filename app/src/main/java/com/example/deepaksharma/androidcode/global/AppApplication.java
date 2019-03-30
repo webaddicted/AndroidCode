@@ -1,10 +1,14 @@
 package com.example.deepaksharma.androidcode.global;
 
 import android.app.Application;
+import android.arch.persistence.room.Room;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 
 import com.example.deepaksharma.androidcode.R;
+import com.example.deepaksharma.androidcode.global.constant.DbConstant;
+import com.example.deepaksharma.androidcode.global.db.dao.UserInfoDao;
+import com.example.deepaksharma.androidcode.global.db.database.MyAppDatabase;
 import com.example.deepaksharma.androidcode.global.sharedPref.PreferenceUtils;
 import com.example.deepaksharma.androidcode.receiver.NetworkChangeReceiver;
 import com.example.deepaksharma.androidcode.utils.GlobalUtilities;
@@ -15,6 +19,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 public class AppApplication extends Application {
     private static final String TAG = AppApplication.class.getSimpleName();
+    private static UserInfoDao userInfoDao;
     private NetworkChangeReceiver mNetworkReceiver = new NetworkChangeReceiver();
     private static AppApplication mInstance;
     private boolean mIsNetworkConnected;
@@ -34,6 +39,14 @@ public class AppApplication extends Application {
         mIsNetworkConnected = GlobalUtilities.isNetworkAvailable();
         registerReceiver(mNetworkReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
         ImageLoader.getInstance().init(ImageLoaderUtils.getImageConfig());
+    }
+
+    public static UserInfoDao getDbInstance() {
+        if (userInfoDao == null) {
+            userInfoDao = Room.databaseBuilder(getInstance(), MyAppDatabase.class, DbConstant.DB_NAME)
+                    .allowMainThreadQueries().build().userInfoDao();
+        }
+        return userInfoDao;
     }
 
     /**

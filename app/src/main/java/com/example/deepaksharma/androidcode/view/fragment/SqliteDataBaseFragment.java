@@ -1,30 +1,25 @@
 package com.example.deepaksharma.androidcode.view.fragment;
 
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.databinding.ViewDataBinding;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 
 import com.example.deepaksharma.androidcode.R;
-import com.example.deepaksharma.androidcode.databinding.FragmentShareBinding;
 import com.example.deepaksharma.androidcode.databinding.FragmentSqliteDatabaseBinding;
-import com.example.deepaksharma.androidcode.global.FileUtils;
+import com.example.deepaksharma.androidcode.global.AppApplication;
 import com.example.deepaksharma.androidcode.global.UserDbHelper;
-import com.example.deepaksharma.androidcode.global.image.ImagePicker;
+import com.example.deepaksharma.androidcode.global.db.dao.UserInfoDao;
+import com.example.deepaksharma.androidcode.global.db.entity.UserInfo;
 import com.example.deepaksharma.androidcode.utils.GlobalUtilities;
 import com.example.deepaksharma.androidcode.view.base.BaseFragment;
 import com.example.deepaksharma.androidcode.view.home.HomeActivity;
 import com.example.deepaksharma.androidcode.viewModel.home.HomeViewModel;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.List;
 
 public class SqliteDataBaseFragment extends BaseFragment {
@@ -35,6 +30,7 @@ public class SqliteDataBaseFragment extends BaseFragment {
     private boolean mIsRoomDbBoolean = false;
     private UserDbHelper mUserDbHelper;
     private SQLiteDatabase mSqLiteDatabase;
+    private UserInfoDao mUserInfoDao;
 
     public static SqliteDataBaseFragment getInstance(Bundle bundle) {
         SqliteDataBaseFragment fragment = new SqliteDataBaseFragment();
@@ -86,6 +82,7 @@ public class SqliteDataBaseFragment extends BaseFragment {
             case R.id.btn_room_database:
                 mIsSqliteBoolean = false;
                 mIsRoomDbBoolean = true;
+                mUserInfoDao = AppApplication.getDbInstance();
                 mBinding.txtDataBaseType.setText(getResources().getString(R.string.room_database));
                 break;
             case R.id.btn_insert_user:
@@ -103,19 +100,28 @@ public class SqliteDataBaseFragment extends BaseFragment {
             case R.id.btn_delete_all_user:
                 deleteAllUser();
                 break;
-//            case R.id.btn_delete_table:
-//                break;
         }
     }
 
     private void insert() {
+        int randomInt = GlobalUtilities.getTwoDigitRandomNo();
         if (mIsSqliteBoolean) {
-            int randomInt = GlobalUtilities.getTwoDigitRandomNo();
-            mUserDbHelper.insertUserInfo("Deepak_" + randomInt, "1234" + randomInt, mSqLiteDatabase);
+            mUserDbHelper.insertUserInfo(randomInt, "deepak" + randomInt, "1234" + randomInt, mSqLiteDatabase);
             mBinding.txtInsertUser.setText(getResources().getString(R.string.user_successfully_inserted));
         } else if (mIsRoomDbBoolean) {
-
+            if (mUserInfoDao != null) {
+                mUserInfoDao.insertUser(getUserInfoBean(randomInt, "deepak" + randomInt, "1234" + randomInt));
+                mBinding.txtInsertUser.setText(getResources().getString(R.string.user_successfully_inserted));
+            }
         }
+    }
+
+    private UserInfo getUserInfoBean(int id, String name, String mobileNo) {
+        UserInfo mUserInfo = new UserInfo();
+        mUserInfo.setId(id);
+        mUserInfo.setName(name);
+        mUserInfo.setMobileno(mobileNo);
+        return mUserInfo;
     }
 
     private void getUserInfo() {
@@ -131,29 +137,55 @@ public class SqliteDataBaseFragment extends BaseFragment {
             }
             mBinding.txtGetAllUser.setText(stringBuilder.toString());
         } else if (mIsRoomDbBoolean) {
-
+            if (mUserInfoDao != null) {
+                List<UserInfo> userInfoList = mUserInfoDao.getUserInfo();
+                StringBuilder stringBuilder = new StringBuilder();
+                for (int i = 0; i < userInfoList.size(); i++) {
+                    UserInfo userInfoBean = userInfoList.get(i);
+                    stringBuilder.append("userName - " + userInfoBean.getName() + "\nmobile no - " + userInfoBean.getMobileno() + "\n\n");
+                }
+                mBinding.txtGetAllUser.setText(stringBuilder.toString());
+            }
         }
     }
 
     private void updateUser() {
-        if (mIsSqliteBoolean) {
-            String userName = mBinding.edtUserName.getText().toString();
-            if (userName.length() > 0)
+        String userName = mBinding.edtUserName.getText().toString();
+        if (userName.length() > 0) {
+            if (mIsSqliteBoolean) {
                 mUserDbHelper.updateUserInfo(userName, "1234" + GlobalUtilities.getTwoDigitRandomNo(), mSqLiteDatabase);
-            mBinding.txtUpdateUser.setText(getResources().getString(R.string.user_successfully_updated));
-        } else if (mIsRoomDbBoolean) {
-
+                mBinding.txtUpdateUser.setText(getResources().getString(R.string.user_successfully_updated));
+            } else if (mIsRoomDbBoolean) {
+                if (mUserInfoDao != null) {
+                    try {
+                        int numb = ((Number) NumberFormat.getInstance().parse(userName)).intValue();
+                        mUserInfoDao.updateUserInfo(getUserInfoBean(numb, userName, ""));
+                        mBinding.txtUpdateUser.setText(getResources().getString(R.string.user_successfully_updated));
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
         }
     }
 
     private void deleteUser() {
-        if (mIsSqliteBoolean) {
-            String userName = mBinding.edtDeleteUser.getText().toString();
-            if (userName.length() > 0)
+        String userName = mBinding.edtDeleteUser.getText().toString();
+        if (userName.length() > 0) {
+            if (mIsSqliteBoolean) {
                 mUserDbHelper.deleteUser(userName, mSqLiteDatabase);
-            mBinding.txtDeleteUser.setText(getResources().getString(R.string.user_successfully_deleted));
-        } else if (mIsRoomDbBoolean) {
-
+                mBinding.txtDeleteUser.setText(getResources().getString(R.string.user_successfully_deleted));
+            } else if (mIsRoomDbBoolean) {
+                if (mUserInfoDao != null) {
+                    try {
+                        int numb = ((Number) NumberFormat.getInstance().parse(userName)).intValue();
+                        mUserInfoDao.deleteUser(getUserInfoBean(numb, userName, "1234" + GlobalUtilities.getTwoDigitRandomNo()));
+                        mBinding.txtDeleteUser.setText(getResources().getString(R.string.user_successfully_deleted));
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
         }
     }
 
@@ -162,6 +194,10 @@ public class SqliteDataBaseFragment extends BaseFragment {
             mUserDbHelper.deleteAllData(mSqLiteDatabase);
             mBinding.txtDeleteAllUser.setText(getResources().getString(R.string.table_successfully_clear));
         } else if (mIsRoomDbBoolean) {
+            if (mUserInfoDao != null) {
+                mUserInfoDao.cleatTable();
+                mBinding.txtDeleteAllUser.setText(getResources().getString(R.string.table_successfully_clear));
+            }
         }
     }
 
