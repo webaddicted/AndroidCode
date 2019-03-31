@@ -123,7 +123,7 @@ public class TaskListFragment extends BaseFragment {
         else if (click.equals("viewpager tab")) navigateScreen(ViewPagerTabFragment.TAG);
         else if (click.equals("finger print")) navigateScreen(FingerPrintFragment.TAG);
         else if (click.equals("barcode")) navigateScreen(BarCodeFragment.TAG);
-        else if (click.equals("digital signature")) navigateScreen(BarCodeFragment.TAG);
+        else if (click.equals("digital signature")) navigateScreen(DigitalSignatureFragment.TAG);
         else if (click.equals("pdf")) navigateScreen(PdfFragment.TAG);
         else if (click.equals("collapse")) navigateScreen(CollpaseViewFragment.TAG);
         else if (click.equals("ui design")) navigateScreen(UiDesignFragment.TAG);
@@ -180,6 +180,8 @@ public class TaskListFragment extends BaseFragment {
             frm = FingerPrintFragment.getInstance(getArguments());
         else if (tag.equals(BarCodeFragment.TAG))
             frm = BarCodeFragment.getInstance(getArguments());
+        else if (tag.equals(DigitalSignatureFragment.TAG))
+            frm = DigitalSignatureFragment.getInstance(getArguments());
         else if (tag.equals(PdfFragment.TAG))
             frm = PdfFragment.getInstance(getArguments());
         else if (tag.equals(FabFragment.TAG))
