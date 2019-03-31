@@ -21,16 +21,19 @@
                 style="@style/Button"
                 android:layout_marginTop="@dimen/dp15"
                 android:text="@string/share_image" />
+
             <Button
                 android:id="@+id/btn_share_img_text"
                 style="@style/Button"
                 android:layout_marginTop="@dimen/dp15"
                 android:text="@string/share_image_text" />
+
             <Button
                 android:id="@+id/btn_share_local_image"
                 style="@style/Button"
                 android:layout_marginTop="@dimen/dp15"
                 android:text="@string/share_local_image" />
+
             <Button
                 android:id="@+id/btn_send_email"
                 style="@style/Button"

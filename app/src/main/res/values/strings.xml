@@ -46,6 +46,15 @@
     <string name="shared_preference_title">shared preference</string>
     <string name="device_info_title">device info</string>
     <string name="speech_to_text_title">speech to text</string>
+    <string name="recycler_view_title">recycler view</string>
+    <string name="expend_spinner_title">expendable spinner</string>
+    <string name="elaborate_recycler_view_title">elaborate recycler view</string>
+    <string name="device_image_title">Device image</string>
+    <string name="share_file_title">share file</string>
+    <string name="service_fragment_title">services</string>
+    <string name="google_map_title">google map</string>
+    <string name="view_pager_tab_title">view pager tab</string>
+    <string name="animation_title">animation</string>
     <!--{END SCREEN TITLE NAME}-->
     <string name="select_image">select image</string>
     <string name="login">login</string>
@@ -111,15 +120,11 @@
     <string name="botom_to_top">botom to top</string>
     <string name="right_to_left">right to left</string>
     <string name="left_to_right">left to right</string>
-    <string name="animation_title">animation</string>
     <string name="together">together</string>
-    <string name="recycler_view_title">recycler view</string>
     <string name="list">list</string>
     <string name="grid">grid</string>
     <string name="expendable_list_view">expendable list view</string>
     <string name="spinner">spinner</string>
-    <string name="expend_spinner_title">expendable spinner</string>
-    <string name="elaborate_recycler_view_title">elaborate recycler view</string>
     <string name="select_picture">Select Picture</string>
     <string name="ssl_certificate_error">SSL Certificate error.</string>
     <string name="ssl_certificate_untrusted">The certificate authority is not trusted.</string>
@@ -132,7 +137,6 @@
     <string name="crop_image">crop_image</string>
     <string name="capture_image_in_bg">capture image in background</string>
     <string name="whats_app_type">what\'s app type</string>
-    <string name="device_image_title">Device image</string>
     <string name="permission_require">permission require to access this feature.</string>
     <string name="capture_image">capture image</string>
     <string name="record_video">record video</string>
@@ -141,7 +145,6 @@
     <string name="capture_record_video">capture record video</string>
     <string name="share_text">share text</string>
     <string name="share_image">share image</string>
-    <string name="share_file_title">share file</string>
     <string name="share_image_text">share image text</string>
     <string name="REFERAL_TITLE"><![CDATA[Get back your lost &amp; stolen android mobile phone! Yes, its true! I found a great security app. \"Tesseract Power\" For mobile protection, download it free &amp; check it now.!]]></string>
     <string name="share_local_image">share local image</string>
@@ -160,11 +163,9 @@
     <string name="read_phone_contact">read phone contact</string>
     <string name="read_sms">read sms</string>
     <string name="read_image">read image</string>
-    <string name="service_fragment_title">services</string>
     <string name="read_call_log">read call log</string>
     <string name="google_map">google map</string>
     <string name="draw_polyline">draw polyline</string>
-    <string name="google_map_title">google map</string>
     <string name="sqlite_database">sqlite database</string>
     <string name="room_database">room database</string>
     <string name="insert_user">insert user</string>
@@ -178,9 +179,12 @@
     <string name="user_successfully_updated">user successfullly updated</string>
     <string name="user_successfully_deleted">user successfully deleted</string>
     <string name="table_successfully_clear">successfully cleared.</string>
-    <string name="view_pager_tab_title">view pager tab</string>
+
     <string-array name="image_loader">
         <item>app_color</item><!--app color-->
         <item>other image</item><!--other image-->
     </string-array>
+    <string name="tab_without_icon">tab without icon</string>
+    <string name="tab_with_icon">tab with icon</string>
+
 </resources>

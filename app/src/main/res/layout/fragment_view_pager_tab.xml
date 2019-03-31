@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -7,35 +8,99 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/btn_share_text"
-                style="@style/Button"
-                android:layout_marginTop="@dimen/dp15"
-                android:text="@string/share_text" />
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tab_without_icon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                app:tabGravity="fill"
+                app:tabIndicatorColor="@color/white"
+                app:tabMode="fixed"
+                app:tabSelectedTextColor="@color/white"
+                app:tabTextColor="@color/gray" />
 
-            <Button
-                android:id="@+id/btn_share_image"
-                style="@style/Button"
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tab_with_icon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabBackground="@color/colorPrimary"
+                app:tabGravity="fill"
                 android:layout_marginTop="@dimen/dp15"
-                android:text="@string/share_image" />
-            <Button
-                android:id="@+id/btn_share_img_text"
-                style="@style/Button"
+                app:tabMode="fixed"
+                app:tabIndicatorColor="@color/white"
+                app:tabSelectedTextColor="@color/white"
+                app:tabTextColor="@color/gray">
+
+                <android.support.design.widget.TabItem
+                    android:id="@+id/tab1"
+                    android:icon="@drawable/tab_call_selector"
+                    style="@style/tab_item"
+                    android:text="@string/read_call_log" />
+
+                <android.support.design.widget.TabItem
+                    android:id="@+id/tab2"
+                    android:icon="@drawable/tab_chat_selector"
+                    style="@style/tab_item"
+                    android:text="@string/read_sms" />
+
+                <android.support.design.widget.TabItem
+                    android:id="@+id/tab3"
+                    android:icon="@drawable/tab_contacts_selector"
+                    style="@style/tab_item"
+                    android:text="@string/phone_contact" />
+
+            </android.support.design.widget.TabLayout>
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tab_custom_icon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                app:tabGravity="fill"
+                app:tabIndicatorColor="@color/white"
+                app:tabMode="fixed"
                 android:layout_marginTop="@dimen/dp15"
-                android:text="@string/share_image_text" />
-            <Button
-                android:id="@+id/btn_share_local_image"
-                style="@style/Button"
-                android:layout_marginTop="@dimen/dp15"
-                android:text="@string/share_local_image" />
-            <Button
-                android:id="@+id/btn_send_email"
-                style="@style/Button"
-                android:layout_marginTop="@dimen/dp15"
-                android:text="@string/send_image_text_email" />
+                app:tabSelectedTextColor="@color/white"
+                app:tabTextColor="@color/gray" />
+            <android.support.v4.view.ViewPager
+                android:id="@+id/view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/tablayout"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+            <!--<Button-->
+            <!--android:id="@+id/btn_tab_without_icon"-->
+            <!--style="@style/Button"-->
+            <!--android:layout_marginTop="@dimen/dp8"-->
+            <!--android:text="@string/tab_without_icon" />-->
+
+            <!--<Button-->
+            <!--android:id="@+id/btn_tab_with_icon"-->
+            <!--style="@style/Button"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_marginTop="@dimen/dp8"-->
+            <!--android:text="@string/tab_with_icon" />-->
+            <!--<Button-->
+            <!--android:id="@+id/btn_share_img_text"-->
+            <!--style="@style/Button"-->
+            <!--android:layout_marginTop="@dimen/dp15"-->
+            <!--android:text="@string/share_image_text" />-->
+            <!--<Button-->
+            <!--android:id="@+id/btn_share_local_image"-->
+            <!--style="@style/Button"-->
+            <!--android:layout_marginTop="@dimen/dp15"-->
+            <!--android:text="@string/share_local_image" />-->
+            <!--<Button-->
+            <!--android:id="@+id/btn_send_email"-->
+            <!--style="@style/Button"-->
+            <!--android:layout_marginTop="@dimen/dp15"-->
+            <!--android:text="@string/send_ima
+            ge_text_email" />-->
         </LinearLayout>
 
         <include
