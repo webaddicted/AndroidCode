@@ -14,6 +14,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.global.FileUtils;
@@ -27,11 +28,15 @@ import com.example.deepaksharma.androidcode.viewModel.home.HomeViewModel;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -130,9 +135,14 @@ public class BaseActivity extends AppCompatActivity implements LayoutListener, P
                     Status status = PlaceAutocomplete.getStatus(this, data);
                     Log.d(TAG, "onActivityResult: "+status.getStatusMessage());
                     break;
+                case IntentIntegrator.REQUEST_CODE:
+                    IntentResult mIntentResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+                    mHomeViewModel.mBarCodeResult.postValue(mIntentResult);
+                    break;
             }
         }
     }
+
 
     private void startCropImageActivity(Uri imageUri) {
         CropImage.activity(imageUri)
