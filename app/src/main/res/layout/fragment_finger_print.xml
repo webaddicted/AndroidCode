@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_finger_print"
+            style="@style/Button"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp5"
+            android:text="finger print" />
+
+        <ImageView
+            android:id="@+id/fingerprint_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/txt_fingerprint_message"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/dp10"
+            android:src="@drawable/ic_fingerprint_white" />
+
+        <TextView
+            android:id="@+id/txt_fingerprint_message"
+            style="@style/TextView_Regular"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/fingerprint_message"
+            android:textColor="@android:color/white" />
+
+        <!--  TextView to show any error message  -->
+        <TextView
+            android:id="@+id/txt_error_message"
+            style="@style/TextView_Regular"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:padding="@dimen/dp10"
+            android:textColor="@color/red" />
+    </RelativeLayout>
+</layout>

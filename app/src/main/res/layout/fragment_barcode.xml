@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_bar_code"
+            style="@style/Button"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp5"
+            android:text="@string/barcode" />
+
+        <TextView
+            android:id="@+id/txt_result"
+            style="@style/TextView_Heading"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp80"/>
+
+    </RelativeLayout>
+</layout>

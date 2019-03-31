@@ -20,4 +20,7 @@
 
     <color name="red">#ff090b</color>
     <color name="transprant">#00000000</color>
+    <color name="grey">#DDDDDD</color>
+    <color name="light_grey">#EEEEEE</color>
+    <color name="white_transparent">#99FFFFFF</color>
 </resources>

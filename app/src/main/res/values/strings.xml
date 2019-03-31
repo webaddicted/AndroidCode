@@ -186,5 +186,15 @@
     </string-array>
     <string name="tab_without_icon">tab without icon</string>
     <string name="tab_with_icon">tab with icon</string>
-
+    <string name="fingerprint_message">Place your fingertip on the scanner to verify fingerprint.</string>
+    <string name="successful_message">You have successfully authenticated with FingerPrint.</string>
+    <string name="fingerprint_not_exist">Your Device does not have a Fingerprint Sensor.</string>
+    <string name="fingerprint_not_enabled">Fingerprint authentication permission not enabled in your device.</string>
+    <string name="fingerprint_not_registered">Register at least one fingerprint in Settings to make work Fingerprint.</string>
+    <string name="lock_screen_setting_disabled">Lock screen security not enabled in Settings.</string>
+    <string name="barcode">barcode</string>
+    <string name="digital_signature">digital signature</string>
+    <string name="create_pdf">create pdf</string>
+    <string name="save_pdf">save pdf</string>
+    <string name="action_settings">setting</string>
 </resources>
