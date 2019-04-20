@@ -216,6 +216,7 @@ public class RecyclerViewFragment extends BaseFragment {
     }
 
     private void setStaggeredAdapter() {
+
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL);
         mBinding.recyclerView.setLayoutManager(staggeredGridLayoutManager);
         mStaggeredGridAdapter = new StaggeredGridAdapter(RecyclerViewFragment.this, getUrlBean());
@@ -246,5 +247,4 @@ public class RecyclerViewFragment extends BaseFragment {
 
     public RecyclerView getRecyclerView() {
     return mBinding.recyclerView;
-    }
-}
+    }}
