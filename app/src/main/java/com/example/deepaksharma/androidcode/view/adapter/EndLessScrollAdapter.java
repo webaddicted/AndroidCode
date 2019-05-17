@@ -15,6 +15,7 @@ public class EndLessScrollAdapter extends BaseRecyclerViewAdapter {
     private final List<String> mListBean;
     private final RecyclerViewFragment mRecyclerViewFragment;
     private Context mContext = AppApplication.getInstance();
+
     public EndLessScrollAdapter(RecyclerViewFragment recyclerViewFragment, List<String> listBean) {
         this.mRecyclerViewFragment = recyclerViewFragment;
         this.mListBean = listBean;
@@ -49,5 +50,4 @@ public class EndLessScrollAdapter extends BaseRecyclerViewAdapter {
         super.loadData();
         mRecyclerViewFragment.loadNewItems();
     }
-
 }
