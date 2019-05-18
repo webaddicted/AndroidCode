@@ -4,31 +4,39 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:background="@color/transprant"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/transprant">
 
         <LinearLayout
             android:id="@+id/linear_loader"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:clickable="false"
-            android:saveEnabled="false"
-            android:focusableInTouchMode="false"
             android:background="@color/transprant"
-            android:orientation="vertical">
+            android:clickable="false"
+            android:focusableInTouchMode="false"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:saveEnabled="false">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/transprant"
-                android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <ProgressBar
+                    android:id="@+id/pb_centre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center" />
-            </LinearLayout>
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center|center_vertical" />
+                <ProgressBar
+                    android:id="@+id/pb_bottom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:visibility="gone"
+                    android:layout_marginBottom="@dimen/dp15"
+                    android:layout_alignParentBottom="true"/>
+            </RelativeLayout>
         </LinearLayout>
     </RelativeLayout>
 </layout>

@@ -62,7 +62,11 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
             ((BaseActivity) getActivity()).navigateFragment(layoutContainer, fragment, isEnableBackStack);
         }
     }
-
+    protected void navigateAddFragment(int layoutContainer, Fragment fragment, boolean isEnableBackStack) {
+        if (getActivity() != null) {
+            ((BaseActivity) getActivity()).navigateAddFragment(layoutContainer, fragment, isEnableBackStack);
+        }
+    }
     protected void navigateChildFragment(int layoutContainer, Fragment fragment, boolean isEnableBackStack) {
         FragmentManager fragmentManager = getChildFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

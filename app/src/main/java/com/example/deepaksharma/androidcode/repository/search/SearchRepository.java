@@ -8,6 +8,7 @@ import com.example.deepaksharma.androidcode.global.api.apiModel.Resource;
 import com.example.deepaksharma.androidcode.global.api.apiRepository.NetworkBoundWtDbRes;
 import com.example.deepaksharma.androidcode.global.api.apiUtils.ApiResponse;
 import com.example.deepaksharma.androidcode.global.api.apiUtils.AppRetrofit;
+import com.example.deepaksharma.androidcode.global.constant.ApiConstant;
 import com.example.deepaksharma.androidcode.model.search.SearchRespo;
 
 
@@ -23,7 +24,7 @@ public class SearchRepository {
             @NonNull
             @Override
             protected LiveData<ApiResponse<SearchRespo>> createCall() {
-                return AppRetrofit.getInstance().getAppService().getSearchResult(url);
+                return AppRetrofit.getInstance().getAppService().getSearchResult(url, ApiConstant.LOADER_POS_BOTTOM);
             }
         }.asLiveData();
     }

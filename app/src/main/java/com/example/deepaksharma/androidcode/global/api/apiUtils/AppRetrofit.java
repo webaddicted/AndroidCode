@@ -32,7 +32,7 @@ public class AppRetrofit {
     private AppService provideService() {
         // To show the Api Request & Params
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-        logging.setLevel(HttpLoggingInterceptor.Level.NONE);
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         httpClient.connectTimeout(ApiConstant.API_TIME_OUT, TimeUnit.SECONDS)

@@ -1,4 +1,4 @@
-package com.example.deepaksharma.androidcode.view.dialog;
+package com.example.deepaksharma.androidcode.view.loader;
 
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;

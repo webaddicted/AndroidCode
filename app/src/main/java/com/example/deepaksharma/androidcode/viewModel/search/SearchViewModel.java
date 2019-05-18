@@ -20,6 +20,6 @@ public class SearchViewModel extends ViewModel {
     }
 
     public void searchReq(String url) {
-    mSearchResp = searchRepository.searchResult(url);
+        mSearchResp = searchRepository.searchResult(url);
     }
 }

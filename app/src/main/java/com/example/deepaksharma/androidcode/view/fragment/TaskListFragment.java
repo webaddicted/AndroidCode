@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 
 import com.example.deepaksharma.androidcode.R;
@@ -63,6 +64,7 @@ public class TaskListFragment extends BaseFragment {
     protected void onViewsInitialized(ViewDataBinding binding, View view) {
         mBinding = (FragmentTaskListBinding) binding;
         init();
+        Log.d(TAG, "onViewsInitialized: ");
     }
 
     private void init() {
@@ -198,12 +200,8 @@ public class TaskListFragment extends BaseFragment {
         else if (tag.equals(ApiFragment.TAG))
             frm = ApiFragment.getInstance(getArguments());
         navigateFragment(R.id.container, frm, true);
-    }
+//        navigateAddFragment(R.id.container, frm, true);
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        updateTitle();
     }
 
     public void updateTitle() {

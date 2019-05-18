@@ -106,7 +106,14 @@ public class BaseActivity extends AppCompatActivity implements LayoutListener, P
             fragmentTransaction.addToBackStack(fragment.getClass().getSimpleName());
         fragmentTransaction.commitAllowingStateLoss();
     }
-
+    protected void navigateAddFragment(int layoutContainer, Fragment fragment, boolean isEnableBackStack) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(layoutContainer, fragment);
+        if (isEnableBackStack)
+            fragmentTransaction.addToBackStack(fragment.getClass().getSimpleName());
+        fragmentTransaction.commitAllowingStateLoss();
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

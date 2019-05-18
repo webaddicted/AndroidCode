@@ -61,12 +61,15 @@ public class AppApplication extends Application {
     public static synchronized AppApplication getInstance() {
         return mInstance;
     }
+
     public static synchronized Activity getActivityInstance() {
         return mActivityInstance;
     }
+
     public static void setActivityInstance(Activity activityInstance) {
         mActivityInstance = activityInstance;
     }
+
     public boolean ismIsNetworkConnected() {
         if (!mIsNetworkConnected)
             GlobalUtilities.showNoNetworkToast();
