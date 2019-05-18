@@ -41,9 +41,9 @@ public class TaskListFragment extends BaseFragment {
             "Best Site And Ui Page Link Best Code", "Recycle View"};
 
     String worktask[] = {"widgets", "webview", "dialog", "location", "login signup flow", "select multiple image", "dynamic layout",
-            "shared preference", "device info", "speech to text", "animation", "recycler view", "expendable spinner list view",
+            "shared preference", "device info", "speech to text", "animation", "recycler view", "pagination", "expendable spinner list view",
             "image", "share", "receiver", "services", "google map", "sqlite data base", "viewpager tab", "finger print",
-            "barcode", "digital signature", "pdf","collapse", "ui design", "fab button","bottom navigation"};
+            "barcode", "digital signature", "pdf", "collapse", "ui design", "fab button", "bottom navigation","api"};
 
 
     private TaskAdapter mHomeAdapter;
@@ -112,6 +112,7 @@ public class TaskListFragment extends BaseFragment {
         else if (click.equals("speech to text")) navigateScreen(SpeechToTextFragment.TAG);
         else if (click.equals("animation")) navigateScreen(AnimationFragment.TAG);
         else if (click.equals("recycler view")) navigateScreen(RecyclerViewFragment.TAG);
+        else if (click.equals("pagination")) navigateScreen(PaginationFragment.TAG);
         else if (click.equals("expendable spinner list view"))
             navigateScreen(ExpendableSpinnerListFragment.TAG);
         else if (click.equals("image")) navigateScreen(ImageFragment.TAG);
@@ -129,7 +130,7 @@ public class TaskListFragment extends BaseFragment {
         else if (click.equals("ui design")) navigateScreen(UiDesignFragment.TAG);
         else if (click.equals("fab button")) navigateScreen(FabFragment.TAG);
         else if (click.equals("bottom navigation")) navigateScreen(BottomNaviFragment.TAG);
-
+        else if (click.equals("api")) navigateScreen(ApiFragment.TAG);
 
 
     }
@@ -160,6 +161,8 @@ public class TaskListFragment extends BaseFragment {
             frm = AnimationFragment.getInstance(getArguments());
         else if (tag.equals(RecyclerViewFragment.TAG))
             frm = RecyclerViewFragment.getInstance(getArguments());
+        else if (tag.equals(PaginationFragment.TAG))
+            frm = PaginationFragment.getInstance(getArguments());
         else if (tag.equals(ExpendableSpinnerListFragment.TAG))
             frm = ExpendableSpinnerListFragment.getInstance(getArguments());
         else if (tag.equals(ImageFragment.TAG))
@@ -192,6 +195,8 @@ public class TaskListFragment extends BaseFragment {
             frm = BottomNaviFragment.getInstance(getArguments());
         else if (tag.equals(CollpaseViewFragment.TAG))
             frm = CollpaseViewFragment.getInstance(getArguments());
+        else if (tag.equals(ApiFragment.TAG))
+            frm = ApiFragment.getInstance(getArguments());
         navigateFragment(R.id.container, frm, true);
     }
 

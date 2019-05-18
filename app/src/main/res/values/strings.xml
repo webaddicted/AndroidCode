@@ -197,4 +197,9 @@
     <string name="create_pdf">create pdf</string>
     <string name="save_pdf">save pdf</string>
     <string name="action_settings">setting</string>
+    <string name="scroll_listener">scroll listener</string>
+    <string name="pagination_title">pagination</string>
+    <string name="call_api">call api</string>
+    <string name="api_call_title">Api call</string>
+    <string name="something_went_wrong">something went wrong</string>
 </resources>

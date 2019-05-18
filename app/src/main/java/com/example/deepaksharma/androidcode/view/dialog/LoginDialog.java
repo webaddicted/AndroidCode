@@ -5,15 +5,14 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.deepaksharma.androidcode.R;
-import com.example.deepaksharma.androidcode.databinding.CustomDialogBinding;
+import com.example.deepaksharma.androidcode.databinding.DialogCustomBinding;
 import com.example.deepaksharma.androidcode.global.DialogUtil;
 import com.example.deepaksharma.androidcode.utils.GlobalUtilities;
 import com.example.deepaksharma.androidcode.view.base.BaseDialogFragment;
-import com.example.deepaksharma.androidcode.view.home.HomeActivity;
 
 public class LoginDialog extends BaseDialogFragment {
     public static final String TAG = LoginDialog.class.getSimpleName();
-    private CustomDialogBinding mBinding;
+    private DialogCustomBinding mBinding;
 
     public static LoginDialog getInstance(Bundle bundle) {
         LoginDialog fragment = new LoginDialog();
@@ -23,12 +22,12 @@ public class LoginDialog extends BaseDialogFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.custom_dialog;
+        return R.layout.dialog_custom;
     }
 
     @Override
     protected void onViewsInitialized(ViewDataBinding binding, View view) {
-        mBinding = (CustomDialogBinding) binding;
+        mBinding = (DialogCustomBinding) binding;
         init();
         clickListener();
     }

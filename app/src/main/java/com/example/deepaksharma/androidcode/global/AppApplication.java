@@ -1,9 +1,11 @@
 package com.example.deepaksharma.androidcode.global;
 
+import android.app.Activity;
 import android.app.Application;
 import android.arch.persistence.room.Room;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
+import android.support.v4.app.FragmentManager;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.global.constant.DbConstant;
@@ -19,7 +21,9 @@ import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 public class AppApplication extends Application {
     private static final String TAG = AppApplication.class.getSimpleName();
+    public static FragmentManager mSupportManager;
     private static UserInfoDao userInfoDao;
+    private static Activity mActivityInstance;
     private NetworkChangeReceiver mNetworkReceiver = new NetworkChangeReceiver();
     private static AppApplication mInstance;
     private boolean mIsNetworkConnected;
@@ -57,7 +61,12 @@ public class AppApplication extends Application {
     public static synchronized AppApplication getInstance() {
         return mInstance;
     }
-
+    public static synchronized Activity getActivityInstance() {
+        return mActivityInstance;
+    }
+    public static void setActivityInstance(Activity activityInstance) {
+        mActivityInstance = activityInstance;
+    }
     public boolean ismIsNetworkConnected() {
         if (!mIsNetworkConnected)
             GlobalUtilities.showNoNetworkToast();

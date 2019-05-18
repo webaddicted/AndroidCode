@@ -6,13 +6,13 @@ import android.view.View;
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.RowGridBinding;
 import com.example.deepaksharma.androidcode.global.ImageLoaderUtils;
-import com.example.deepaksharma.androidcode.view.base.BaseRecyclerViewAdapter;
+import com.example.deepaksharma.androidcode.view.base.BaseEndLessRecyclerViewAdapter;
 import com.example.deepaksharma.androidcode.view.fragment.ImageFragment;
 
 import java.io.File;
 import java.util.List;
 
-public class DeviceImageRecyclerViewAdapter extends BaseRecyclerViewAdapter {
+public class DeviceImageRecyclerViewAdapter extends BaseEndLessRecyclerViewAdapter {
     private final List<File> mListBean;
     private final ImageFragment mImageFragment;
 

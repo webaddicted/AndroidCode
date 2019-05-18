@@ -1,43 +1,18 @@
 package com.example.deepaksharma.androidcode.view.fragment;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.app.Dialog;
 import android.databinding.ViewDataBinding;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.IdRes;
-import android.support.v4.content.ContextCompat;
-import android.util.Log;
-import android.view.ContextThemeWrapper;
 import android.view.View;
-import android.view.Window;
-import android.view.animation.OvershootInterpolator;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.deepaksharma.androidcode.R;
-import com.example.deepaksharma.androidcode.databinding.CustomDialogBinding;
 import com.example.deepaksharma.androidcode.databinding.FragmentBottomNaviBinding;
-import com.example.deepaksharma.androidcode.databinding.FragmentFabBinding;
-import com.example.deepaksharma.androidcode.global.DialogUtil;
-import com.example.deepaksharma.androidcode.utils.GlobalUtilities;
 import com.example.deepaksharma.androidcode.view.base.BaseFragment;
-import com.example.deepaksharma.androidcode.view.dialog.LoginDialog;
 import com.example.deepaksharma.androidcode.view.home.HomeActivity;
-import com.github.clans.fab.FloatingActionButton;
-import com.github.clans.fab.FloatingActionMenu;
-import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.BottomBarTab;
 import com.roughike.bottombar.OnTabReselectListener;
 import com.roughike.bottombar.OnTabSelectListener;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 
 public class BottomNaviFragment extends BaseFragment {
     public static final String TAG = BottomNaviFragment.class.getSimpleName();

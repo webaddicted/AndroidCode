@@ -5,17 +5,14 @@ import android.databinding.ViewDataBinding;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.RowGridBinding;
-import com.example.deepaksharma.androidcode.databinding.RowTextListBinding;
 import com.example.deepaksharma.androidcode.global.AppApplication;
 import com.example.deepaksharma.androidcode.global.ImageLoaderUtils;
-import com.example.deepaksharma.androidcode.utils.GlobalUtilities;
-import com.example.deepaksharma.androidcode.view.base.BaseRecyclerViewAdapter;
+import com.example.deepaksharma.androidcode.view.base.BaseEndLessRecyclerViewAdapter;
 import com.example.deepaksharma.androidcode.view.fragment.RecyclerViewFragment;
-import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;
 
-public class StaggeredGridAdapter extends BaseRecyclerViewAdapter {
+public class StaggeredGridAdapter extends BaseEndLessRecyclerViewAdapter {
     private List<String> mListBean;
     private RecyclerViewFragment mRecyclerViewFragment;
     private Context mContext = AppApplication.getInstance();

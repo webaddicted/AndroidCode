@@ -17,6 +17,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.deepaksharma.androidcode.R;
+import com.example.deepaksharma.androidcode.global.AppApplication;
 import com.example.deepaksharma.androidcode.global.FileUtils;
 import com.example.deepaksharma.androidcode.global.PermissionsHandler;
 import com.example.deepaksharma.androidcode.global.constant.AppConstant;
@@ -54,6 +55,8 @@ public class BaseActivity extends AppCompatActivity implements LayoutListener, P
         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
         getSupportActionBar().hide();
         ViewDataBinding binding = null;
+        AppApplication.setActivityInstance(this);
+        AppApplication.mSupportManager = getSupportFragmentManager();
         mHomeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
         if (!EventBus.getDefault().isRegistered(this))
             EventBus.getDefault().register(this);

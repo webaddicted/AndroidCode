@@ -5,11 +5,11 @@ import android.databinding.ViewDataBinding;
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.RowGridBinding;
 import com.example.deepaksharma.androidcode.databinding.RowTextListBinding;
-import com.example.deepaksharma.androidcode.view.base.BaseRecyclerViewAdapter;
+import com.example.deepaksharma.androidcode.view.base.BaseEndLessRecyclerViewAdapter;
 
 import java.util.List;
 
-public class CommonRecyclerViewAdapter extends BaseRecyclerViewAdapter {
+public class CommonRecyclerViewAdapter extends BaseEndLessRecyclerViewAdapter {
     private final List<String> mListBean;
 
     public CommonRecyclerViewAdapter(List<String> listBean) {

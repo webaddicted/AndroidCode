@@ -16,14 +16,14 @@ import android.view.View;
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.RowSwipeToDeleteBinding;
 import com.example.deepaksharma.androidcode.global.AppApplication;
-import com.example.deepaksharma.androidcode.view.base.BaseRecyclerViewAdapter;
+import com.example.deepaksharma.androidcode.view.base.BaseEndLessRecyclerViewAdapter;
 import com.example.deepaksharma.androidcode.view.fragment.RecyclerViewFragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class SwipToDeleteAdapter extends BaseRecyclerViewAdapter {
+public class SwipToDeleteAdapter extends BaseEndLessRecyclerViewAdapter {
     private Context mContext = AppApplication.getInstance();
     private List<String> mListBeanItem;
     private RecyclerViewFragment mRecyclerViewFragment;

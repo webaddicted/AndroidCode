@@ -304,5 +304,31 @@ public class DialogUtil {
             window.setAttributes(lp);
         }
     }
-//    {STOP SHOW DIALOG STYLE}
+
+    /**
+     * show dialog in full screen
+     *
+     * @param activity reference of activity
+     * @param dialog   reference of dialog
+     */
+    public static void fullScreenTransDialogBounds(Activity activity, Dialog dialog) {
+        if (dialog != null && dialog.getWindow() != null) {
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(activity, android.R.color.transparent)));
+            dialog.getWindow().getDecorView().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            if (dialog != null) {
+                int width = ViewGroup.LayoutParams.MATCH_PARENT;
+                int height = ViewGroup.LayoutParams.MATCH_PARENT;
+                dialog.getWindow().setLayout(width, height);
+            }
+            WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+            Window window = dialog.getWindow();
+            lp.copyFrom(window.getAttributes());
+            //This makes the dialog take up the full width
+            //lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+//            lp.width = (int) (dialog.getContext().getResources().getDisplayMetrics().widthPixels * 0.83);
+            //  lp.height = (int) (dialog.getContext().getResources().getDisplayMetrics().heightPixels * 0.55);
+            window.setAttributes(lp);
+        }
+    }
+    //    {STOP SHOW DIALOG STYLE}
 }

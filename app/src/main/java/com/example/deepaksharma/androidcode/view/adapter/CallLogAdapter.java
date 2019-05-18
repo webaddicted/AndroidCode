@@ -4,14 +4,13 @@ import android.databinding.ViewDataBinding;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.RowContactBinding;
-import com.example.deepaksharma.androidcode.model.SmsBean;
 import com.example.deepaksharma.androidcode.model.common.CallLogBean;
-import com.example.deepaksharma.androidcode.view.base.BaseRecyclerViewAdapter;
+import com.example.deepaksharma.androidcode.view.base.BaseEndLessRecyclerViewAdapter;
 import com.example.deepaksharma.androidcode.view.fragment.ImageFragment;
 
 import java.util.List;
 
-public class CallLogAdapter extends BaseRecyclerViewAdapter {
+public class CallLogAdapter extends BaseEndLessRecyclerViewAdapter {
     private final List<CallLogBean> mListBean;
     private final ImageFragment mImageFragment;
 

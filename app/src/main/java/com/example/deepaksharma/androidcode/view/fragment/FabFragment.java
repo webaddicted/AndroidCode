@@ -18,8 +18,7 @@ import android.view.animation.OvershootInterpolator;
 import android.widget.Toast;
 
 import com.example.deepaksharma.androidcode.R;
-import com.example.deepaksharma.androidcode.databinding.CustomDialogBinding;
-import com.example.deepaksharma.androidcode.databinding.FragmentDialogBinding;
+import com.example.deepaksharma.androidcode.databinding.DialogCustomBinding;
 import com.example.deepaksharma.androidcode.databinding.FragmentFabBinding;
 import com.example.deepaksharma.androidcode.global.DialogUtil;
 import com.example.deepaksharma.androidcode.utils.GlobalUtilities;
@@ -344,7 +343,7 @@ public class FabFragment extends BaseFragment {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.getWindow().getAttributes().windowAnimations = R.style.DialogSlideUpAnimation;
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        CustomDialogBinding dialogBinding = (CustomDialogBinding) GlobalUtilities.bindView(getActivity(), R.layout.custom_dialog);
+        DialogCustomBinding dialogBinding = (DialogCustomBinding) GlobalUtilities.bindView(getActivity(), R.layout.dialog_custom);
         dialog.setContentView(dialogBinding.getRoot());
         dialogBinding.txtTitle.setText("this is demo");
         dialogBinding.txtMessage.setText(getResources().getString(R.string.marquee_txt));

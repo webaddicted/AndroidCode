@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/brown_light">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/relative"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/btn_call_api"
+                    style="@style/Button"
+                    android:layout_marginLeft="@dimen/dp5"
+                    android:layout_marginRight="@dimen/dp5"
+                    android:text="@string/call_api" />
+
+                <Button
+                    android:id="@+id/btn_scroll_listener"
+                    style="@style/Button"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="@dimen/dp5"
+                    android:layout_marginRight="@dimen/dp5"
+                    android:layout_toRightOf="@+id/btn_end_less_scroll"
+                    android:text="@string/scroll_listener" />
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/relative"
+                android:layout_marginLeft="@dimen/dp3"
+                android:layout_marginRight="@dimen/dp3"
+                android:divider="@android:color/transparent" />
+        </RelativeLayout>
+    </FrameLayout>
+</layout>

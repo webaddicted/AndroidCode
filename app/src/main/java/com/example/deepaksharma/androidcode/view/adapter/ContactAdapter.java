@@ -1,20 +1,17 @@
 package com.example.deepaksharma.androidcode.view.adapter;
 
 import android.databinding.ViewDataBinding;
-import android.view.View;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.RowContactBinding;
-import com.example.deepaksharma.androidcode.databinding.RowGridBinding;
 import com.example.deepaksharma.androidcode.global.ImageLoaderUtils;
 import com.example.deepaksharma.androidcode.model.common.ContactsBean;
-import com.example.deepaksharma.androidcode.view.base.BaseRecyclerViewAdapter;
+import com.example.deepaksharma.androidcode.view.base.BaseEndLessRecyclerViewAdapter;
 import com.example.deepaksharma.androidcode.view.fragment.ImageFragment;
 
-import java.io.File;
 import java.util.List;
 
-public class ContactAdapter extends BaseRecyclerViewAdapter {
+public class ContactAdapter extends BaseEndLessRecyclerViewAdapter {
     private final List<ContactsBean> mListBean;
     private final ImageFragment mImageFragment;
 
