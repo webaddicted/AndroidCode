@@ -130,4 +130,6 @@ dependencies {
     implementation files('libs/itextpdf-5.4.3.jar')
     implementation 'com.github.clans:fab:1.6.4'
     implementation 'com.roughike:bottom-bar:2.3.1'
+    //    view pager dot indicator
+    implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:2.1.2'
 }
