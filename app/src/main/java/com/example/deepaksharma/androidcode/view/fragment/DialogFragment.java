@@ -113,7 +113,7 @@ public class DialogFragment extends BaseFragment {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.getWindow().getAttributes().windowAnimations = R.style.DialogSlideUpAnimation;
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        DialogCustomBinding dialogBinding = (DialogCustomBinding) GlobalUtilities.bindView(getActivity(), R.layout.dialog_custom);
+        DialogCustomBinding dialogBinding = (DialogCustomBinding) GlobalUtilities.getLayoutBinding(getActivity(), R.layout.dialog_custom);
         dialog.setContentView(dialogBinding.getRoot());
         dialogBinding.txtTitle.setText("this is demo");
         dialogBinding.txtMessage.setText(getResources().getString(R.string.marquee_txt));

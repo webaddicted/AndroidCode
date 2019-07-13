@@ -93,7 +93,7 @@ public class DatePickerCustomDialog extends DatePickerDialog {
             String monthString2 = String.valueOf(month2 + 1);
             String yearString2 = String.valueOf(year2);
             try {
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(AppConstant.DATE_FORMAT1);
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(AppConstant.DATE_FORMAT_D_M_Y);
                 Date date1 = simpleDateFormat.parse(monthString1 + "-" + dayString1 + "-" + yearString1);
                 Date date2 = simpleDateFormat.parse(monthString2 + "-" + dayString2 + "-" + yearString2);
 
@@ -128,7 +128,7 @@ public class DatePickerCustomDialog extends DatePickerDialog {
             String monthString2 = String.valueOf(month2 + 1);
             String yearString2 = String.valueOf(year2);
             try {
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(AppConstant.DATE_FORMAT1);
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(AppConstant.DATE_FORMAT_D_M_Y);
                 Date date1 = simpleDateFormat.parse(monthString1 + "-" + dayString1 + "-" + yearString1);
                 Date date2 = simpleDateFormat.parse(monthString2 + "-" + dayString2 + "-" + yearString2);
 

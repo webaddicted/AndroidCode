@@ -17,6 +17,7 @@ import android.widget.SeekBar;
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.FragmentWidgetBinding;
 import com.example.deepaksharma.androidcode.global.ValidationHelper;
+import com.example.deepaksharma.androidcode.global.constant.AppConstant;
 import com.example.deepaksharma.androidcode.utils.DatePickerCustomDialog;
 import com.example.deepaksharma.androidcode.utils.GlobalUtilities;
 import com.example.deepaksharma.androidcode.view.base.BaseFragment;
@@ -109,7 +110,14 @@ public class WidgetFragment extends BaseFragment {
                 if (validate()) GlobalUtilities.showToast(getResources().getString(R.string.done));
                 break;
             case R.id.btn_data_picker:
-                DatePickerCustomDialog.getDate(getActivity(), (view, year, month, dayOfMonth) -> mBinding.txtDateValue.setText("Date is - " + dayOfMonth + "/" + month + "/" + year)).show();
+                StringBuilder stringBuilder = new StringBuilder();
+                GlobalUtilities.getDate(getActivity(), mBinding.txtDateValue);
+                String dateformate = mBinding.txtDateValue.getText().toString();
+                stringBuilder.append(dateformate+"\n");
+                stringBuilder.append(GlobalUtilities.dateFormate(dateformate, AppConstant.DATE_FORMAT_D_M_Y,AppConstant.DATE_FORMAT_Y_M_D)+"\n");
+                stringBuilder.append(GlobalUtilities.dateFormate(dateformate, AppConstant.DATE_FORMAT_D_M_Y,AppConstant.DATE_FORMAT_D_M_Y_H)+"\n");
+                stringBuilder.append(GlobalUtilities.dateFormate(dateformate, AppConstant.DATE_FORMAT_D_M_Y,AppConstant.DATE_FORMAT_SRC)+"\n");
+                mBinding.txtDateValue.setText(stringBuilder.toString());
                 break;
             case R.id.btn_time_picker:
                 DatePickerCustomDialog.getTime(getActivity(), (view, hourOfDay, minute) -> mBinding.txtTimeValue.setText("Time is - " + hourOfDay + " : " + minute)).show();

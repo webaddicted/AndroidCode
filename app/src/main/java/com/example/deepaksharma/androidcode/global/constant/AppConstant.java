@@ -7,7 +7,9 @@ public class AppConstant {
     public static final int PICK_IMAGE_MULTIPLE = 5002;
     public static final int REQUEST_CODE_SPEECH_INPUT = 5003;
     public static final String DATE_FORMAT_Y_M_D = "yyyy-MM-dd";
-    public static final String DATE_FORMAT1 = "dd/MM/yyyy";
+    public static final String DATE_FORMAT_D_M_Y = "dd/MM/yyyy";
+    public static final String DATE_FORMAT_D_M_Y_H = "dd/MMMM/yyyy";
+
     public static final String DATE_FORMAT_SRC = "yyyy-MM-dd'T'HH:mm:ss'Z'";
     public static final String DATE_FORMAT_DST = "dd MMM yyyy hh:mm:ss a";
     public static final String SELECTED_POSITION = "selected_position";

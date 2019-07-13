@@ -1,6 +1,7 @@
 package com.example.deepaksharma.androidcode.utils;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
@@ -29,6 +30,7 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -61,29 +63,17 @@ import static android.support.constraint.Constraints.TAG;
 public class GlobalUtilities {
     private static Context mContext = AppApplication.getInstance();
 
-    public static String getDateInYYYYMMDD(String date) {
-        if (date != null && date.length() > 0) {
-            SimpleDateFormat sdf = new SimpleDateFormat(AppConstant.DATE_FORMAT_SRC);
-            SimpleDateFormat output = new SimpleDateFormat(AppConstant.DATE_FORMAT_DST);
-            Date dt = null;
-            try {
-                dt = sdf.parse(date);
-                return output.format(dt);
-            } catch (ParseException e) {
-                e.printStackTrace();
-                Log.d(TAG, "getDateInYYYYMMDD: " + e);
-            }
-        }
-        return "";
-    }
-
+    /**
+     * set date in textview
+     *
+     * @param mDobEt
+     */
     public static void setDate(final TextView mDobEt) {
         DatePickerCustomDialog datePickerCustomDialog = DatePickerCustomDialog.getInstance(mContext, new DatePickerCallback() {
             @Override
             public void onDateSetCallBack(String date) {
                 mDobEt.setText(date);
             }
-
         });
         Calendar c = Calendar.getInstance();
         int pYear = c.get(Calendar.YEAR);
@@ -91,6 +81,30 @@ public class GlobalUtilities {
         int pDay = c.get(Calendar.DAY_OF_MONTH);
         c.set(pYear, pMonth, pDay);
         datePickerCustomDialog.setMaxDateCustom(c.getTimeInMillis());
+        datePickerCustomDialog.show();
+    }
+    public static void getDate(Context context,TextView mDobEtm) {
+        Calendar calendar = Calendar.getInstance();
+        DatePickerDialog datePickerDialog = new DatePickerDialog(context, R.style.TimePicker, (view, year, month, dayOfMonth) -> mDobEtm.setText(dayOfMonth + "/" + month + "/" + year), calendar.YEAR, calendar.MONTH, calendar.DAY_OF_MONTH);
+        datePickerDialog.show();
+    }
+    /**
+     * convert date formate
+     *
+     * @param date         date any formate string
+     * @param inputFormat  input date formate
+     * @param outputFormat output date formate
+     * @return output date formate
+     */
+    public static String dateFormate(String date, String inputFormat, String outputFormat) {
+        Date initDate = null;
+        try {
+            initDate = new SimpleDateFormat(inputFormat).parse(date);
+        } catch (java.text.ParseException e) {
+            e.printStackTrace();
+        }
+        SimpleDateFormat formatter = new SimpleDateFormat(outputFormat);
+        return formatter.format(initDate);
     }
 
     /**
@@ -237,6 +251,14 @@ public class GlobalUtilities {
         }
     }
 
+    /**
+     * show string in different color using spannable
+     *
+     * @param textView     view
+     * @param txtSpannable string text
+     * @param starText     start index of text
+     * @param endText      end index of text
+     */
     public static void setSpannable(TextView textView, String txtSpannable, int starText, int endText) {
         SpannableString spannableString = new SpannableString(txtSpannable);
         ForegroundColorSpan foregroundSpan = new ForegroundColorSpan(Color.GREEN);
@@ -246,21 +268,30 @@ public class GlobalUtilities {
         textView.setText(spannableString);
     }
 
-    public static ViewDataBinding bindView(Activity activity, int custom_dialog) {
-        return DataBindingUtil.inflate(LayoutInflater.from(activity), custom_dialog, null, false);
-    }
-
+    /**
+     * button click fade animation
+     *
+     * @param view view reference
+     */
     public static void btnClickAnimation(View view) {
         Animation fadeAnimation = AnimationUtils.loadAnimation(view.getContext(), R.anim.fade_in);
         view.startAnimation(fadeAnimation);
     }
 
+    /**
+     * provide binding of layout
+     *
+     * @param context reference of activity
+     * @param layout  layout
+     * @return viewBinding
+     */
     public static ViewDataBinding getLayoutBinding(Context context, int layout) {
         return DataBindingUtil.
                 inflate(LayoutInflater.from(context),
                         layout,
                         null, false);
     }
+
     /**
      * @param sizeOfRandomString length of random string
      * @return generate a random string
@@ -273,8 +304,14 @@ public class GlobalUtilities {
             sb.append(ALLOWED_CHARACTERS.charAt(random.nextInt(ALLOWED_CHARACTERS.length())));
         return sb.toString();
     }
-public static int getTwoDigitRandomNo(){
-    return new Random().nextInt(90) + 10;
-}
+
+    /**
+     * two digit random number
+     *
+     * @return random number
+     */
+    public static int getTwoDigitRandomNo() {
+        return new Random().nextInt(90) + 10;
+    }
 
 }
