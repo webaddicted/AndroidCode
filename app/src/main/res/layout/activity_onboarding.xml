@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <!--<LinearLayout-->
+        <!--android:id="@+id/layoutDots"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/dots_height"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_marginBottom="@dimen/dots_margin_bottom"-->
+        <!--android:gravity="center"-->
+        <!--android:orientation="horizontal"></LinearLayout>-->
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_above="@+id/relative"
+            android:alpha=".5"
+            android:background="@android:color/black" />
+
+        <RelativeLayout
+            android:id="@+id/relative"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp45"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="@dimen/dp3"
+            android:orientation="horizontal">
+
+            <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+                android:id="@+id/dots_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                app:dotsColor="@color/white"
+                app:dotsCornerRadius="@dimen/dp6"
+                app:dotsSize="@dimen/dp7"
+                app:dotsSpacing="@dimen/dp3"
+                app:dotsWidthFactor="2.5" />
+
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:background="@null"
+                android:text="@string/next"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/btn_got_it"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/dp3"
+                android:background="@null"
+                android:text="@string/got_it"
+                android:textColor="@android:color/white"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btn_skip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="@dimen/dp3"
+                android:background="@null"
+                android:text="@string/skip"
+                android:textColor="@android:color/white" />
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

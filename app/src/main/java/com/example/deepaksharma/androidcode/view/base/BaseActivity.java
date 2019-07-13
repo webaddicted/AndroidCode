@@ -14,7 +14,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.Toast;
+import android.view.View;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.global.AppApplication;
@@ -24,7 +24,6 @@ import com.example.deepaksharma.androidcode.global.constant.AppConstant;
 import com.example.deepaksharma.androidcode.global.image.ImagePicker;
 import com.example.deepaksharma.androidcode.model.NetworkListenerBean;
 import com.example.deepaksharma.androidcode.model.eventBus.EventBusListener;
-import com.example.deepaksharma.androidcode.view.interfaces.LayoutListener;
 import com.example.deepaksharma.androidcode.viewModel.home.HomeViewModel;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
@@ -36,15 +35,13 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.deepaksharma.androidcode.view.fragment.GoogleMapFragment.REQUEST_PLACE;
 
-public class BaseActivity extends AppCompatActivity implements LayoutListener, PermissionsHandler.PermissionListener {
+public abstract class BaseActivity extends AppCompatActivity implements PermissionsHandler.PermissionListener, View.OnClickListener {
     private static final String TAG = BaseActivity.class.getSimpleName();
     private HomeViewModel mHomeViewModel;
 
@@ -70,15 +67,9 @@ public class BaseActivity extends AppCompatActivity implements LayoutListener, P
         }
     }
 
-    @Override
-    public int getLayout() {
-        return 0;
-    }
+    protected abstract int getLayout();
 
-    @Override
-    public void initUI(ViewDataBinding binding) {
-
-    }
+    protected abstract void initUI(ViewDataBinding binding);
 
     @Override
     public void onBackPressed() {
@@ -106,6 +97,7 @@ public class BaseActivity extends AppCompatActivity implements LayoutListener, P
             fragmentTransaction.addToBackStack(fragment.getClass().getSimpleName());
         fragmentTransaction.commitAllowingStateLoss();
     }
+
     protected void navigateAddFragment(int layoutContainer, Fragment fragment, boolean isEnableBackStack) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -114,6 +106,7 @@ public class BaseActivity extends AppCompatActivity implements LayoutListener, P
             fragmentTransaction.addToBackStack(fragment.getClass().getSimpleName());
         fragmentTransaction.commitAllowingStateLoss();
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -143,7 +136,7 @@ public class BaseActivity extends AppCompatActivity implements LayoutListener, P
                     break;
                 case PlaceAutocomplete.RESULT_ERROR:
                     Status status = PlaceAutocomplete.getStatus(this, data);
-                    Log.d(TAG, "onActivityResult: "+status.getStatusMessage());
+                    Log.d(TAG, "onActivityResult: " + status.getStatusMessage());
                     break;
                 case IntentIntegrator.REQUEST_CODE:
                     IntentResult mIntentResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
@@ -167,24 +160,24 @@ public class BaseActivity extends AppCompatActivity implements LayoutListener, P
         multiplePermission.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
         multiplePermission.add(Manifest.permission.READ_EXTERNAL_STORAGE);
         multiplePermission.add(Manifest.permission.CAMERA);
-        if (PermissionsHandler.checkMultiplePermission(this,multiplePermission)) {
+        if (PermissionsHandler.checkMultiplePermission(this, multiplePermission)) {
             FileUtils.createApplicationFolder();
             mHomeViewModel.mIsPermissionGranted.postValue(true);
         } else
-            PermissionsHandler.requestMultiplePermission(this,multiplePermission, this);
+            PermissionsHandler.requestMultiplePermission(this, multiplePermission, this);
     }
 
     protected void checkLocationPermission() {
         List<String> multiplePermission = new ArrayList<>();
         multiplePermission.add(Manifest.permission.ACCESS_FINE_LOCATION);
         multiplePermission.add(Manifest.permission.ACCESS_COARSE_LOCATION);
-        if (PermissionsHandler.checkMultiplePermission(this,multiplePermission)) {
-        } else PermissionsHandler.requestMultiplePermission(this,multiplePermission, this);
+        if (PermissionsHandler.checkMultiplePermission(this, multiplePermission)) {
+        } else PermissionsHandler.requestMultiplePermission(this, multiplePermission, this);
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        PermissionsHandler.onRequestPermissionsResult(this,requestCode, permissions, grantResults);
+        PermissionsHandler.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
     }
 
     @Override
@@ -199,5 +192,9 @@ public class BaseActivity extends AppCompatActivity implements LayoutListener, P
 
     @Subscribe
     public void NetworkChangeListener(NetworkListenerBean networkListenerBean) {
+    }
+    @Override
+    public void onClick(View v) {
+
     }
 }

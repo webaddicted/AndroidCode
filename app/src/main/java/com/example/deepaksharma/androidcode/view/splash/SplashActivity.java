@@ -1,36 +1,36 @@
 package com.example.deepaksharma.androidcode.view.splash;
 
-import android.content.Intent;
 import android.databinding.ViewDataBinding;
-import android.os.Handler;
+import android.support.v4.app.Fragment;
 
 import com.example.deepaksharma.androidcode.R;
-import com.example.deepaksharma.androidcode.databinding.ActivitySplashBinding;
-import com.example.deepaksharma.androidcode.global.constant.AppConstant;
+import com.example.deepaksharma.androidcode.databinding.ActivityCommonBinding;
 import com.example.deepaksharma.androidcode.view.base.BaseActivity;
-import com.example.deepaksharma.androidcode.view.home.HomeActivity;
+import com.example.deepaksharma.androidcode.view.fragment.splash.SplashFragment;
 
 public class SplashActivity extends BaseActivity {
-  private ActivitySplashBinding mBinding;
+    private ActivityCommonBinding mBinding;
 
-  @Override
-  public int getLayout() {
-    return R.layout.activity_splash;
-  }
+    @Override
+    public int getLayout() {
+        return R.layout.activity_common;
+    }
 
-  @Override
-  public void initUI(ViewDataBinding binding) {
-    mBinding = (ActivitySplashBinding) binding;
-    navigateToNext();
-  }
+    @Override
+    public void initUI(ViewDataBinding binding) {
+        mBinding = (ActivityCommonBinding) binding;
+        navigateScreen(SplashFragment.TAG);
+    }
 
-  /**
-   * navigate to welcome activity after Splash timer Delay
-   */
-  private void navigateToNext() {
-    new Handler().postDelayed(() -> {
-      startActivity(new Intent(SplashActivity.this, HomeActivity.class));
-      finish();
-    }, AppConstant.SPLASH_DELAY);
-  }
+    /**
+     * navigate on fragment
+     *
+     * @param tag represent navigation activity
+     */
+    private void navigateScreen(String tag) {
+        Fragment frm = null;
+        if (tag.equals(SplashFragment.TAG))
+            frm = SplashFragment.getInstance(getIntent().getExtras());
+        navigateFragment(R.id.container, frm, false);
+    }
 }

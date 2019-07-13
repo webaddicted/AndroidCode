@@ -1728,4 +1728,9 @@
 
 
     <!--</resources>-->
+
+    <dimen name="img_width_height">140dp</dimen>
+    <dimen name="slide_title">30sp</dimen>
+    <dimen name="slide_desc">16sp</dimen>
+    <dimen name="desc_padding">40dp</dimen>
 </resources>
