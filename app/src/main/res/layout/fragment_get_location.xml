@@ -27,6 +27,13 @@
             style="@style/Button"
             android:layout_marginTop="@dimen/dp15"
             android:text="@string/stop_location_update"/>
-
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp3"
+            android:layout_marginRight="@dimen/dp3"
+            android:layout_below="@+id/edt_search"
+            android:divider="@android:color/transparent" />
     </LinearLayout>
 </layout>

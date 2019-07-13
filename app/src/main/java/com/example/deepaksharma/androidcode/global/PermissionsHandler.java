@@ -26,7 +26,6 @@ import java.util.Map;
  */
 public class PermissionsHandler {
     private static final int PERMISSION_CODE = 1212;
-    private static Activity mActivity = null;
     private static List<String> mCustomPermission = null;
     private static PermissionListener mPerpermissionListener;
 
@@ -38,19 +37,19 @@ public class PermissionsHandler {
      * @param permissionListener is describe permission status
      * @param permissions        is bundle of all permission
      */
-    public static boolean requestMultiplePermission(@NonNull List<String> permissions, @NonNull PermissionListener permissionListener) {
+    public static boolean requestMultiplePermission(Activity activity, @NonNull List<String> permissions, @NonNull PermissionListener permissionListener) {
         mPerpermissionListener = permissionListener;
         mCustomPermission = permissions;
         if (Build.VERSION.SDK_INT >= 23) {
             List<String> listPermissionsNeeded = permissions;
             List<String> listPermissionsAssign = new ArrayList<>();
             for (String per : listPermissionsNeeded) {
-                if (ContextCompat.checkSelfPermission(mActivity.getApplicationContext(), per) != PackageManager.PERMISSION_GRANTED) {
+                if (ContextCompat.checkSelfPermission(activity.getApplicationContext(), per) != PackageManager.PERMISSION_GRANTED) {
                     listPermissionsAssign.add(per);
                 }
             }
             if (!listPermissionsAssign.isEmpty()) {
-                ActivityCompat.requestPermissions(mActivity, listPermissionsAssign.toArray(new String[listPermissionsAssign.size()]), PERMISSION_CODE);
+                ActivityCompat.requestPermissions(activity, listPermissionsAssign.toArray(new String[listPermissionsAssign.size()]), PERMISSION_CODE);
                 return false;
             }
         }
@@ -65,20 +64,20 @@ public class PermissionsHandler {
      * @param permissionListener is describe permission status
      * @param permissions        is single permission
      */
-    public static boolean requestSinglePermission(@NonNull String permissions, @NonNull PermissionListener permissionListener) {
+    public static boolean requestSinglePermission(Activity activity,@NonNull String permissions, @NonNull PermissionListener permissionListener) {
         mPerpermissionListener = permissionListener;
         mCustomPermission = Arrays.asList(new String[]{permissions});
         if (Build.VERSION.SDK_INT >= 23) {
-            if (ActivityCompat.checkSelfPermission(mActivity, permissions) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.checkSelfPermission(activity, permissions) != PackageManager.PERMISSION_GRANTED) {
 //                askRequestPermissions(new String[]{permissions});
-                ActivityCompat.requestPermissions(mActivity, new String[]{permissions}, PERMISSION_CODE);
+                ActivityCompat.requestPermissions(activity, new String[]{permissions}, PERMISSION_CODE);
                 return false;
             }
         }
         return true;
     }
 
-    public static void onRequestPermissionsResult(@NonNull int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+    public static void onRequestPermissionsResult(Activity activity, @NonNull int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
         switch (requestCode) {
             case PERMISSION_CODE: {
                 List<String> listPermissionsNeeded = mCustomPermission;
@@ -101,17 +100,17 @@ public class PermissionsHandler {
                     } else {
                         boolean shouldRequest = false;
                         for (String permission : listPermissionsNeeded) {
-                            if (ActivityCompat.shouldShowRequestPermissionRationale(mActivity, permission)) {
+                            if (ActivityCompat.shouldShowRequestPermissionRationale(activity, permission)) {
                                 shouldRequest = true;
                                 break;
                             }
                         }
                         if (shouldRequest) {
-                            ifCancelledAndCanRequest();
+                            ifCancelledAndCanRequest(activity);
                         } else {
                             //permission is denied (and never ask again is  checked)
                             //shouldShowRequestPermissionRationale will return false
-                            ifCancelledAndCannotRequest();
+                            ifCancelledAndCannotRequest(activity);
                         }
                     }
                 }
@@ -122,13 +121,13 @@ public class PermissionsHandler {
     /**
      * permission cancel dialog
      */
-    private static void ifCancelledAndCanRequest() {
-        showDialogOK(mActivity, "Permission required for this app, please grant all permission .", new DialogInterface.OnClickListener() {
+    private static void ifCancelledAndCanRequest(Activity activity) {
+        showDialogOK(activity, "Permission required for this app, please grant all permission .", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 switch (which) {
                     case DialogInterface.BUTTON_POSITIVE:
-                        requestMultiplePermission(mCustomPermission, mPerpermissionListener);
+                        requestMultiplePermission(activity,mCustomPermission, mPerpermissionListener);
                         break;
                     case DialogInterface.BUTTON_NEGATIVE:
                         mPerpermissionListener.onPermissionDenied(mCustomPermission);
@@ -142,7 +141,7 @@ public class PermissionsHandler {
     /**
      * forcefully stoped all permission dialog
      */
-    private static void ifCancelledAndCannotRequest() {
+    private static void ifCancelledAndCannotRequest(Activity mActivity) {
         showDialogOK(mActivity, mActivity.getResources().getString(R.string.forcefully_enable_permission), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -174,7 +173,7 @@ public class PermissionsHandler {
      *
      * @param permissions is bundle of all permission
      */
-    public static boolean checkMultiplePermission(@NonNull List<String> permissions) {
+    public static boolean checkMultiplePermission(Activity mActivity,@NonNull List<String> permissions) {
         mCustomPermission = permissions;
         if (Build.VERSION.SDK_INT >= 23) {
             List<String> listPermissionsNeeded = permissions;
@@ -198,7 +197,7 @@ public class PermissionsHandler {
      *
      * @param permissions is single permission
      */
-    public static boolean checkPermission(@NonNull String permissions) {
+    public static boolean checkPermission(Activity mActivity,@NonNull String permissions) {
         mCustomPermission = Arrays.asList(new String[]{permissions});
         if (Build.VERSION.SDK_INT >= 23) {
             if (ActivityCompat.checkSelfPermission(mActivity, permissions) != PackageManager.PERMISSION_GRANTED)
@@ -215,7 +214,6 @@ public class PermissionsHandler {
     }
 
     public static void clearPermission() {
-        mActivity = null;
         mCustomPermission = null;
         mPerpermissionListener = null;
     }

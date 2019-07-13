@@ -20,7 +20,7 @@ public class SpinnerListAdapter extends BaseAdapter {
 
 
     public int getCount() {
-        return mListBean.size();
+        return (mListBean == null || mListBean.size() == 0) ? 0 : mListBean.size();
     }
 
     public Object getItem(int position) {

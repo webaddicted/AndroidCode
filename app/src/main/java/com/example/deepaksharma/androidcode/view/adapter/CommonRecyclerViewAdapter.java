@@ -29,7 +29,7 @@ public class CommonRecyclerViewAdapter extends BaseEndLessRecyclerViewAdapter {
 
     @Override
     protected int getListSize() {
-        return mListBean.size();
+        return (mListBean == null || mListBean.size() == 0) ? 0 : mListBean.size();
     }
 
     @Override

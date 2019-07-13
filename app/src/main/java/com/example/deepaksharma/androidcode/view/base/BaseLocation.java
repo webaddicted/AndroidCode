@@ -68,7 +68,7 @@ public abstract class BaseLocation extends BaseActivity implements
         this.isUpdateLocation = true;
         if (timeInterval > 0) INTERVAL = INTERVAL * timeInterval;
         if (fastInterval > 0) FASTEST_INTERVAL = FASTEST_INTERVAL * fastInterval;
-        if (displacement > 0)
+//        if (displacement > 0)
             MIN_DISTANCE_CHANGE_FOR_UPDATES = MIN_DISTANCE_CHANGE_FOR_UPDATES * displacement;
         checkPermission();
     }
@@ -81,7 +81,7 @@ public abstract class BaseLocation extends BaseActivity implements
             List<String> locationList = new ArrayList<>();
             locationList.add(Manifest.permission.ACCESS_FINE_LOCATION);
             locationList.add(Manifest.permission.ACCESS_COARSE_LOCATION);
-            if (PermissionsHandler.requestMultiplePermission(locationList, this)) {
+            if (PermissionsHandler.requestMultiplePermission(this,locationList, this)) {
                 checkGpsLocation();
             }
         } catch (Exception e) {
@@ -212,7 +212,7 @@ public abstract class BaseLocation extends BaseActivity implements
     //        [Permission Start]
     @Override
     public void onRequestPermissionsResult(@NonNull int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
-        PermissionsHandler.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        PermissionsHandler.onRequestPermissionsResult(this,requestCode, permissions, grantResults);
     }
 
     @Override

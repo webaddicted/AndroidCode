@@ -106,14 +106,14 @@ public class ServicesFragment extends BaseFragment {
     }
 
     private void captureImage() {
-        if (PermissionsHandler.checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+        if (PermissionsHandler.checkPermission(getActivity(),Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             Intent service = new Intent(getActivity(), CapturePhotoService.class);
             getActivity().startService(service);
         }
     }
 
     private void readImage() {
-        if (PermissionsHandler.checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+        if (PermissionsHandler.checkPermission(getActivity(),Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             GlobalUtilities.handleUI(getActivity(), mBinding.loader.parentLoader, true);
             Intent service = new Intent(getActivity(), GetAllImageService.class);
             getActivity().startService(service);
@@ -121,7 +121,7 @@ public class ServicesFragment extends BaseFragment {
     }
 
     private void readPhoneContact() {
-        if (PermissionsHandler.checkPermission(Manifest.permission.READ_CONTACTS)) {
+        if (PermissionsHandler.checkPermission(getActivity(),Manifest.permission.READ_CONTACTS)) {
             GlobalUtilities.handleUI(getActivity(), mBinding.loader.parentLoader, true);
             Intent service = new Intent(getActivity(), ContactService.class);
             getActivity().startService(service);
@@ -129,7 +129,7 @@ public class ServicesFragment extends BaseFragment {
     }
 
     private void readSms() {
-        if (PermissionsHandler.checkPermission(Manifest.permission.READ_SMS)) {
+        if (PermissionsHandler.checkPermission(getActivity(),Manifest.permission.READ_SMS)) {
             GlobalUtilities.handleUI(getActivity(), mBinding.loader.parentLoader, true);
             Intent service = new Intent(getActivity(), SmsService.class);
             getActivity().startService(service);
@@ -137,7 +137,7 @@ public class ServicesFragment extends BaseFragment {
     }
 
     private void readCallLog() {
-        if (PermissionsHandler.checkPermission(Manifest.permission.READ_CALL_LOG)) {
+        if (PermissionsHandler.checkPermission(getActivity(),Manifest.permission.READ_CALL_LOG)) {
             GlobalUtilities.handleUI(getActivity(), mBinding.loader.parentLoader, true);
             Intent service = new Intent(getActivity(), CallLogService.class);
             getActivity().startService(service);

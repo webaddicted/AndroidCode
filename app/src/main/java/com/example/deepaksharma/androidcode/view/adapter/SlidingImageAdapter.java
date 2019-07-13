@@ -35,7 +35,7 @@ public class SlidingImageAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return mImageFolderList.size();
+        return (mImageFolderList == null || mImageFolderList.size() == 0) ? 0 : mImageFolderList.size();
     }
 
     @Override

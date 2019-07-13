@@ -46,7 +46,7 @@ public class SwipToDeleteAdapter extends BaseEndLessRecyclerViewAdapter {
 
     @Override
     protected int getListSize() {
-        return mListBeanItem.size();
+        return (mListBeanItem == null || mListBeanItem.size() == 0) ? 0 : mListBeanItem.size();
     }
 
     @Override

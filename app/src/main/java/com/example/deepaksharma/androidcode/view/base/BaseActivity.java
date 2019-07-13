@@ -167,24 +167,24 @@ public class BaseActivity extends AppCompatActivity implements LayoutListener, P
         multiplePermission.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
         multiplePermission.add(Manifest.permission.READ_EXTERNAL_STORAGE);
         multiplePermission.add(Manifest.permission.CAMERA);
-        if (PermissionsHandler.checkMultiplePermission(multiplePermission)) {
+        if (PermissionsHandler.checkMultiplePermission(this,multiplePermission)) {
             FileUtils.createApplicationFolder();
             mHomeViewModel.mIsPermissionGranted.postValue(true);
         } else
-            PermissionsHandler.requestMultiplePermission(multiplePermission, this);
+            PermissionsHandler.requestMultiplePermission(this,multiplePermission, this);
     }
 
     protected void checkLocationPermission() {
         List<String> multiplePermission = new ArrayList<>();
         multiplePermission.add(Manifest.permission.ACCESS_FINE_LOCATION);
         multiplePermission.add(Manifest.permission.ACCESS_COARSE_LOCATION);
-        if (PermissionsHandler.checkMultiplePermission(multiplePermission)) {
-        } else PermissionsHandler.requestMultiplePermission(multiplePermission, this);
+        if (PermissionsHandler.checkMultiplePermission(this,multiplePermission)) {
+        } else PermissionsHandler.requestMultiplePermission(this,multiplePermission, this);
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        PermissionsHandler.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        PermissionsHandler.onRequestPermissionsResult(this,requestCode, permissions, grantResults);
     }
 
     @Override

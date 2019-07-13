@@ -79,7 +79,7 @@ public class GoogleMapFragment extends BaseFragment implements OnMapReadyCallbac
     }
 
     public void initailizeMap() {
-        if (PermissionsHandler.checkPermission(Manifest.permission.ACCESS_FINE_LOCATION)) {
+        if (PermissionsHandler.checkPermission(getActivity(),Manifest.permission.ACCESS_FINE_LOCATION)) {
             if (mGoogleMap == null) {
                 SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
                 mapFragment.getMapAsync(this);
@@ -152,7 +152,7 @@ public class GoogleMapFragment extends BaseFragment implements OnMapReadyCallbac
     }
 
     private void createPolyLine() {
-        if (PermissionsHandler.checkPermission(Manifest.permission.ACCESS_FINE_LOCATION)) {
+        if (PermissionsHandler.checkPermission(getActivity(),Manifest.permission.ACCESS_FINE_LOCATION)) {
             if (mGoogleMap != null && mLocation != null) {
 
             }

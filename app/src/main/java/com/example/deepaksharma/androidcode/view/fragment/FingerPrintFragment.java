@@ -78,7 +78,7 @@ public class FingerPrintFragment extends BaseFragment {
         if (mFingerprintMgr != null && !mFingerprintMgr.isHardwareDetected()) {
             mBinding.txtErrorMessage.setText(getResources().getString(R.string.fingerprint_not_exist));
         } else {
-            if (!PermissionsHandler.checkPermission(Manifest.permission.USE_FINGERPRINT)) {
+            if (!PermissionsHandler.checkPermission(getActivity(),Manifest.permission.USE_FINGERPRINT)) {
                 mBinding.txtErrorMessage.setText(getResources().getString(R.string.fingerprint_not_enabled));
             } else {
                 if (mFingerprintMgr != null && !mFingerprintMgr.hasEnrolledFingerprints()) {

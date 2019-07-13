@@ -13,7 +13,7 @@ import com.example.deepaksharma.androidcode.global.AppApplication;
 
 public abstract class BaseRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final String TAG = BaseRecyclerViewAdapter.class.getSimpleName();
-    private Context mContext = AppApplication.getInstance();
+    protected Context mContext = AppApplication.getInstance();
 //    private RecyclerView mRecyclerView;
 
     protected abstract int getLayoutId(int viewType);
