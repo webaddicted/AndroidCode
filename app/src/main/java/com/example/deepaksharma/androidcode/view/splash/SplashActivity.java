@@ -8,6 +8,8 @@ import com.example.deepaksharma.androidcode.databinding.ActivityCommonBinding;
 import com.example.deepaksharma.androidcode.view.base.BaseActivity;
 import com.example.deepaksharma.androidcode.view.fragment.splash.SplashFragment;
 
+import java.util.Random;
+
 public class SplashActivity extends BaseActivity {
     private ActivityCommonBinding mBinding;
 

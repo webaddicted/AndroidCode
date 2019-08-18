@@ -5,7 +5,9 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
+import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.support.annotation.Nullable;
@@ -15,6 +17,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.global.AppApplication;
@@ -51,10 +55,12 @@ public abstract class BaseActivity extends AppCompatActivity implements Permissi
         int layoutResId = getLayout();
         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
         getSupportActionBar().hide();
+        setNavigationColor(getResources().getColor(R.color.app_color));
         ViewDataBinding binding = null;
         AppApplication.setActivityInstance(this);
         AppApplication.mSupportManager = getSupportFragmentManager();
         mHomeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
+        fullScreen();
         if (!EventBus.getDefault().isRegistered(this))
             EventBus.getDefault().register(this);
         if (layoutResId != 0) {
@@ -65,8 +71,24 @@ public abstract class BaseActivity extends AppCompatActivity implements Permissi
                 e.printStackTrace();
             }
         }
+
     }
 
+    private void fullScreen() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            if (window != null) {
+                window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                window.setStatusBarColor(Color.TRANSPARENT);
+            }
+        }
+    }
+    protected void setNavigationColor(int color) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setNavigationBarColor(color);
+        }
+    }
     protected abstract int getLayout();
 
     protected abstract void initUI(ViewDataBinding binding);

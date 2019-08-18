@@ -19,6 +19,7 @@
             <TextView
                 style="@style/TextView_Regular"
                 android:id="@+id/txt_name"
+                android:textColor="@color/black"
                 android:layout_marginLeft="@dimen/dp9"
                 android:layout_marginTop="@dimen/dp15"
                 android:layout_marginBottom="@dimen/dp15"

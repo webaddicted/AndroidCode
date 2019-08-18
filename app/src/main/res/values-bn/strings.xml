@@ -6,7 +6,6 @@
     <string name="no_network_msg">कृपया अपने इंटरनेट कनेक्शन की जांच करें &amp; पुनः प्रयास करें</string>
     <string name="lbl_please_wait">कृपया प्रतीक्षा करें...</string>
     <string name="internet_connected">नेटवर्क से जुड़ा</string>
-
     <string name="dismiss">खारिज</string>
     <string name="please_wait">कृपया प्रतीक्षा करें</string>
     <string name="retry">पुन: प्रयास</string>

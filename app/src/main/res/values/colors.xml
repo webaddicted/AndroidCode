@@ -4,10 +4,36 @@
     <!--<color name="colorPrimaryDark">#FF0000</color>-->
     <!--<color name="colorAccent">#FF0000</color>-->
     <!--<color name="app_color">#FF0000</color>-->
-    <color name="colorPrimary">#000080</color>
-    <color name="colorPrimaryDark">#000080</color>
-    <color name="colorAccent">#000080</color>
-    <color name="app_color">#000080</color>
+
+    <!--<color name="colorPrimary">#ed232a</color>-->
+    <!--<color name="colorPrimaryDark">#ed232a</color>-->
+    <!--<color name="colorAccent">#ed232a</color>-->
+    <!--<color name="app_color">#ed232a</color>-->
+
+    <!--<color name="colorPrimary">#f38901</color>-->
+    <!--<color name="colorPrimaryDark">#f38901</color>-->
+    <!--<color name="colorAccent">#f38901</color>-->
+    <!--<color name="app_color">#f38901</color>-->
+
+    <!--<color name="colorPrimary">#ea5d01</color>-->
+    <!--<color name="colorPrimaryDark">#ea5d01</color>-->
+    <!--<color name="colorAccent">#ea5d01</color>-->
+    <!--<color name="app_color">#ea5d01</color>-->
+
+    <!--<color name="colorPrimary">#226903</color>-->
+    <!--<color name="colorPrimaryDark">#226903</color>-->
+    <!--<color name="colorAccent">#226903</color>-->
+    <!--<color name="app_color">#226903</color>-->
+
+    <!--<color name="colorPrimary">#00572c</color>-->
+    <!--<color name="colorPrimaryDark">#00572c</color>-->
+    <!--<color name="colorAccent">#00572c</color>-->
+    <!--<color name="app_color">#00572c</color>-->
+
+    <color name="colorPrimary">#73a434</color>
+    <color name="colorPrimaryDark">#73a434</color>
+    <color name="colorAccent">#73a434</color>
+    <color name="app_color">#73a434</color>
 
     <!--Splash Screen-->
     <color name="bg_screen1">#f64c73</color>

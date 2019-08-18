@@ -26,7 +26,7 @@
             android:layout_height="1dp"
             android:layout_above="@+id/relative"
             android:alpha=".5"
-            android:background="@android:color/black" />
+            android:background="@android:color/white" />
 
         <RelativeLayout
             android:id="@+id/relative"

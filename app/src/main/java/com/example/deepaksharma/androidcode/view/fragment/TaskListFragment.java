@@ -202,6 +202,7 @@ public class TaskListFragment extends BaseFragment {
         navigateFragment(R.id.container, frm, true);
 //        navigateAddFragment(R.id.container, frm, true);
 
+Bundle bund = new Bundle();
     }
 
     public void updateTitle() {

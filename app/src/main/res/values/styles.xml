@@ -10,6 +10,21 @@
         <item name="android:windowIsTranslucent">true</item>
     </style>
 
+    <!--<style name="AppTheme" parent="Theme.AppCompat.Light">-->
+        <!--<item name="colorPrimary">#000</item>-->
+        <!--<item name="colorPrimaryDark">#000</item>-->
+        <!--<item name="colorAccent">#000</item>-->
+        <!--<item name="android:windowDisablePreview">true</item>-->
+        <!--<item name="android:windowIsTranslucent">true</item>-->
+        <!--&lt;!&ndash;<item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>&ndash;&gt;-->
+    <!--</style>-->
+
+    <style name="AppThemeDarkActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">#000</item>
+        <item name="colorPrimaryDark">#000</item>
+        <item name="colorAccent">#000</item>
+        <!--<item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>-->
+    </style>
     <style name="Font.FreshcaRegular" parent="@android:style/TextAppearance">
         <item name="android:fontFamily" tools:targetApi="jelly_bean">@fonts/Freshca-Regular.ttf
         </item>

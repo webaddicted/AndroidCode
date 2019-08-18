@@ -33,14 +33,7 @@ public class OnBoardActivity extends BaseActivity {
     }
 
     private void init() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            if (window != null) {
-                window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                window.setStatusBarColor(Color.TRANSPARENT);
-            }
-        }
+        changeNavigatColor(0);
         mBinding.viewPager.addOnPageChangeListener(getChangeListener());
     }
 
@@ -78,6 +71,7 @@ public class OnBoardActivity extends BaseActivity {
                 mBinding.btnNext.setVisibility(isLastPage ? View.GONE : View.VISIBLE);
                 mBinding.btnSkip.setVisibility(isLastPage ? View.INVISIBLE : View.VISIBLE);
                 mBinding.btnGotIt.setVisibility(isLastPage ? View.VISIBLE : View.GONE);
+                changeNavigatColor(position);
             }
 
             @Override
@@ -89,7 +83,13 @@ public class OnBoardActivity extends BaseActivity {
             }
         };
     }
+    private void changeNavigatColor(int position) {
+        if (position == 0) setNavigationColor(getResources().getColor(R.color.bg_screen1));
+        else if (position == 1) setNavigationColor(getResources().getColor(R.color.bg_screen2));
+        else if (position == 2) setNavigationColor(getResources().getColor(R.color.bg_screen3));
+        else if (position == 3) setNavigationColor(getResources().getColor(R.color.bg_screen4));
 
+    }
     private void showNextSlide() {
         int nextIndex = mBinding.viewPager.getCurrentItem() + 1;
         if ((mBinding.viewPager != null) && (nextIndex < layouts.length))

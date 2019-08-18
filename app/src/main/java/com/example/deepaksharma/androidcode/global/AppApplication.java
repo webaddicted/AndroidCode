@@ -51,6 +51,7 @@ public class AppApplication extends Application {
                     .allowMainThreadQueries().build().userInfoDao();
         }
         return userInfoDao;
+
     }
 
     /**
