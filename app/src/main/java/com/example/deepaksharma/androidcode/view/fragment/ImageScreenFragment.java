@@ -1,9 +1,10 @@
 package com.example.deepaksharma.androidcode.view.fragment;
 
-import android.databinding.ViewDataBinding;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
 import android.view.View;
+
+import androidx.databinding.ViewDataBinding;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.FragmentImageScreenBinding;

@@ -35,4 +35,5 @@
     <string name="confirm_pwd_length">check confirm password length</string>
     <string name="password_length">check password length</string>
     <string name="select_time">select time</string>
+    <string name="submit">submit</string>
 </resources>

@@ -1,7 +1,8 @@
 package com.example.deepaksharma.androidcode.global.api.apiUtils;
 
-import android.support.annotation.Nullable;
 import android.util.Log;
+
+import androidx.annotation.Nullable;
 
 import java.io.IOException;
 import java.net.UnknownHostException;

@@ -11,7 +11,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <android.support.design.widget.TabLayout
+            <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab_without_icon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
                 app:tabTextColor="@color/gray" />
 
 
-            <android.support.design.widget.TabLayout
+            <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab_with_icon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -35,26 +35,26 @@
                 app:tabSelectedTextColor="@color/white"
                 app:tabTextColor="@color/gray">
 
-                <android.support.design.widget.TabItem
+                <com.google.android.material.tabs.TabItem
                     android:id="@+id/tab1"
                     android:icon="@drawable/tab_call_selector"
                     style="@style/tab_item"
                     android:text="@string/read_call_log" />
 
-                <android.support.design.widget.TabItem
+                <com.google.android.material.tabs.TabItem
                     android:id="@+id/tab2"
                     android:icon="@drawable/tab_chat_selector"
                     style="@style/tab_item"
                     android:text="@string/read_sms" />
 
-                <android.support.design.widget.TabItem
+                <com.google.android.material.tabs.TabItem
                     android:id="@+id/tab3"
                     android:icon="@drawable/tab_contacts_selector"
                     style="@style/tab_item"
                     android:text="@string/phone_contact" />
 
-            </android.support.design.widget.TabLayout>
-            <android.support.design.widget.TabLayout
+            </com.google.android.material.tabs.TabLayout>
+            <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab_custom_icon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
                 android:layout_marginTop="@dimen/dp15"
                 app:tabSelectedTextColor="@color/white"
                 app:tabTextColor="@color/gray" />
-            <android.support.v4.view.ViewPager
+            <androidx.viewpager.widget.ViewPager
                 android:id="@+id/view_pager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

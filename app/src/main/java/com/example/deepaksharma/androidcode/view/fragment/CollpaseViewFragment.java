@@ -1,45 +1,18 @@
 package com.example.deepaksharma.androidcode.view.fragment;
 
-import android.content.Intent;
-import android.databinding.ViewDataBinding;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import androidx.databinding.ViewDataBinding;
+
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.FragmentCollapseViewBinding;
-import com.example.deepaksharma.androidcode.databinding.FragmentPdfBinding;
-import com.example.deepaksharma.androidcode.utils.GlobalUtilities;
 import com.example.deepaksharma.androidcode.view.base.BaseFragment;
 import com.example.deepaksharma.androidcode.view.home.HomeActivity;
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Image;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.Phrase;
-import com.itextpdf.text.Rectangle;
-import com.itextpdf.text.html.WebColors;
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
-
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.snackbar.Snackbar;
 
 public class CollpaseViewFragment extends BaseFragment {
     public static final String TAG = CollpaseViewFragment.class.getSimpleName();

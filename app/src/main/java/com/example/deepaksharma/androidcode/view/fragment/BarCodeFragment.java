@@ -1,27 +1,17 @@
 package com.example.deepaksharma.androidcode.view.fragment;
 
-import android.Manifest;
-import android.annotation.TargetApi;
-import android.app.KeyguardManager;
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
-import android.databinding.ViewDataBinding;
-import android.hardware.fingerprint.FingerprintManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.security.keystore.KeyGenParameterSpec;
-import android.security.keystore.KeyPermanentlyInvalidatedException;
-import android.security.keystore.KeyProperties;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.view.View;
-import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.databinding.ViewDataBinding;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.FragmentBarcodeBinding;
-import com.example.deepaksharma.androidcode.databinding.FragmentFingerPrintBinding;
-import com.example.deepaksharma.androidcode.global.PermissionsHandler;
-import com.example.deepaksharma.androidcode.services.FingerPrintHandler;
 import com.example.deepaksharma.androidcode.utils.GlobalUtilities;
 import com.example.deepaksharma.androidcode.view.base.BaseFragment;
 import com.example.deepaksharma.androidcode.view.home.HomeActivity;
@@ -31,24 +21,6 @@ import com.google.zxing.integration.android.IntentResult;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.IOException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchProviderException;
-import java.security.UnrecoverableKeyException;
-import java.security.cert.CertificateException;
-
-import javax.crypto.Cipher;
-import javax.crypto.KeyGenerator;
-import javax.crypto.NoSuchPaddingException;
-import javax.crypto.SecretKey;
-
-import static android.content.Context.FINGERPRINT_SERVICE;
-import static android.content.Context.KEYGUARD_SERVICE;
 
 public class BarCodeFragment extends BaseFragment {
     public static final String TAG = BarCodeFragment.class.getSimpleName();

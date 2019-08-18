@@ -1,11 +1,12 @@
 package com.example.deepaksharma.androidcode.view.fragment;
 
-import android.arch.lifecycle.ViewModelProviders;
-import android.databinding.ViewDataBinding;
 import android.location.Location;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
+
+import androidx.databinding.ViewDataBinding;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.FragmentGetLocationBinding;

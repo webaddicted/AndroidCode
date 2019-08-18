@@ -1,10 +1,10 @@
 package com.example.deepaksharma.androidcode.view.fragment;
 
-import android.databinding.ViewDataBinding;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
 import android.view.View;
+
+import androidx.databinding.ViewDataBinding;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.CustomTabViewBinding;
@@ -13,6 +13,7 @@ import com.example.deepaksharma.androidcode.global.ViewPagerAdapter;
 import com.example.deepaksharma.androidcode.utils.GlobalUtilities;
 import com.example.deepaksharma.androidcode.view.base.BaseFragment;
 import com.example.deepaksharma.androidcode.view.home.HomeActivity;
+import com.google.android.material.tabs.TabLayout;
 
 public class ViewPagerTabFragment extends BaseFragment {
     public static final String TAG = ViewPagerTabFragment.class.getSimpleName();

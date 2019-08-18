@@ -1,9 +1,6 @@
 package com.example.deepaksharma.androidcode.view.fragment;
 
-import android.databinding.ViewDataBinding;
 import android.os.Bundle;
-import android.support.design.widget.TextInputEditText;
-import android.support.v7.widget.PopupMenu;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -14,6 +11,9 @@ import android.widget.MultiAutoCompleteTextView;
 import android.widget.RadioButton;
 import android.widget.SeekBar;
 
+import androidx.appcompat.widget.PopupMenu;
+import androidx.databinding.ViewDataBinding;
+
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.FragmentWidgetBinding;
 import com.example.deepaksharma.androidcode.global.ValidationHelper;
@@ -23,6 +23,7 @@ import com.example.deepaksharma.androidcode.utils.GlobalUtilities;
 import com.example.deepaksharma.androidcode.view.base.BaseFragment;
 import com.example.deepaksharma.androidcode.view.adapter.OptionItemMenu;
 import com.example.deepaksharma.androidcode.view.home.HomeActivity;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class WidgetFragment extends BaseFragment {
     public static final String TAG = WidgetFragment.class.getSimpleName();

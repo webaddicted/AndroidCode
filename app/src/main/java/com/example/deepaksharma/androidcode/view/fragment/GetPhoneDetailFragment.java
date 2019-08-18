@@ -3,13 +3,14 @@ package com.example.deepaksharma.androidcode.view.fragment;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.databinding.ViewDataBinding;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
+
+import androidx.core.app.ActivityCompat;
+import androidx.databinding.ViewDataBinding;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.FragmentPhoneDetailBinding;

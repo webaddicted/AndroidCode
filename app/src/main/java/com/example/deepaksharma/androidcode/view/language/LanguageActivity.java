@@ -1,4 +1,5 @@
-package com.example.deepaksharma.androidcode.view.splash;
+package com.example.deepaksharma.androidcode.view.language;
+
 
 
 import androidx.databinding.ViewDataBinding;
@@ -9,9 +10,7 @@ import com.example.deepaksharma.androidcode.databinding.ActivityCommonBinding;
 import com.example.deepaksharma.androidcode.view.base.BaseActivity;
 import com.example.deepaksharma.androidcode.view.fragment.splash.SplashFragment;
 
-import java.util.Random;
-
-public class SplashActivity extends BaseActivity {
+public class LanguageActivity extends BaseActivity {
     private ActivityCommonBinding mBinding;
 
     @Override

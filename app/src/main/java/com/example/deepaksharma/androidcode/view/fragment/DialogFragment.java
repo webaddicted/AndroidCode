@@ -1,11 +1,12 @@
 package com.example.deepaksharma.androidcode.view.fragment;
 
 import android.app.Dialog;
-import android.databinding.ViewDataBinding;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+
+import androidx.databinding.ViewDataBinding;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.DialogCustomBinding;

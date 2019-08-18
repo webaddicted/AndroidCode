@@ -1,10 +1,11 @@
 package com.example.deepaksharma.androidcode.view.fragment;
 
-import android.databinding.ViewDataBinding;
 import android.os.Bundle;
-import android.support.annotation.IdRes;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.annotation.IdRes;
+import androidx.databinding.ViewDataBinding;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.FragmentBottomNaviBinding;

@@ -1,7 +1,7 @@
 package com.example.deepaksharma.androidcode.global.api.apiLivedataUtils;
 
-import android.arch.lifecycle.LiveData;
 
+import androidx.lifecycle.LiveData;
 
 public class AbsentLiveData extends LiveData {
     private AbsentLiveData() {

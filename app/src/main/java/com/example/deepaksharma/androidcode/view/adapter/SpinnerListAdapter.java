@@ -1,10 +1,11 @@
 package com.example.deepaksharma.androidcode.view.adapter;
 
-import android.databinding.DataBindingUtil;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+
+import androidx.databinding.DataBindingUtil;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.RowTextListBinding;

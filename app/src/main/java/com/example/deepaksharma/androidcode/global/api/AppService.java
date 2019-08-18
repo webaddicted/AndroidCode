@@ -1,6 +1,7 @@
 package com.example.deepaksharma.androidcode.global.api;
 
-import android.arch.lifecycle.LiveData;
+
+import androidx.lifecycle.LiveData;
 
 import com.example.deepaksharma.androidcode.global.api.apiUtils.ApiResponse;
 import com.example.deepaksharma.androidcode.model.search.SearchRespo;

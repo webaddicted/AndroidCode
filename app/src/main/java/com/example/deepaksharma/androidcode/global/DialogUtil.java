@@ -8,16 +8,17 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+
 import com.example.deepaksharma.androidcode.R;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
@@ -84,7 +85,7 @@ public class DialogUtil {
             Snackbar snackBar = Snackbar.make(view, msg, Snackbar.LENGTH_INDEFINITE);
             snackBar.setActionTextColor(ContextCompat.getColor(view.getContext(), R.color.app_color));
             View snackBarView = snackBar.getView();
-            TextView tv = snackBarView.findViewById(android.support.design.R.id.snackbar_text);
+            TextView tv = snackBarView.findViewById(R.id.snackbar_text);
             snackBarView.setBackgroundColor(ContextCompat.getColor(snackBarView.getContext(), R.color.app_color));
             tv.setTextColor(ContextCompat.getColor(snackBarView.getContext(), R.color.white));
             snackBar.setAction(strBtn, v -> {
@@ -184,7 +185,7 @@ public class DialogUtil {
      * @param <T>
      * @return dialog
      */
-    public static <T> android.support.v7.app.AlertDialog getSingleChoiceDialog(Context context, String title, List<T> items, DialogInterface.OnClickListener okListener, DialogInterface.OnClickListener cancelListener) {
+    public static <T> AlertDialog getSingleChoiceDialog(Context context, String title, List<T> items, DialogInterface.OnClickListener okListener, DialogInterface.OnClickListener cancelListener) {
         return showSingleChoiceDialog(context, R.style.AlertDialogStyle, R.style.DialogSlideUpAnimation, title, items, 0, context.getResources().getString(R.string.ok), context.getResources().getString(R.string.cancel), okListener, cancelListener);
     }
 
@@ -202,19 +203,19 @@ public class DialogUtil {
      * @param <T>
      * @return dialog
      */
-    public static <T> android.support.v7.app.AlertDialog showSingleChoiceDialog(Context context, @NonNull int style, @NonNull int dialogAnimation, String title, List<T> items, int checkedItem, String okBtn, String cancelBtn, DialogInterface.OnClickListener okListener, DialogInterface.OnClickListener cancelListener) {
+    public static <T> AlertDialog showSingleChoiceDialog(Context context, @NonNull int style, @NonNull int dialogAnimation, String title, List<T> items, int checkedItem, String okBtn, String cancelBtn, DialogInterface.OnClickListener okListener, DialogInterface.OnClickListener cancelListener) {
         int size = items.size();
         String[] itemArray = new String[size];
         for (int i = 0; i < size; i++) {
             itemArray[i] = items.get(i).toString();
         }
-        android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(context, style);
+        AlertDialog.Builder builder = new AlertDialog.Builder(context, style);
         if (title != null) builder.setTitle(title);
         builder.setSingleChoiceItems(itemArray, checkedItem, (dialog, which) -> {
         });
         builder.setPositiveButton(okBtn, okListener);
         builder.setNegativeButton(cancelBtn, cancelListener);
-        android.support.v7.app.AlertDialog alertDialog = builder.create();
+        AlertDialog alertDialog = builder.create();
         alertDialog.getWindow().getAttributes().windowAnimations = dialogAnimation;
         alertDialog.show();
         return alertDialog;
@@ -228,7 +229,7 @@ public class DialogUtil {
      * @param <T>
      * @return dialog
      */
-    public static <T> android.support.v7.app.AlertDialog showListDialog(Context context, String title, List<T> items, DialogInterface.OnClickListener okListener) {
+    public static <T> AlertDialog showListDialog(Context context, String title, List<T> items, DialogInterface.OnClickListener okListener) {
         return showListDialog(context, R.style.AlertDialogStyle, R.style.DialogSlideUpAnimation, title, items, okListener);
     }
 
@@ -242,16 +243,16 @@ public class DialogUtil {
      * @param <T>
      * @return dialog
      */
-    public static <T> android.support.v7.app.AlertDialog showListDialog(Context context, @NonNull int style, @NonNull int dialogAnimation, String title, List<T> items, DialogInterface.OnClickListener listener) {
+    public static <T> AlertDialog showListDialog(Context context, @NonNull int style, @NonNull int dialogAnimation, String title, List<T> items, DialogInterface.OnClickListener listener) {
         int size = items.size();
         String[] itemArray = new String[size];
         for (int i = 0; i < size; i++) {
             itemArray[i] = items.get(i).toString();
         }
-        android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(context, style);
+        AlertDialog.Builder builder = new AlertDialog.Builder(context, style);
         if (title != null) builder.setTitle(title);
         builder.setItems(itemArray, listener);
-        android.support.v7.app.AlertDialog alertDialog = builder.create();
+        AlertDialog alertDialog = builder.create();
         alertDialog.getWindow().getAttributes().windowAnimations = dialogAnimation;
         alertDialog.show();
         return alertDialog;

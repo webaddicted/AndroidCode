@@ -1,25 +1,17 @@
 package com.example.deepaksharma.androidcode.view.fragment;
 
 import android.Manifest;
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.databinding.ViewDataBinding;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
+import androidx.databinding.ViewDataBinding;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.example.deepaksharma.androidcode.R;
-import com.example.deepaksharma.androidcode.databinding.FragmentReceiverBinding;
 import com.example.deepaksharma.androidcode.databinding.FragmentServicesBinding;
 import com.example.deepaksharma.androidcode.global.PermissionsHandler;
-import com.example.deepaksharma.androidcode.global.StorageInfoUtils;
-import com.example.deepaksharma.androidcode.model.NetworkListenerBean;
 import com.example.deepaksharma.androidcode.model.eventBus.EventAllImageListener;
 import com.example.deepaksharma.androidcode.model.eventBus.EventCallLogListener;
 import com.example.deepaksharma.androidcode.model.eventBus.EventContactListener;
@@ -38,10 +30,6 @@ import com.example.deepaksharma.androidcode.view.base.BaseFragment;
 import com.example.deepaksharma.androidcode.view.home.HomeActivity;
 
 import org.greenrobot.eventbus.Subscribe;
-
-import java.io.File;
-import java.util.Calendar;
-import java.util.List;
 
 public class ServicesFragment extends BaseFragment {
     public static final String TAG = ServicesFragment.class.getSimpleName();

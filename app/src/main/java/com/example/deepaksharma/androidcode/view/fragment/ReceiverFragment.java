@@ -4,36 +4,17 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.content.LocalBroadcastManager;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
+
+import androidx.databinding.ViewDataBinding;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.FragmentReceiverBinding;
-import com.example.deepaksharma.androidcode.databinding.FragmentRecylcerViewBinding;
 import com.example.deepaksharma.androidcode.utils.GlobalUtilities;
-import com.example.deepaksharma.androidcode.view.adapter.CommonRecyclerViewAdapter;
-import com.example.deepaksharma.androidcode.view.adapter.ElaborateRecyclerAdapter;
-import com.example.deepaksharma.androidcode.view.adapter.EndLessScrollAdapter;
-import com.example.deepaksharma.androidcode.view.adapter.RecyclerGridAdapter;
-import com.example.deepaksharma.androidcode.view.adapter.RecyclerListAdapter;
-import com.example.deepaksharma.androidcode.view.adapter.StaggeredGridAdapter;
-import com.example.deepaksharma.androidcode.view.adapter.SwipToDeleteAdapter;
 import com.example.deepaksharma.androidcode.view.base.BaseFragment;
 import com.example.deepaksharma.androidcode.view.home.HomeActivity;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
 public class ReceiverFragment extends BaseFragment {
     public static final String TAG = ReceiverFragment.class.getSimpleName();

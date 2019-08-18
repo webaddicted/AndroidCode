@@ -1,6 +1,7 @@
 package com.example.deepaksharma.androidcode.view.adapter;
 
-import android.databinding.ViewDataBinding;
+
+import androidx.databinding.ViewDataBinding;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.RowContactBinding;

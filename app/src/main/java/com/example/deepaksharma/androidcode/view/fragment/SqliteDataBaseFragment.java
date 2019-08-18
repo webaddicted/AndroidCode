@@ -1,11 +1,12 @@
 package com.example.deepaksharma.androidcode.view.fragment;
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.databinding.ViewDataBinding;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.FragmentSqliteDatabaseBinding;

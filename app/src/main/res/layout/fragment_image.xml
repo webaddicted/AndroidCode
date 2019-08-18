@@ -39,7 +39,7 @@
                     android:layout_marginTop="@dimen/dp15"
                     android:text="@string/whats_app_type" />
 
-                <android.support.v7.widget.RecyclerView
+                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_image_show"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

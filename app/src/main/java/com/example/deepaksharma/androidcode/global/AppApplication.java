@@ -2,10 +2,11 @@ package com.example.deepaksharma.androidcode.global;
 
 import android.app.Activity;
 import android.app.Application;
-import android.arch.persistence.room.Room;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
-import android.support.v4.app.FragmentManager;
+
+import androidx.fragment.app.FragmentManager;
+import androidx.room.Room;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.global.constant.DbConstant;

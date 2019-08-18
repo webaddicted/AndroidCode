@@ -1,8 +1,9 @@
 package com.example.deepaksharma.androidcode.viewModel.home;
 
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
 import android.location.Location;
+
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 import com.google.android.gms.location.places.Place;
 import com.google.zxing.integration.android.IntentResult;

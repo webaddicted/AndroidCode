@@ -16,8 +16,9 @@
 
 package com.example.deepaksharma.androidcode.global.api.apiModel;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import static com.example.deepaksharma.androidcode.global.api.apiModel.Status.ERROR;
 import static com.example.deepaksharma.androidcode.global.api.apiModel.Status.LOADING;

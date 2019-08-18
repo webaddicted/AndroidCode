@@ -17,8 +17,9 @@
 package com.example.deepaksharma.androidcode.global.api.apiLivedataUtils;
 
 
-import android.arch.lifecycle.LiveData;
 
+
+import androidx.lifecycle.LiveData;
 
 import com.example.deepaksharma.androidcode.global.api.apiUtils.ApiResponse;
 

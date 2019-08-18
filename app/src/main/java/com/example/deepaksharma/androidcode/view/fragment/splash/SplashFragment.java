@@ -1,10 +1,11 @@
 package com.example.deepaksharma.androidcode.view.fragment.splash;
 
 import android.content.Intent;
-import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+
+import androidx.databinding.ViewDataBinding;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.ActivitySplashBinding;

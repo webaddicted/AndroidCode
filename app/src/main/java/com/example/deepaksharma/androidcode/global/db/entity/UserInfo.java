@@ -1,8 +1,9 @@
 package com.example.deepaksharma.androidcode.global.db.entity;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
+
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 import com.example.deepaksharma.androidcode.global.constant.DbConstant;
 

@@ -1,7 +1,8 @@
 package com.example.deepaksharma.androidcode.repository.search;
 
-import android.arch.lifecycle.LiveData;
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.LiveData;
 
 import com.example.deepaksharma.androidcode.global.api.AppExecutors;
 import com.example.deepaksharma.androidcode.global.api.apiModel.Resource;

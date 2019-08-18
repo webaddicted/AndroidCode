@@ -1,8 +1,9 @@
 package com.example.deepaksharma.androidcode.view.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.PopupMenu;
 import android.view.MenuItem;
+
+import androidx.appcompat.widget.PopupMenu;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.utils.GlobalUtilities;

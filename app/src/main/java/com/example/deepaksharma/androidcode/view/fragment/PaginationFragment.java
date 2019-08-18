@@ -1,34 +1,20 @@
 package com.example.deepaksharma.androidcode.view.fragment;
 
-import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
+
+import androidx.databinding.ViewDataBinding;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.FragmentPaginationBinding;
-import com.example.deepaksharma.androidcode.databinding.FragmentRecylcerViewBinding;
-import com.example.deepaksharma.androidcode.view.adapter.CommonRecyclerViewAdapter;
-import com.example.deepaksharma.androidcode.view.adapter.ElaborateRecyclerAdapter;
-import com.example.deepaksharma.androidcode.view.adapter.EndLessScrollAdapter;
 import com.example.deepaksharma.androidcode.view.adapter.EndLessScrollPaginationAdapter;
-import com.example.deepaksharma.androidcode.view.adapter.RecyclerGridAdapter;
-import com.example.deepaksharma.androidcode.view.adapter.RecyclerListAdapter;
-import com.example.deepaksharma.androidcode.view.adapter.StaggeredGridAdapter;
-import com.example.deepaksharma.androidcode.view.adapter.SwipToDeleteAdapter;
 import com.example.deepaksharma.androidcode.view.base.BaseFragment;
 import com.example.deepaksharma.androidcode.view.home.HomeActivity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class PaginationFragment extends BaseFragment {
     public static final String TAG = PaginationFragment.class.getSimpleName();
@@ -142,5 +128,6 @@ public class PaginationFragment extends BaseFragment {
             mEndlessPaginationAdapter.stopLoading();
         }, 3000);
     }
+
 
 }

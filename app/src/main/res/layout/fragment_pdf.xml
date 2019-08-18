@@ -15,7 +15,6 @@
             android:layout_marginTop="@dimen/dp5"
             android:text="@string/create_pdf" />
 
-
         <Button
             android:id="@+id/btn_save_pdf"
             style="@style/Button"

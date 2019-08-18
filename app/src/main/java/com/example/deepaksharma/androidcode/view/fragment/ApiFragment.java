@@ -1,13 +1,13 @@
 package com.example.deepaksharma.androidcode.view.fragment;
 
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
-import android.databinding.ViewDataBinding;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
+
+import androidx.annotation.Nullable;
+import androidx.databinding.ViewDataBinding;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.FragmentApiBinding;
@@ -15,13 +15,11 @@ import com.example.deepaksharma.androidcode.global.api.apiModel.Resource;
 import com.example.deepaksharma.androidcode.global.api.apiModel.Status;
 import com.example.deepaksharma.androidcode.model.search.SearchRespo;
 import com.example.deepaksharma.androidcode.utils.GlobalUtilities;
-import com.example.deepaksharma.androidcode.view.adapter.EndLessScrollPaginationAdapter;
 import com.example.deepaksharma.androidcode.view.adapter.SearchAdapter;
 import com.example.deepaksharma.androidcode.view.base.BaseFragment;
 import com.example.deepaksharma.androidcode.view.home.HomeActivity;
 import com.example.deepaksharma.androidcode.viewModel.search.SearchViewModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ApiFragment extends BaseFragment {

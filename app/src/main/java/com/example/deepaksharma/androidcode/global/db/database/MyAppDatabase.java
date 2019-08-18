@@ -1,7 +1,8 @@
 package com.example.deepaksharma.androidcode.global.db.database;
 
-import android.arch.persistence.room.Database;
-import android.arch.persistence.room.RoomDatabase;
+
+import androidx.room.Database;
+import androidx.room.RoomDatabase;
 
 import com.example.deepaksharma.androidcode.global.constant.DbConstant;
 import com.example.deepaksharma.androidcode.global.db.dao.UserInfoDao;

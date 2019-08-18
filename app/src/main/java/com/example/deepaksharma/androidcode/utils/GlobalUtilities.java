@@ -2,63 +2,39 @@ package com.example.deepaksharma.androidcode.utils;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.Context;
-import android.databinding.DataBindingUtil;
-import android.databinding.ViewDataBinding;
-import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.location.Address;
-import android.location.Geocoder;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.DatePicker;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.BitmapImageViewTarget;
+import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
+
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.global.AppApplication;
-import com.example.deepaksharma.androidcode.global.FileUtils;
-import com.example.deepaksharma.androidcode.global.constant.AppConstant;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.decode.BaseImageDecoder;
 
-import java.io.File;
-import java.io.IOException;
 import java.lang.reflect.Modifier;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
-import java.util.Locale;
 import java.util.Random;
 
-import static android.support.constraint.Constraints.TAG;
 
 public class GlobalUtilities {
     private static Context mContext = AppApplication.getInstance();
@@ -123,7 +99,6 @@ public class GlobalUtilities {
             return new SimpleDateFormat("K:mm: a").format(dateObj);
         } catch (final ParseException e) {
             e.printStackTrace();
-            Log.d(TAG, "timeFormat12: " + e);
         }
         return "";
     }
@@ -142,7 +117,6 @@ public class GlobalUtilities {
             testDate = sdf.parse(date);
         } catch (Exception ex) {
             ex.printStackTrace();
-            Log.d(TAG, "timeFormat24: " + ex);
         }
         SimpleDateFormat formatter = new SimpleDateFormat("HH:MM");
         String newFormat = formatter.format(testDate);
@@ -160,7 +134,6 @@ public class GlobalUtilities {
             InputMethodManager inputManager = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
             inputManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
         } catch (Exception ignored) {
-            Log.d(TAG, "hideKeyboard: " + ignored);
         }
     }
 

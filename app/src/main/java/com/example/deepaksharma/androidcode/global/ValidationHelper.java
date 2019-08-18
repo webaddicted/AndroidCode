@@ -2,11 +2,6 @@ package com.example.deepaksharma.androidcode.global;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
-import android.support.design.widget.TextInputEditText;
-import android.support.design.widget.TextInputLayout;
 import android.text.InputFilter;
 import android.text.Spanned;
 import android.util.Patterns;
@@ -17,7 +12,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.example.deepaksharma.androidcode.R;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -279,7 +280,7 @@ public class ValidationHelper {
         snackBar.setActionTextColor(Color.WHITE);
         View view = snackBar.getView();
         TextView tv = (TextView)
-                view.findViewById(android.support.design.R.id.snackbar_text);
+                view.findViewById(R.id.snackbar_text);
         tv.setTextColor(Color.WHITE);
         snackBar.show();
 

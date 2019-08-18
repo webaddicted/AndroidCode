@@ -1,13 +1,12 @@
 package com.example.deepaksharma.androidcode.view.adapter;
 
-import android.content.Context;
-import android.databinding.DataBindingUtil;
 import android.os.Parcelable;
-import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+
+import androidx.databinding.DataBindingUtil;
+import androidx.viewpager.widget.PagerAdapter;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.RowImagesSlideBinding;

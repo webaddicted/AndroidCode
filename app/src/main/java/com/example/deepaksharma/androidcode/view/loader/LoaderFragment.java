@@ -1,10 +1,11 @@
 package com.example.deepaksharma.androidcode.view.loader;
 
-import android.databinding.ViewDataBinding;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.View;
+
+import androidx.databinding.ViewDataBinding;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.DialogLoaderBinding;

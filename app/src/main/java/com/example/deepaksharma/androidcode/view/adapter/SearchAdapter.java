@@ -1,8 +1,9 @@
 package com.example.deepaksharma.androidcode.view.adapter;
 
 import android.content.Context;
-import android.databinding.ViewDataBinding;
-import android.support.v4.app.Fragment;
+
+import androidx.databinding.ViewDataBinding;
+import androidx.fragment.app.Fragment;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.RowTextListBinding;

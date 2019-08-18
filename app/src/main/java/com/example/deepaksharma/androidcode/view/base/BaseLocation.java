@@ -7,9 +7,10 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 
 import com.example.deepaksharma.androidcode.global.PermissionsHandler;
 import com.google.android.gms.common.ConnectionResult;

@@ -1,27 +1,17 @@
 package com.example.deepaksharma.androidcode.view.fragment;
 
-import android.arch.lifecycle.ViewModelProviders;
-import android.content.ActivityNotFoundException;
-import android.content.Intent;
-import android.databinding.ViewDataBinding;
 import android.os.Bundle;
-import android.speech.RecognizerIntent;
-import android.speech.tts.TextToSpeech;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.TranslateAnimation;
 
+import androidx.databinding.ViewDataBinding;
+
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.FragmentAnimationBinding;
-import com.example.deepaksharma.androidcode.databinding.FragmentSpechToTextBinding;
-import com.example.deepaksharma.androidcode.global.constant.AppConstant;
 import com.example.deepaksharma.androidcode.view.base.BaseFragment;
 import com.example.deepaksharma.androidcode.view.home.HomeActivity;
-import com.example.deepaksharma.androidcode.viewModel.home.HomeViewModel;
-
-import java.util.Locale;
 
 public class AnimationFragment extends BaseFragment {
     public static final String TAG = AnimationFragment.class.getSimpleName();
