@@ -51,6 +51,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".view.language.LanguageActivity"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity android:name=".view.onBoarding.OnBoardActivity"
             android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity

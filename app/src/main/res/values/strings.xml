@@ -217,5 +217,6 @@
     <string name="slide_4_title">World Travel</string>
     <string name="slide_4_desc">Book tickets of any transportation and travel the world!</string>
     <string name="submit">submit</string>
-
+    <string name="select_language">select language</string>
+    <string name="please_select_language">please select your preferred language</string>
 </resources>

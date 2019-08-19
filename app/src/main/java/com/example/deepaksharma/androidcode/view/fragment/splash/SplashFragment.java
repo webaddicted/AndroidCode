@@ -11,6 +11,7 @@ import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.ActivitySplashBinding;
 import com.example.deepaksharma.androidcode.global.constant.AppConstant;
 import com.example.deepaksharma.androidcode.view.base.BaseFragment;
+import com.example.deepaksharma.androidcode.view.language.LanguageActivity;
 import com.example.deepaksharma.androidcode.view.onBoarding.OnBoardActivity;
 
 public class SplashFragment extends BaseFragment {
@@ -36,7 +37,7 @@ public class SplashFragment extends BaseFragment {
 
     private void init() {
         new Handler().postDelayed(() -> {
-            startActivity(new Intent(getActivity(), OnBoardActivity.class));
+            startActivity(new Intent(getActivity(), LanguageActivity.class));
             getActivity().finish();
         }, AppConstant.SPLASH_DELAY);
     }

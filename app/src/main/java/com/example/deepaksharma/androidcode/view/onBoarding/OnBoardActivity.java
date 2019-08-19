@@ -10,9 +10,11 @@ import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.ActivityOnboardingBinding;
 import com.example.deepaksharma.androidcode.view.adapter.OnBordingViewPagerAdapter;
 import com.example.deepaksharma.androidcode.view.base.BaseActivity;
+import com.example.deepaksharma.androidcode.view.fragment.splash.SplashFragment;
 import com.example.deepaksharma.androidcode.view.home.HomeActivity;
 
 public class OnBoardActivity extends BaseActivity {
+    public static final String TAG = OnBoardActivity.class.getSimpleName();
     private ActivityOnboardingBinding mBinding;
     private int[] layouts = new int[]{R.layout.welcome_slide1, R.layout.welcome_slide2, R.layout.welcome_slide3, R.layout.welcome_slide4};
 

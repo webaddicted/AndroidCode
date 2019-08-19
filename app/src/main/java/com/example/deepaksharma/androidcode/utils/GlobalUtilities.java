@@ -3,6 +3,7 @@ package com.example.deepaksharma.androidcode.utils;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -33,6 +34,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Random;
 
 
@@ -59,11 +61,13 @@ public class GlobalUtilities {
         datePickerCustomDialog.setMaxDateCustom(c.getTimeInMillis());
         datePickerCustomDialog.show();
     }
-    public static void getDate(Context context,TextView mDobEtm) {
+
+    public static void getDate(Context context, TextView mDobEtm) {
         Calendar calendar = Calendar.getInstance();
         DatePickerDialog datePickerDialog = new DatePickerDialog(context, R.style.TimePicker, (view, year, month, dayOfMonth) -> mDobEtm.setText(dayOfMonth + "/" + month + "/" + year), calendar.YEAR, calendar.MONTH, calendar.DAY_OF_MONTH);
         datePickerDialog.show();
     }
+
     /**
      * convert date formate
      *
@@ -287,4 +291,12 @@ public class GlobalUtilities {
         return new Random().nextInt(90) + 10;
     }
 
+    public static void changeLanguage(Context context, String languageToLoad) {
+        Locale locale = new Locale(languageToLoad);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        context.getResources().updateConfiguration(config,
+                context.getResources().getDisplayMetrics());
+    }
 }
