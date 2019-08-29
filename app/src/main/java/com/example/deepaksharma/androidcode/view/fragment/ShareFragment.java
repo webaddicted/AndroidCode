@@ -14,7 +14,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.FragmentShareBinding;
 import com.example.deepaksharma.androidcode.global.FileUtils;
-import com.example.deepaksharma.androidcode.global.image.ImagePicker;
+import com.example.deepaksharma.androidcode.global.image.MediaPickerUtils;
 import com.example.deepaksharma.androidcode.utils.GlobalUtilities;
 import com.example.deepaksharma.androidcode.view.base.BaseFragment;
 import com.example.deepaksharma.androidcode.view.home.HomeActivity;
@@ -109,7 +109,7 @@ public class ShareFragment extends BaseFragment {
     }
 
     private void selectImage(boolean isShareImgText) {
-        ImagePicker.selectImage(getActivity(), new ImagePicker.ImagePickerListener() {
+        MediaPickerUtils.selectMediaOption(getActivity(), MediaPickerUtils.SELECT_IMAGE, FileUtils.subFolder(), new MediaPickerUtils.ImagePickerListener() {
             @Override
             public void imagePath(List<File> filePath) {
                 if (isShareImgText) shareImageText(filePath.get(0));

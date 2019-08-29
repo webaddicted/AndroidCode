@@ -26,7 +26,7 @@ import com.example.deepaksharma.androidcode.global.AppApplication;
 import com.example.deepaksharma.androidcode.global.FileUtils;
 import com.example.deepaksharma.androidcode.global.PermissionsHandler;
 import com.example.deepaksharma.androidcode.global.constant.AppConstant;
-import com.example.deepaksharma.androidcode.global.image.ImagePicker;
+import com.example.deepaksharma.androidcode.global.image.MediaPickerUtils;
 import com.example.deepaksharma.androidcode.model.NetworkListenerBean;
 import com.example.deepaksharma.androidcode.model.eventBus.EventBusListener;
 import com.example.deepaksharma.androidcode.viewModel.home.HomeViewModel;
@@ -140,9 +140,9 @@ public abstract class BaseActivity extends AppCompatActivity implements Permissi
                             .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     mHomeViewModel.mSpeechToText.postValue(resultSpeech);
                     break;
-                case ImagePicker.REQUEST_CAMERA_VIDEO:
-                case ImagePicker.SELECT_FILE_FROM_GALLERY:
-                    ImagePicker.onActivityResult(this, requestCode, resultCode, data);
+                case MediaPickerUtils.REQUEST_CAMERA_VIDEO:
+                case MediaPickerUtils.REQUEST_SELECT_FILE_FROM_GALLERY:
+                    MediaPickerUtils.onActivityResult(this, requestCode, resultCode, data);
                     break;
                 case CropImage.PICK_IMAGE_CHOOSER_REQUEST_CODE:
                     Uri imageUri = CropImage.getPickImageResultUri(this, data);

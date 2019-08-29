@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:id="@+id/parent_loader"
@@ -12,12 +13,11 @@
         android:orientation="vertical"
         android:visibility="gone">
 
-        <pl.droidsonroids.gif.GifImageView
+        <com.tuyenmonkey.mkloader.MKLoader
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/dp28"
-            android:src="@raw/bubble_loader1" />
+            app:mk_type="TwinFishesSpinner"
+        />
 
     </LinearLayout>
 </layout>

@@ -184,6 +184,17 @@
         <item>app_color</item><!--app color-->
         <item>other image</item><!--other image-->
     </string-array>
+
+    <string-array name="file_picker_type">
+        <item>capture_image</item><!--app color-->
+        <item>select image</item><!--other image-->
+        <item>select video</item><!--other image-->
+        <item>record video</item><!--other image-->
+        <item>select multiple image</item><!--other image-->
+        <item>capture record video</item><!--other image-->
+        <item>select multiple image</item><!--other image-->
+
+    </string-array>
     <string name="tab_without_icon">tab without icon</string>
     <string name="tab_with_icon">tab with icon</string>
     <string name="fingerprint_message">Place your fingertip on the scanner to verify fingerprint.</string>

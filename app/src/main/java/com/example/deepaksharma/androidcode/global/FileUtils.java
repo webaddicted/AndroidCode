@@ -76,7 +76,22 @@ public class FileUtils {
         }
         return imageFile;
     }
-
+    public static File saveImage(Bitmap image, File folderPath) {
+        String savedImagePath = null;
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss",
+                Locale.getDefault()).format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + ".jpg";
+        File imageFile = new File(folderPath, imageFileName);
+        savedImagePath = imageFile.getAbsolutePath();
+        try {
+            OutputStream fOut = new FileOutputStream(imageFile);
+            image.compress(Bitmap.CompressFormat.JPEG, 100, fOut);
+            fOut.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return imageFile;
+    }
 
     public static File uploadFile() {
         return new File(String.valueOf(Environment.getExternalStorageDirectory()), File.separator + APP_FOLDER + File.separator + UPLOAD_IMAGE + "/");
