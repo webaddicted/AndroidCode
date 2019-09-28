@@ -1,6 +1,8 @@
 package com.example.deepaksharma.androidcode.view.fragment;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
@@ -62,9 +64,12 @@ public class DialogFragment extends BaseFragment {
         super.onClick(v);
         switch (v.getId()) {
             case R.id.btn_single_click:
-                DialogUtil.showOkDialog(getActivity(), "Title", "msg", "ok", (dialog, which) -> {
-                    GlobalUtilities.showToast("ok click" + which);
-                    dialog.dismiss();
+                DialogUtil.showOkDialog(getActivity(), "Title", "msg", "ok", new AlertDialog.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        GlobalUtilities.showToast("ok click" + which);
+                        dialog.dismiss();
+                    }
                 });
                 break;
             case R.id.btn_two_event_dialog:
@@ -84,16 +89,27 @@ public class DialogFragment extends BaseFragment {
                 loginDialog.show(getFragmentManager(), LoginDialog.TAG);
                 break;
             case R.id.btn_selection_list:
-                DialogUtil.getSingleChoiceDialog(getActivity(), getResources().getString(R.string.select_country), getCountryList(), (dialog, position) -> {
-                    if (position > 0)
-                        GlobalUtilities.showToast(getCountryList().get(position - 1).toString());
-                    dialog.dismiss();
-                }, (dialog, position) -> dialog.dismiss());
+                DialogUtil.getSingleChoiceDialog(getActivity(), getResources().getString(R.string.select_country), getCountryList(), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int position) {
+                        if (position > 0)
+                            GlobalUtilities.showToast(DialogFragment.this.getCountryList().get(position - 1).toString());
+                        dialog.dismiss();
+                    }
+                }, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int position) {
+                        dialog.dismiss();
+                    }
+                });
                 break;
             case R.id.btn_list_dialog:
-                DialogUtil.showListDialog(getActivity(), getResources().getString(R.string.select_country), getCountryList(), (dialog, which) -> {
-                    GlobalUtilities.showToast(getCountryList().get(which).toString());
-                    dialog.dismiss();
+                DialogUtil.showListDialog(getActivity(), getResources().getString(R.string.select_country), getCountryList(), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        GlobalUtilities.showToast(DialogFragment.this.getCountryList().get(which).toString());
+                        dialog.dismiss();
+                    }
                 });
                 break;
         }

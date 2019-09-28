@@ -39,14 +39,25 @@ import java.util.Random;
 
 
 public class GlobalUtilities {
-    private static Context mContext = AppApplication.getInstance();
 
+
+
+
+
+
+
+
+
+
+    private static Context mContext = AppApplication.getInstance();
     /**
      * set date in textview
      *
      * @param mDobEt
      */
     public static void setDate(final TextView mDobEt) {
+
+
         DatePickerCustomDialog datePickerCustomDialog = DatePickerCustomDialog.getInstance(mContext, new DatePickerCallback() {
             @Override
             public void onDateSetCallBack(String date) {
