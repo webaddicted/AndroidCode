@@ -17,14 +17,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.RowSwipeToDeleteBinding;
 import com.example.deepaksharma.androidcode.global.AppApplication;
-import com.example.deepaksharma.androidcode.view.base.BaseEndLessRecyclerViewAdapter;
+import com.example.deepaksharma.androidcode.view.base.BaseRecyclerViewAdapter;
 import com.example.deepaksharma.androidcode.view.fragment.RecyclerViewFragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class SwipToDeleteAdapter extends BaseEndLessRecyclerViewAdapter {
+public class SwipToDeleteAdapter extends BaseRecyclerViewAdapter {
     private Context mContext = AppApplication.getInstance();
     private List<String> mListBeanItem;
     private RecyclerViewFragment mRecyclerViewFragment;
@@ -49,12 +49,6 @@ public class SwipToDeleteAdapter extends BaseEndLessRecyclerViewAdapter {
     protected int getListSize() {
         return (mListBeanItem == null || mListBeanItem.size() == 0) ? 0 : mListBeanItem.size();
     }
-
-    @Override
-    protected boolean isEndLessScroll() {
-        return false;
-    }
-
 
     @Override
     protected void onBindTo(ViewDataBinding rowBinding, int position) {

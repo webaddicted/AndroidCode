@@ -6,11 +6,11 @@ import androidx.databinding.ViewDataBinding;
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.RowGridBinding;
 import com.example.deepaksharma.androidcode.databinding.RowTextListBinding;
-import com.example.deepaksharma.androidcode.view.base.BaseEndLessRecyclerViewAdapter;
+import com.example.deepaksharma.androidcode.view.base.BaseRecyclerViewAdapter;
 
 import java.util.List;
 
-public class CommonRecyclerViewAdapter extends BaseEndLessRecyclerViewAdapter {
+public class CommonRecyclerViewAdapter extends BaseRecyclerViewAdapter {
     private final List<String> mListBean;
 
     public CommonRecyclerViewAdapter(List<String> listBean) {
@@ -48,10 +48,5 @@ public class CommonRecyclerViewAdapter extends BaseEndLessRecyclerViewAdapter {
             RowGridBinding mRowGridBinding = (RowGridBinding) rowBinding;
             mRowGridBinding.txtName.setText(mListBean.get(position));
         }
-    }
-
-    @Override
-    protected boolean isEndLessScroll() {
-        return false;
     }
 }

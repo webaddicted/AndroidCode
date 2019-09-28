@@ -6,12 +6,12 @@ import androidx.databinding.ViewDataBinding;
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.RowContactBinding;
 import com.example.deepaksharma.androidcode.model.SmsBean;
-import com.example.deepaksharma.androidcode.view.base.BaseEndLessRecyclerViewAdapter;
+import com.example.deepaksharma.androidcode.view.base.BaseRecyclerViewAdapter;
 import com.example.deepaksharma.androidcode.view.fragment.ImageFragment;
 
 import java.util.List;
 
-public class SmsAdapter extends BaseEndLessRecyclerViewAdapter {
+public class SmsAdapter extends BaseRecyclerViewAdapter {
     private final List<SmsBean> mListBean;
     private final ImageFragment mImageFragment;
 
@@ -28,11 +28,6 @@ public class SmsAdapter extends BaseEndLessRecyclerViewAdapter {
     @Override
     protected int getListSize() {
         return (mListBean == null || mListBean.size() == 0) ? 0 : mListBean.size();
-    }
-
-    @Override
-    protected boolean isEndLessScroll() {
-        return false;
     }
 
     @Override

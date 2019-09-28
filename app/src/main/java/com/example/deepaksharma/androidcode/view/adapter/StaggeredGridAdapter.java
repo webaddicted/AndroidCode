@@ -8,12 +8,12 @@ import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.RowGridBinding;
 import com.example.deepaksharma.androidcode.global.AppApplication;
 import com.example.deepaksharma.androidcode.global.ImageLoaderUtils;
-import com.example.deepaksharma.androidcode.view.base.BaseEndLessRecyclerViewAdapter;
+import com.example.deepaksharma.androidcode.view.base.BaseRecyclerViewAdapter;
 import com.example.deepaksharma.androidcode.view.fragment.RecyclerViewFragment;
 
 import java.util.List;
 
-public class StaggeredGridAdapter extends BaseEndLessRecyclerViewAdapter {
+public class StaggeredGridAdapter extends BaseRecyclerViewAdapter {
     private List<String> mListBean;
     private RecyclerViewFragment mRecyclerViewFragment;
     private Context mContext = AppApplication.getInstance();
@@ -31,12 +31,6 @@ public class StaggeredGridAdapter extends BaseEndLessRecyclerViewAdapter {
     protected int getListSize() {
         return (mListBean == null || mListBean.size() == 0) ? 0 : mListBean.size();
     }
-
-    @Override
-    protected boolean isEndLessScroll() {
-        return false;
-    }
-
 
     @Override
     protected void onBindTo(ViewDataBinding rowBinding, int position) {

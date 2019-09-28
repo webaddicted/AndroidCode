@@ -6,18 +6,15 @@ import android.view.View;
 import androidx.databinding.ViewDataBinding;
 
 import com.example.deepaksharma.androidcode.R;
-import com.example.deepaksharma.androidcode.databinding.RowGridBinding;
 import com.example.deepaksharma.androidcode.databinding.RowLanguageBinding;
 import com.example.deepaksharma.androidcode.global.ImageLoaderUtils;
 import com.example.deepaksharma.androidcode.model.language.LanguageBean;
-import com.example.deepaksharma.androidcode.view.base.BaseEndLessRecyclerViewAdapter;
-import com.example.deepaksharma.androidcode.view.fragment.ImageFragment;
+import com.example.deepaksharma.androidcode.view.base.BaseRecyclerViewAdapter;
 import com.example.deepaksharma.androidcode.view.language.LanguageActivity;
 
-import java.io.File;
 import java.util.List;
 
-public class LanguageAdapter extends BaseEndLessRecyclerViewAdapter {
+public class LanguageAdapter extends BaseRecyclerViewAdapter {
     private final List<LanguageBean> mListBean;
     private final Activity mActivity;
     public int selectedPos = -1;
@@ -35,11 +32,6 @@ public class LanguageAdapter extends BaseEndLessRecyclerViewAdapter {
     @Override
     protected int getListSize() {
         return (mListBean == null || mListBean.size() == 0) ? 0 : mListBean.size();
-    }
-
-    @Override
-    protected boolean isEndLessScroll() {
-        return false;
     }
 
     @Override

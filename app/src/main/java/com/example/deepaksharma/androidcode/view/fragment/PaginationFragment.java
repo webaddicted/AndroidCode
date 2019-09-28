@@ -118,16 +118,4 @@ public class PaginationFragment extends BaseFragment {
 
     private void setScrollListenerAdapter() {
     }
-
-
-
-    public void loadNewItems() {
-        mEndlessPaginationAdapter.startLoading();
-        new Handler().postDelayed(() -> {
-            mEndLessList.addAll(getListBean());
-            mEndlessPaginationAdapter.stopLoading();
-        }, 3000);
-    }
-
-
 }

@@ -1,189 +1,93 @@
 package com.example.deepaksharma.androidcode.view.base;
 
-import android.content.Context;
-import android.graphics.PorterDuff;
-import android.os.Handler;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-
-import androidx.annotation.NonNull;
-import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-import com.example.deepaksharma.androidcode.R;
-import com.example.deepaksharma.androidcode.global.AppApplication;
-
-public abstract class BaseEndLessRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private static final String TAG = BaseEndLessRecyclerViewAdapter.class.getSimpleName();
-    private Context mContext = AppApplication.getInstance();
-    private int mProgressBarColor = 0;
-    private boolean mEndlessScrollLoading = false;
-    private long mStartTime;
-    private long mEndTime;
-    private RecyclerView mRecyclerView;
-
-    protected abstract int getLayoutId(int viewType);
-
-    protected abstract int getListSize();
-
-    protected abstract void onBindTo(ViewDataBinding rowBinding, int position);
-
-    protected abstract boolean isEndLessScroll();
-
-    @NonNull
-    @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        switch (viewType) {
-            case (SCROLL_VIEW_TYPES.NORMAL):
-                ViewDataBinding rowBinding = DataBindingUtil.
-                        inflate(LayoutInflater.from(parent.getContext()),
-                                getLayoutId(viewType),
-                                parent, false);
-                mRecyclerView = (RecyclerView) parent;
-                return new BaseEndLessRecyclerViewAdapter.ViewHolder(rowBinding);
-            case SCROLL_VIEW_TYPES.LOADER:
-                LinearLayout ll = new LinearLayout(mContext);
-                RecyclerView.LayoutParams layoutParams = new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT,
-                        RecyclerView.LayoutParams.WRAP_CONTENT);
-                ll.setLayoutParams(layoutParams);
-                ll.setBackgroundColor(mContext.getResources().getColor(R.color.transprant));
-                return new BaseEndLessRecyclerViewAdapter.LoaderViewHolder(ll);
-            default:
-                return null;
-        }
+public abstract class BaseEndLessRecyclerViewAdapter extends RecyclerView.OnScrollListener {
+    RecyclerView.LayoutManager mLayoutManager;
+    // The minimum amount of items to have below your current scroll position
+    // before loading more.
+    private int visibleThreshold = 5;
+    // The current offset index of data you have loaded
+    private int currentPage = 1;
+    // The total number of items in the dataset after the last load
+    private int previousTotalItemCount = 0;
+    // True if we are still waiting for the last set of data to load.
+    private boolean loading = true;
+    // Sets the starting page index
+    private int startingPageIndex = 1;
+    public BaseEndLessRecyclerViewAdapter(LinearLayoutManager layoutManager) {
+        this.mLayoutManager = layoutManager;
     }
-
-    @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        if (holder instanceof ViewHolder)
-            ((ViewHolder) holder).binding(position);
+    public BaseEndLessRecyclerViewAdapter(GridLayoutManager layoutManager) {
+        this.mLayoutManager = layoutManager;
+        visibleThreshold = visibleThreshold * layoutManager.getSpanCount();
     }
-
-    /**
-     * placeholder type for image
-     *
-     * @param placeholderType position of string array placeholder
-     * @return
-     */
-    public String getPlaceHolder(int placeholderType) {
-        String[] placeholderArray = mContext.getResources().getStringArray(R.array.image_loader);
-        return placeholderArray[placeholderType];
+    public BaseEndLessRecyclerViewAdapter(StaggeredGridLayoutManager layoutManager) {
+        this.mLayoutManager = layoutManager;
+        visibleThreshold = visibleThreshold * layoutManager.getSpanCount();
     }
-
-    @Override
-    public int getItemCount() {
-        if (isEndLessScroll() && getListSize() == 0) {
-            mStartTime = System.currentTimeMillis();
-            if (mStartTime > mEndTime - 800 && !mEndlessScrollLoading) {
-                loadData();
-                mEndTime = System.currentTimeMillis();
+    public int getLastVisibleItem(int[] lastVisibleItemPositions) {
+        int maxSize = 0;
+        for (int i = 0; i < lastVisibleItemPositions.length; i++) {
+            if (i == 0) {
+                maxSize = lastVisibleItemPositions[i];
+            } else if (lastVisibleItemPositions[i] > maxSize) {
+                maxSize = lastVisibleItemPositions[i];
             }
         }
-        if (isEndLessScroll() && mEndlessScrollLoading) return getListSize() + 1;
-        else return (getListSize() == 0) ? 0 : getListSize();
+        return maxSize;
     }
-
-    /**
-     * view holder
-     */
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        private ViewDataBinding mRowBinding;
-
-        public ViewHolder(ViewDataBinding itemView) {
-            super(itemView.getRoot());
-            this.mRowBinding = itemView;
+    // This happens many times a second during a scroll, so be wary of the code you place here.
+    // We are given a few useful parameters to help us work out if we need to load some more data,
+    // but first we check if we are waiting for the previous load to finish.
+    @Override
+    public void onScrolled(RecyclerView view, int dx, int dy) {
+        int lastVisibleItemPosition = 0;
+        int totalItemCount = mLayoutManager.getItemCount();
+        if (mLayoutManager instanceof StaggeredGridLayoutManager) {
+            int[] lastVisibleItemPositions = ((StaggeredGridLayoutManager) mLayoutManager).findLastVisibleItemPositions(null);
+            // get maximum element within the list
+            lastVisibleItemPosition = getLastVisibleItem(lastVisibleItemPositions);
+        } else if (mLayoutManager instanceof GridLayoutManager) {
+            lastVisibleItemPosition = ((GridLayoutManager) mLayoutManager).findLastVisibleItemPosition();
+        } else if (mLayoutManager instanceof LinearLayoutManager) {
+            lastVisibleItemPosition = ((LinearLayoutManager) mLayoutManager).findLastVisibleItemPosition();
         }
-
-        /**
-         * @param position current item position
-         */
-        public void binding(int position) {
-//            sometime adapter position  is -1 that case handle by position
-            if (getAdapterPosition() >= 0) onBindTo(mRowBinding, getAdapterPosition());
-            else onBindTo(mRowBinding, position);
-            if (isEndLessScroll() && getListSize() - 1 == getAdapterPosition()) {
-                mStartTime = System.currentTimeMillis();
-                if (mStartTime > mEndTime - 500 && !mEndlessScrollLoading) {
-                    loadData();
-                    mEndTime = System.currentTimeMillis();
-                }
+        // If the total item count is zero and the previous isn't, assume the
+        // list is invalidated and should be reset back to initial state
+        if (totalItemCount < previousTotalItemCount) {
+            this.currentPage = this.startingPageIndex;
+            this.previousTotalItemCount = totalItemCount;
+            if (totalItemCount == 0) {
+                this.loading = true;
             }
         }
-    }
-
-    /**
-     * loader view holder
-     */
-    public class LoaderViewHolder extends RecyclerView.ViewHolder {
-        private final ProgressBar progressBar;
-
-        public LoaderViewHolder(View view) {
-            super(view);
-            progressBar = new ProgressBar(mContext);
-            if (mProgressBarColor != 0)
-                progressBar.getIndeterminateDrawable().setColorFilter(mProgressBarColor, PorterDuff.Mode.MULTIPLY);
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT);
-            int padding = (int) mContext.getResources().getDimension(R.dimen.dp5);
-            layoutParams.gravity = Gravity.CENTER;
-            layoutParams.setMargins(padding, padding, padding, padding);
-            progressBar.setLayoutParams(layoutParams);
-            progressBar.setPadding(padding, padding, padding, padding);
-            LinearLayout linearLayout = (LinearLayout) itemView;
-            linearLayout.addView(progressBar);
+        // If it’s still loading, we check to see if the dataset count has
+        // changed, if so we conclude it has finished loading and update the current page
+        // number and total item count.
+        if (loading && (totalItemCount > previousTotalItemCount)) {
+            loading = false;
+            previousTotalItemCount = totalItemCount;
+        }
+        // If it isn’t currently loading, we check to see if we have breached
+        // the visibleThreshold and need to reload more data.
+        // If we do need to reload some more data, we execute onLoadMore to fetch the data.
+        // threshold should reflect how many total columns there are too
+        if (!loading && (lastVisibleItemPosition + visibleThreshold) > totalItemCount) {
+            currentPage++;
+            onLoadMore(currentPage, totalItemCount, view);
+            loading = true;
         }
     }
-
-    /**
-     * scroll type in normal case and end less scroll time
-     */
-    private class SCROLL_VIEW_TYPES {
-        public static final int NORMAL = 1;
-        public static final int LOADER = 2;
+    // Call this method whenever performing new searches
+    public void resetState() {
+        this.currentPage = this.startingPageIndex;
+        this.previousTotalItemCount = 0;
+        this.loading = true;
     }
-
-    @Override
-    public int getItemViewType(int position) {
-        if (position == getItemCount() - 1 && isEndLessScroll() && mEndlessScrollLoading) return SCROLL_VIEW_TYPES.LOADER;
-        else return SCROLL_VIEW_TYPES.NORMAL;
-    }
-
-    /**
-     * start process bar & data loading process
-     */
-    public void startLoading() {
-        this.mEndlessScrollLoading = true;
-        new Handler().postDelayed(() -> {
-            notifyDataSetChanged();
-            if (mRecyclerView != null) mRecyclerView.smoothScrollToPosition(getListSize() + 1);
-        }, 200);
-    }
-
-    /**
-     * stop process bar & data loading process
-     */
-    public void stopLoading() {
-        this.mEndlessScrollLoading = false;
-        new Handler().postDelayed(() -> notifyDataSetChanged(), 200);
-    }
-
-    /**
-     * load data when adapter count reach to complete
-     */
-    protected void loadData() {
-    }
-
-    /**
-     * set progress bar color
-     *
-     * @param progressBarColor hax code of color
-     */
-    public void setProgressBarColor(int progressBarColor) {
-        this.mProgressBarColor = progressBarColor;
-    }
+    // Defines the process for actually loading more data based on page
+    public abstract void onLoadMore(int page, int totalItemsCount, RecyclerView view);
 }

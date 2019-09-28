@@ -203,7 +203,6 @@ public class RecyclerViewFragment extends BaseFragment {
 //        mEndLessList = getListBean();
         mGridAdapter = null;
         mEndLessScrollAdapter = new EndLessScrollAdapter(RecyclerViewFragment.this, mEndLessList);
-        mEndLessScrollAdapter.setProgressBarColor(getResources().getColor(R.color.green));
         mBinding.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         mBinding.recyclerView.setAdapter(mEndLessScrollAdapter);
     }
@@ -226,17 +225,6 @@ public class RecyclerViewFragment extends BaseFragment {
         mSwipToDeleteAdapter.setUpAnimationDecoratorHelper();
     }
 
-
-    public void loadNewItems() {
-        mEndLessScrollAdapter.startLoading();
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mEndLessList.addAll(getListBean());
-                mEndLessScrollAdapter.stopLoading();
-            }
-        }, 3000);
-    }
 
     public RecyclerView getRecyclerView() {
     return mBinding.recyclerView;

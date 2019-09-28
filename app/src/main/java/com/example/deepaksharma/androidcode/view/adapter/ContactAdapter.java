@@ -7,12 +7,12 @@ import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.RowContactBinding;
 import com.example.deepaksharma.androidcode.global.ImageLoaderUtils;
 import com.example.deepaksharma.androidcode.model.common.ContactsBean;
-import com.example.deepaksharma.androidcode.view.base.BaseEndLessRecyclerViewAdapter;
+import com.example.deepaksharma.androidcode.view.base.BaseRecyclerViewAdapter;
 import com.example.deepaksharma.androidcode.view.fragment.ImageFragment;
 
 import java.util.List;
 
-public class ContactAdapter extends BaseEndLessRecyclerViewAdapter {
+public class ContactAdapter extends BaseRecyclerViewAdapter {
     private final List<ContactsBean> mListBean;
     private final ImageFragment mImageFragment;
 
@@ -29,11 +29,6 @@ public class ContactAdapter extends BaseEndLessRecyclerViewAdapter {
     @Override
     protected int getListSize() {
         return (mListBean == null || mListBean.size() == 0) ? 0 : mListBean.size();
-    }
-
-    @Override
-    protected boolean isEndLessScroll() {
-        return false;
     }
 
     @Override
