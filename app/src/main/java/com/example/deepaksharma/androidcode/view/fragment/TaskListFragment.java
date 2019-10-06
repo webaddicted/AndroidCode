@@ -205,7 +205,6 @@ public class TaskListFragment extends BaseFragment {
             frm = RotateImgFrm.getInstance(getArguments());
         navigateFragment(R.id.container, frm, true);
 //        navigateAddFragment(R.id.container, frm, true);
-
     }
 
     public void updateTitle() {
