@@ -135,4 +135,5 @@ dependencies {
 //    view pager dot indicator
     implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:2.1.2'
     implementation 'com.tuyenmonkey:mkloader:1.4.0'
+    implementation 'com.amazonaws:aws-android-sdk-s3:2.6.23'
 }

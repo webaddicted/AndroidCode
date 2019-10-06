@@ -1,6 +1,10 @@
 package com.example.deepaksharma.androidcode.view.splash;
 
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
+
 import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
 
@@ -9,6 +13,7 @@ import com.example.deepaksharma.androidcode.databinding.ActivityCommonBinding;
 import com.example.deepaksharma.androidcode.view.base.BaseActivity;
 import com.example.deepaksharma.androidcode.view.fragment.splash.SplashFragment;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Random;
 
 public class SplashActivity extends BaseActivity {
@@ -36,4 +41,5 @@ public class SplashActivity extends BaseActivity {
             frm = SplashFragment.getInstance(getIntent().getExtras());
         navigateFragment(R.id.container, frm, false);
     }
+
 }

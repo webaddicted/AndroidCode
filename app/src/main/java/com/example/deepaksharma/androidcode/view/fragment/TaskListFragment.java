@@ -45,7 +45,7 @@ public class TaskListFragment extends BaseFragment {
     String worktask[] = {"widgets", "webview", "dialog", "location", "login signup flow", "select multiple image", "dynamic layout",
             "shared preference", "device info", "speech to text", "animation", "recycler view", "pagination", "expendable spinner list view",
             "image", "share", "receiver", "services", "google map", "sqlite data base", "viewpager tab", "finger print",
-            "barcode", "digital signature", "pdf", "collapse", "ui design", "fab button", "bottom navigation","api"};
+            "barcode", "digital signature", "pdf", "collapse", "ui design", "fab button", "bottom navigation","api","rotateImage"};
 
 
     private TaskAdapter mHomeAdapter;
@@ -134,6 +134,7 @@ public class TaskListFragment extends BaseFragment {
         else if (click.equals("fab button")) navigateScreen(FabFragment.TAG);
         else if (click.equals("bottom navigation")) navigateScreen(BottomNaviFragment.TAG);
         else if (click.equals("api")) navigateScreen(ApiFragment.TAG);
+        else if (click.equals("rotateImage")) navigateScreen(RotateImgFrm.TAG);
 
 
     }
@@ -200,10 +201,11 @@ public class TaskListFragment extends BaseFragment {
             frm = CollpaseViewFragment.getInstance(getArguments());
         else if (tag.equals(ApiFragment.TAG))
             frm = ApiFragment.getInstance(getArguments());
+        else if (tag.equals(RotateImgFrm.TAG))
+            frm = RotateImgFrm.getInstance(getArguments());
         navigateFragment(R.id.container, frm, true);
 //        navigateAddFragment(R.id.container, frm, true);
 
-Bundle bund = new Bundle();
     }
 
     public void updateTitle() {
