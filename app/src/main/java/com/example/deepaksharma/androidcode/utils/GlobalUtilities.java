@@ -40,15 +40,6 @@ import java.util.Random;
 
 public class GlobalUtilities {
 
-
-
-
-
-
-
-
-
-
     private static Context mContext = AppApplication.getInstance();
     /**
      * set date in textview

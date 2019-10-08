@@ -5,9 +5,8 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.widget.ImageView;
 
-import com.bumptech.glide.DrawableTypeRequest;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.BitmapImageViewTarget;
+import com.bumptech.glide.RequestBuilder;
 import com.example.deepaksharma.androidcode.R;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -101,8 +100,8 @@ public class ImageLoaderUtils {
      * @param targetIv        image view
      * @param imageLoaderType type of place holder show which is define in string
      */
-    public static void showImageUsingGLIDE(String imagePath, final ImageView targetIv, String imageLoaderType) {
-        DrawableTypeRequest<String> drawableTypeRequest = Glide.with(targetIv.getContext())
+    public static<T> void showImageUsingGLIDE(String imagePath, final ImageView targetIv, String imageLoaderType) {
+        RequestBuilder<T> drawableTypeRequest = (RequestBuilder<T>) Glide.with(targetIv.getContext())
                 .load(imagePath);
         getPlaceHolder(drawableTypeRequest, imageLoaderType).into(targetIv);
     }
@@ -114,8 +113,8 @@ public class ImageLoaderUtils {
      * @param targetIv        image view
      * @param imageLoaderType type of place holder show which is define in string
      */
-    public static void showImageUsingGLIDE(File imgUrl, final ImageView targetIv, String imageLoaderType) {
-        DrawableTypeRequest<Uri> drawableTypeRequest = Glide.with(targetIv.getContext())
+    public static<T> void showImageUsingGLIDE(File imgUrl, final ImageView targetIv, String imageLoaderType) {
+        RequestBuilder<T> drawableTypeRequest = (RequestBuilder<T>) Glide.with(targetIv.getContext())
                 .load(Uri.fromFile(imgUrl));
         getPlaceHolder(drawableTypeRequest, imageLoaderType).into(targetIv);
     }
@@ -128,7 +127,7 @@ public class ImageLoaderUtils {
      * @param <T>
      * @return
      */
-    private static <T> DrawableTypeRequest<T> getPlaceHolder(DrawableTypeRequest<T> drawableTypeRequest, String imageLoaderType) {
+    private static <T> RequestBuilder<T> getPlaceHolder(RequestBuilder<T> drawableTypeRequest, String imageLoaderType) {
         String[] imageLoadersArray = mContext.getResources().getStringArray(R.array.image_loader);
         if (imageLoadersArray[0].equals(imageLoaderType)) {
             drawableTypeRequest.error(R.color.app_color);
