@@ -36,11 +36,11 @@ public class SmsAdapter extends BaseRecyclerViewAdapter {
             RowContactBinding mRowGridBinding = (RowContactBinding) rowBinding;
             SmsBean smsBean = mListBean.get(position);
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append(smsBean.getFolderName() != null ? "sms folder name - " + smsBean.getFolderName() + "\n" : "");
-            stringBuilder.append(smsBean.getAddress() != null ? "sms address - " + smsBean.getAddress() + "\n" : "");
-            stringBuilder.append(smsBean.getMsg() != null ? "sms - " + smsBean.getMsg() + "\n" : "");
-            stringBuilder.append(smsBean.getReadState() != null ? "sms read state - " + smsBean.getReadState() + "\n" : "");
-            stringBuilder.append(smsBean.getTime() != null ? "sms time - " + smsBean.getTime() + "\n" : "");
+//            stringBuilder.append(smsBean.getFolderName() != null ? "sms folder name - " + smsBean.getFolderName() + "\n" : "");
+//            stringBuilder.append(smsBean.getAddress() != null ? "sms address - " + smsBean.getAddress() + "\n" : "");
+//            stringBuilder.append(smsBean.getMsg() != null ? "sms - " + smsBean.getMsg() + "\n" : "");
+//            stringBuilder.append(smsBean.getReadState() != null ? "sms read state - " + smsBean.getReadState() + "\n" : "");
+//            stringBuilder.append(smsBean.getTime() != null ? "sms time - " + smsBean.getTime() + "\n" : "");
 
             mRowGridBinding.txtName.setText(stringBuilder.toString());
 //            ImageLoaderUtils.showImageUsingGLIDE(smsBean.getContactPhoto(), mRowGridBinding.imgUser, getPlaceHolder(1));

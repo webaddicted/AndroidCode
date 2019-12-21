@@ -26,15 +26,15 @@ public class EventBusListener {
 
     private List<VehicleTypeListBean> vehicleTypeList;
 
-    public String getStatus_code() {
-        user_statusss.observe(this, new Observer<ArrayList<String>>() {
-            @Override
-            public void onChanged(ArrayList<String> strings) {
-
-            }
-        });
-        return status_code;
-    }
+//    public String getStatus_code() {
+//        user_statusss.observe(this, new Observer<ArrayList<String>>() {
+//            @Override
+//            public void onChanged(ArrayList<String> strings) {
+//
+//            }
+//        });
+//        return status_code;
+//    }
 
     public void setStatus_code(String status_code) {
         this.status_code = status_code;
