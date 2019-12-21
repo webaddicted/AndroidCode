@@ -1,58 +1,29 @@
 package com.example.deepaksharma.androidcode.model;
 
 public class SmsBean {
-    private String id;
-    private String address;
-    private String msg;
-    private String readState; //"0" for have not read sms and "1" for have read sms
-    private String time;
-    private String folderName;
 
-    public String getId() {
-        return id;
+
+    /**
+     * success : 1
+     * message : An email sent to your email with a link, follow it to change password
+     */
+
+    private int success;
+    private String message;
+
+    public int getSuccess() {
+        return success;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setSuccess(int success) {
+        this.success = success;
     }
 
-    public String getAddress() {
-        return address;
+    public String getMessage() {
+        return message;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
-    public String getReadState() {
-        return readState;
-    }
-
-    public void setReadState(String readState) {
-        this.readState = readState;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    public String getFolderName() {
-        return folderName;
-    }
-
-    public void setFolderName(String folderName) {
-        this.folderName = folderName;
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

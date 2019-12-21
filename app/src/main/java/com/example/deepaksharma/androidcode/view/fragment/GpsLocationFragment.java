@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.databinding.ViewDataBinding;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -46,11 +47,14 @@ public class GpsLocationFragment extends BaseFragment {
     }
 
     private void init() {
-        mHomeViewModel.mCurrentLocation.observe(this, location -> {
-            if (location != null && location.getLatitude() > 0 && location.getLongitude() > 0) {
-                if (mLocationBean == null) mLocationBean = new ArrayList<>();
-                mLocationBean.add(0,location);
-                mLocationAdapter.notifyUi(mLocationBean);
+        mHomeViewModel.mCurrentLocation.observe(this, new Observer<Location>() {
+            @Override
+            public void onChanged(Location location) {
+                if (location != null && location.getLatitude() > 0 && location.getLongitude() > 0) {
+                    if (mLocationBean == null) mLocationBean = new ArrayList<>();
+                    mLocationBean.add(0, location);
+                    mLocationAdapter.notifyUi(mLocationBean);
+                }
             }
         });
     }

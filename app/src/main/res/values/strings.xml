@@ -15,7 +15,7 @@
     <string name="no">no</string>
     <string name="ok">ok</string>
     <string name="cancel">cancel</string>
-    <string name="forcefully_enable_permission">You have forcefully denied some of the required permissions for this action.\nPlease go to permissions and allow them.</string>
+ <string name="forcefully_enable_permission">You have forcefully denied some of the required permissions for this action.\nPlease go to permissions and allow them.</string>
     <string name="error_uppercase_pattern">password must have atleast one uppercase character !!</string>
     <string name="error_lowercase_pattern">password must have atleast one lowercase character !!</string>
     <string name="error_digit_pattern">password must have atleast one digit character !!</string>

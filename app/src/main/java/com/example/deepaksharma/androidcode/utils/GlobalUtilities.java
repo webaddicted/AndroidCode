@@ -17,6 +17,7 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,8 +48,6 @@ public class GlobalUtilities {
      * @param mDobEt
      */
     public static void setDate(final TextView mDobEt) {
-
-
         DatePickerCustomDialog datePickerCustomDialog = DatePickerCustomDialog.getInstance(mContext, new DatePickerCallback() {
             @Override
             public void onDateSetCallBack(String date) {
@@ -66,7 +65,17 @@ public class GlobalUtilities {
 
     public static void getDate(Context context, TextView mDobEtm) {
         Calendar calendar = Calendar.getInstance();
-        DatePickerDialog datePickerDialog = new DatePickerDialog(context, R.style.TimePicker, (view, year, month, dayOfMonth) -> mDobEtm.setText(dayOfMonth + "/" + month + "/" + year), calendar.YEAR, calendar.MONTH, calendar.DAY_OF_MONTH);
+        DatePickerDialog datePickerDialog = new DatePickerDialog(context, R.style.TimePicker, (view, year, month, dayOfMonth) -> {
+            int monthValue = month + 1;
+            String day = "";
+            String dayMonth = "";
+            if (dayOfMonth<=9) day= "0"+dayOfMonth;
+            else day = dayOfMonth+"";
+            if (monthValue<=9) dayMonth= "0"+monthValue;
+            else dayMonth = monthValue+"";
+            mDobEtm.setText(day +"/"+dayMonth+"/"+year);
+        }, calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH) , calendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
         datePickerDialog.show();
     }
 
