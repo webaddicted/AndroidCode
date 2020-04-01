@@ -2,25 +2,18 @@ package com.example.deepaksharma.androidcode.view.adapter;
 
 import android.graphics.Color;
 import android.text.Spannable;
-import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.deepaksharma.androidcode.R;
 import com.example.deepaksharma.androidcode.databinding.RowTextListBinding;
-import com.example.deepaksharma.androidcode.utils.GlobalUtilities;
 import com.example.deepaksharma.androidcode.view.fragment.TaskListFragment;
-import com.example.deepaksharma.androidcode.view.home.HomeActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,7 +71,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
         private RowTextListBinding binding;
 
-        public ViewHolder(RowTextListBinding itemView) {
+        ViewHolder(RowTextListBinding itemView) {
             super(itemView.getRoot());
             this.binding = itemView;
         }
