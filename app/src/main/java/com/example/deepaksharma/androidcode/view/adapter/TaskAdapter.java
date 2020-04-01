@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,6 +25,8 @@ import com.example.deepaksharma.androidcode.view.home.HomeActivity;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
     private static final String TAG = TaskAdapter.class.getSimpleName();
@@ -51,15 +54,16 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull TaskAdapter.ViewHolder holder, int position) {
+        String title = mAction.get(position);
         if (searchText!=null && searchText.length()>1){
-           String completeText = mAction.get(position);
-            SpannableString spannableString = new SpannableString(mAction.get(position));
-            for (int i = -1; (i = completeText.indexOf(searchText, i + 1)) != -1; i++) {
-                int endText = searchText.length()+i;
-                ForegroundColorSpan foregroundSpan = new ForegroundColorSpan(Color.GREEN);
-                spannableString.setSpan(foregroundSpan, i, endText, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            SpannableStringBuilder sb = new SpannableStringBuilder(title);
+            Pattern word = Pattern.compile(searchText.toLowerCase());
+            Matcher match = word.matcher(title.toLowerCase());
+            while (match.find()) {
+                ForegroundColorSpan fcs = new ForegroundColorSpan(Color.RED); //specify color here
+                sb.setSpan(fcs, match.start(), match.end(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
             }
-            holder.binding.txtName.setText(spannableString);
+            holder.binding.txtName.setText(sb);
         }else {
             holder.binding.txtName.setText(mAction.get(position));
         }
