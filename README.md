@@ -1,6 +1,20 @@
 # AndroidCode
 
 
+[![GitHub license](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Android Weekly](https://img.shields.io/badge/Android%20Weekly-%23406-2CA3E6.svg?style=flat)](http://androidweekly.net/issues/issue-406)
+![Github Followers](https://img.shields.io/github/followers/webaddicted?label=Follow&style=social)
+![GitHub stars](https://img.shields.io/github/stars/webaddicted/AndroidCode?style=social)
+![GitHub forks](https://img.shields.io/github/forks/webaddicted/AndroidCode?style=social)
+![GitHub watchers](https://img.shields.io/github/watchers/webaddicted/AndroidCode?style=social)
+
+
+## APK
+
+***You can Install and test latest Android Code Demo app from below 👇***
+
+[![Android Code Demo](https://img.shields.io/badge/Android%20Code-Apk-brightgreen.svg?style=for-the-badge&logo=android)](https://github.com/webaddicted/AndroidCode/tree/master/apk/AndroidCode.apk)
+
 
 ## LICENSE
 ```
